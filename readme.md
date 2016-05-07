@@ -4,7 +4,9 @@
 Merge is an online platform to _easily_ share files with **friends** and **co-workers**.    
 
 ## How does it work?    
-Lorem ipsum dolor sit amet...
+Upload the files you want to store on **your desk**.    
+Add people to your **contacts** in order to give them permissions to accede the files on your desk.    
+Download and interact with the files on the desks of those who added you in their _contacts_.
 
 ## Authors
 Davide Brunetti    
