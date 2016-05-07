@@ -1,1 +1,135 @@
 @import 'normalize.css';
+
+html,
+body{
+    height: 100%;
+	width: 100%;
+    z-index: 1;
+}
+
+input{
+	-webkit-appearance: textfield;
+	-moz-appearance: textfield;
+	
+	background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    border-radius: 0;
+    outline: none;
+    height: 3rem;
+	
+	font-size: 1rem;
+    margin: 0 0 15px 0;
+    padding: 0;
+    box-shadow: none;
+}
+
+header{
+	width: 100%;
+	height: 60px;
+	background-color: transparent;
+	color: white;
+	position: fixed;
+	z-index: 100;
+}
+
+.colored_header{
+	background-color: dimgray;
+}
+
+#logo{
+	height: inherit;
+	display: inline-block;
+	margin-left:5%;
+	background-color: black;
+}
+
+#login {
+	height: inherit;
+	display: inline-block;
+	margin-right: 5%;	
+	float: right;
+	background-color: gray;
+}
+
+section{
+	position: relative;
+    width: 100%;
+    text-align: center;
+	z-index: 50;
+}
+
+#section_1{
+	height: 100%;
+    background-image:url('/assets/img/cross.jpg');
+    background-color: pink;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+    color: white;
+}
+
+#section_2{
+	background-color: aquamarine;
+}
+
+#section_3{
+	height: 70%;
+	background-color: green;
+}
+
+#container_1{
+	width: 70%;
+    position: absolute;
+	bottom: 0;
+	left: 15%;
+	right: 15%;
+	border: 1px solid red;
+}
+
+#sign_up{
+	width: 100px;
+	display: block;
+	padding: 10px;
+	text-decoration: none;
+	background-color: green;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#discover {
+	margin-left: auto;
+	margin-right: auto;
+	text-decoration: none;
+	color: white;
+}
+
+#container_2 {
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid red;
+}
+
+#container_3 {
+	width: 80%;
+	display: inline-block;
+	padding-top: 50px;
+	text-align: center;
+	border: 1px solid red;
+}
+
+footer{
+	width: 100%;
+	height: 20%;
+	line-height: 100%;
+	display: table;
+	background-color: darkcyan;
+}
+
+#footer_content{
+	display: table-cell;
+	vertical-align: middle;  
+}
