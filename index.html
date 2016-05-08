@@ -27,47 +27,44 @@
 					<a id="sign_up" href="#section_3">Sign Up</a>
 					<a id="discover" href="#section_2">
 						Discover More<br>
-						<img src="../assets/img/down_arrow.png" alt="Down Arrow">
+						<img src="./assets/img/down_arrow.png" alt="Down Arrow">
 					</a>
 			</div>
 		</section>
 		<section id="section_2">
 			<div id="container_2">
-				<table id="info_table">
-                    <colgroup>
-                    <col id="left_elem" >
-                    <col  id="right_elem">
-                    </colgroup>
-					<tr>
-						<td class="text_elem" colspan = "2" >
-                            <h2>
-                                Upload your files<br>and organize<br>them on <b>your<br>desk</b>.
-                            </h2>
-                        </td>
-						<td class="img_elem">
-							<img src="./assets/img/missing_img.jpg" alt="Missing Img">
-						</td>
-					</tr>
-					<tr>
-						<td class="img_elem" >
-							<img src="./assets/img/missing_img.jpg" alt="Missing Img">
-						</td>
-						<td class="text_elem" colspan = "2">
-                            <h2>
-                                Add people to<br>your <b>contacts</b>...</td>
-                            </h2>
-					</tr>
-					<tr>
-						<td class="text_elem" colspan = "2">
-                            <h2>
+                
+                <div class="rowing">
+                    <div class="text_elem left_elem">
+                        <h2>
+                            Upload your files<br>and organize<br>them on <b>your<br>desk</b>.
+                        </h2>
+                    </div>
+                    <div class="img_elem right_elem" >
+                        <img src="./assets/img/missing_img.jpg" alt="Missing Img">
+                    </div>
+                </div>
+                <div class="rowing">
+                      <div class="img_elem left_elem">
+                        <img src="./assets/img/missing_img.jpg" alt="Missing Img">
+                    </div>
+                    <div class="text_elem right_elem" >
+                        <h2>
                                 ...in order to give them<br> permissions to<br>accede their files on your<br>desk.
-                            </h2>
-                        </td>
-						<td class="img_elem">
-							<img src="./assets/img/missing_img.jpg" alt="Missing Img">
-						</td>
-					</tr>
-				</table>
+                        </h2>
+                    </div>
+                  
+                </div>
+                <div class="rowing">
+                <div class="text_elem left_elem" >
+                    <h2>
+                                Add people to<br>your <b>contacts</b>...
+                    </h2>
+                </div>
+                <div class="img_elem right_elem">
+                    <img src="./assets/img/missing_img.jpg" alt="Missing Img">
+                </div>
+                </div>
 			</div>
 		</section>
 		<section id="section_3">
@@ -77,13 +74,13 @@
                 </h2>
 				<form action="elaborate/signup.php" method="POST">
 					<div class="input-field">
-						<input class="validate" id="username" type="text" placeholder="Name">
+						<input class="validate" name="username" type="text" placeholder="Name">
 					</div>
 					<div class="input-field">
 						<input class="validate" name="email" type="email" placeholder="Email">
 					</div>
 					<div class="input-field">
-						<input class="validate" id="pass" type="password" placeholder="Password">
+						<input class="validate" name="password" type="password" placeholder="Password">
 					</div>
 					<div class="input-field">
 						<input class="validate" name="confirm_pass" type="password" placeholder="Confirm password">
