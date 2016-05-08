@@ -58,6 +58,9 @@ header{
 	background-color: transparent;
 	color: #00AE53;
 }
+#logo_container > p{
+	margin-top: 10%;
+}
 
 #login_container{
 	height: inherit;
@@ -69,6 +72,9 @@ header{
 	padding-right: 10px;
 	float: right;
 	background-color: transparent;
+}
+#login_container > p{
+	margin-top: 40%;
 }
 #login_container:hover{
 	cursor: pointer;
