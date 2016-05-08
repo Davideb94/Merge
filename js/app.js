@@ -11,7 +11,7 @@ window.onload = function(){
 		
 			var section_2 = document.getElementById('section_2');
 			var offset = section_2.offsetTop - 60;
-			var y = document.body.scrollTop;
+			var y = document.documentElement.scrollTop || document.body.scrollTop;
 			console.log(y);
 
 			if(y>=offset){

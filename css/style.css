@@ -4,7 +4,7 @@
 /*Custom fonts*/
 @font-face{
 	font-family: "Chunk";
-	src: url('/assets/fonts/chunk/Chunk.ttf');
+	src: url('../assets/fonts/chunk/Chunk.ttf');
 }
 
 html,
@@ -83,7 +83,7 @@ section{
 
 #section_1{
 	height: 100%;
-    background-image:url('/assets/img/cross.jpg');
+    background-image:url('../assets/img/cross.jpg');
     background-color: pink;
     background-repeat: no-repeat;
     background-size: cover;
@@ -142,7 +142,11 @@ section{
 	text-align: center;
 	border: 1px solid red;
 }
-
+#info_table > th,td{
+    padding:0 150px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 footer{
 	width: 100%;
 	height: 20%;
