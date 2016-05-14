@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2016 at 07:15 PM
+-- Generation Time: May 14, 2016 at 06:29 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -79,16 +79,21 @@ CREATE TABLE `user` (
   `ID` int(3) NOT NULL,
   `Name` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
-  `Email` varchar(70) NOT NULL
+  `Email` varchar(70) NOT NULL,
+  `Registration_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`ID`, `Name`, `Password`, `Email`) VALUES
-(1, 'cesare', 'roma', 'cesare@augusto.it'),
-(2, ' davide', 'mypass', 'davide@libero.it');
+INSERT INTO `user` (`ID`, `Name`, `Password`, `Email`, `Registration_date`) VALUES
+(1, 'cesare', 'roma', 'cesare@augusto.it', '2016-05-13 19:50:58'),
+(2, ' davide', 'mypass', 'davide@libero.it', '2016-05-13 19:50:58'),
+(3, 'Gabriele', 'martino', 'gafire@hotmail.it', '2016-05-13 20:45:59'),
+(4, 'paola', '.md5(martino)', 'paola@ok.it', '2016-05-13 21:01:42'),
+(5, 'davide', 'c207dcdb5e554ba3a043077fbe6f8dc4', 'davidedb@unito.it', '2016-05-13 21:08:52'),
+(7, 'alessandro', '6e6bc4e49dd477ebc98ef4046c067b5f', 'ale.pronat@minchia.it', '2016-05-14 16:14:49');
 
 --
 -- Indexes for dumped tables
@@ -121,7 +126,8 @@ ALTER TABLE `file`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `Email` (`Email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -141,7 +147,7 @@ ALTER TABLE `file`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Constraints for dumped tables
 --

@@ -74,22 +74,22 @@
 				<p>
 					It's free and it won't take more than 1 minute...
                 </p>
-				<form id="sign_up_form" action="elaborate/signup.php" method="POST">
+				<form id="sign_up_form" action="elaborate/Signup.php" method="POST">
 					<div class="input-field">
 						<img src="./assets/icons/name.svg" alt="Name" class="icon">
-						<input class="validate" name="username" type="text" placeholder="Name">
+						<input class="validate" name="username" type="text" placeholder="Name" required>
 					</div>
 					<div class="input-field">
 						<img src="./assets/icons/mail.svg" alt="Mail" class="icon">
-						<input class="validate" name="email" type="email" placeholder="Email">
+						<input class="validate" name="email" type="email" placeholder="Email" required>
 					</div>
 					<div class="input-field">
 						<img src="./assets/icons/password.svg" alt="Pass" class="icon">
-						<input class="validate" name="password" type="password" placeholder="Password">
+						<input class="validate" name="password" type="password" placeholder="Password" required>
 					</div>
 					<div class="input-field">
 					    <img src="./assets/icons/password.svg" alt="Pass" class="icon">
-						<input class="validate" name="confirm_pass" type="password" placeholder="Confirm password">
+						<input class="validate" name="confirm_pass" type="password" placeholder="Confirm password" required>
 					</div>
 					
 					<button type="submit" id="submit">Register!</button>

@@ -75,7 +75,7 @@ section{
 #section_1{
 	height: 100%;
 	background-image:url('../assets/img/cross.jpg');
-	background-color: pink;
+	background-color: #00AE53;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: scroll;
