@@ -1,8 +1,6 @@
 <?php
 session_start();
-
-if(session_destroy()) // Destroying All Sessions
-{
-    header("Location: ../index.html"); // Redirecting To Home Page
-}
+session_destroy();
+setcookie("usermerge","",time()-60,"/",$_SERVER['SERVER_NAME']);
+header("Location: ../index.php"); // Redirecting To Home Page
 ?>

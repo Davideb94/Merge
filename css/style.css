@@ -137,6 +137,12 @@ section{
 	width: 80%;
 	padding-top: 10%;
 }
+.left_elem{
+    width: 40%;
+}
+.right_elem{
+    width: 40%;
+}
 .text_elem{
 	display: table-cell;
 	vertical-align: middle;
@@ -154,7 +160,8 @@ section{
 	text-align: left;
 }
 .wireframe {
-	height: 40%;
+	max-height: 40%;
+    max-width: 40%;
 }
 
 #section_3{

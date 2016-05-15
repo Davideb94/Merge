@@ -3,16 +3,15 @@ session_start();
 
 function registration(){
     //include server connection
-    require('AuthConnection.php');
-    
-    //inizialization var
-    $username = mysql_real_escape_string($_POST["username"]);
-    $password = mysql_real_escape_string($_POST["password"]);
-    $email = mysql_real_escape_string($_POST["email"]);
-    $confirm_pass = mysql_real_escape_string($_POST["confirm_pass"]);
-    
+    require('AuthConnection.php'); 
     // extra control for inputs
-    if(!empty($username) && !empty($password) && !empty($email) && !empty($confirm_pass)){   
+    if(!empty($_POST["username"]) && !empty($_POST["password"]) && !empty($_POST["email"]) && !empty($_POST["confirm_pass"])){   
+        //inizialization var
+        $username = mysql_real_escape_string($_POST["username"]);
+        $password = mysql_real_escape_string($_POST["password"]);
+        $email = mysql_real_escape_string($_POST["email"]);
+        $confirm_pass = mysql_real_escape_string($_POST["confirm_pass"]);
+        
         
         //password control
         if($confirm_pass != $password){
@@ -30,7 +29,7 @@ function registration(){
                     die($message);
             
             }else{
-                $_SESSION['username'] = $username;
+                $_SESSION['username'] = $username; setcookie("usermerge",$username,time()+84600,"/",$_SERVER['SERVER_NAME']);
                 header("Location: secure.php");
                 
             }
