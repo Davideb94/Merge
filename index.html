@@ -18,6 +18,19 @@
 			<span id="login_container">
 				<p>Log In</p>
 			</span>
+			<div id="login_menu">
+				<form action="elaborate/Login.php" method="POST">
+					<div class="input-field">
+						<input class="login_input" name="email" type="email" placeholder="Email" required>
+					</div>
+					<div class="input-field">
+						<input class="login_input" name="password" type="password" placeholder="Password" required>
+					</div>
+					<div class="input-field">
+						<input type="submit" id="log_in_button" value="Log In" />
+					</div>
+				</form>
+			</div>
 		</header>
 		<section id="section_1">
 			<div id="container_1">
@@ -74,7 +87,7 @@
 				<p>
 					It's free and it won't take more than 1 minute...
                 </p>
-				<form id="sign_up_form" action="elaborate/Signup.php" method="POST">
+				<form id="sign_up_form" action="elaborate/Signup.php" onsubmit="return validate()" method="POST">
 					<div class="input-field">
 						<img src="./assets/icons/name.svg" alt="Name" class="icon">
 						<input class="validate" name="username" type="text" placeholder="Name" required>
@@ -85,14 +98,14 @@
 					</div>
 					<div class="input-field">
 						<img src="./assets/icons/password.svg" alt="Pass" class="icon">
-						<input class="validate" name="password" type="password" placeholder="Password" required>
+						<input class="validate" id="password" name="password" type="password" placeholder="Password" required>
 					</div>
 					<div class="input-field">
 					    <img src="./assets/icons/password.svg" alt="Pass" class="icon">
-						<input class="validate" name="confirm_pass" type="password" placeholder="Confirm password" required>
+						<input class="validate" id="confirm_pass" name="confirm_pass" type="password" placeholder="Confirm password" required>
 					</div>
 					
-					<button type="submit" id="submit">Register!</button>
+					<input type="submit" id="submit" value="Register!" />
 				</form>
 			</span>
 		</section>

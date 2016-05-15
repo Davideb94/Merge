@@ -30,9 +30,6 @@ header{
 .colored_header{
 	background-color: #2c3e50;
 }
-.colored_login:hover{
-	background-color: #263545 !important;
-}
 #logo_container{
 	height: inherit;
 	display: inline-block;
@@ -63,6 +60,9 @@ header{
 }
 #login_container:hover{
 	cursor: pointer;
+}
+.colored_login:hover{
+	background-color: #263545 !important;
 }
 
 section{
@@ -195,7 +195,8 @@ input{
 
 #submit {
 	width: 100px;
-	padding: 10px;
+	height: 40px;
+	//padding: 10px;
 	margin-top: 10%;
 	border: none;
 	border-radius: 3px;
@@ -217,4 +218,37 @@ footer{
 	vertical-align: middle; 
 	padding-left: 5%;
 	color: #2C3030;
+}
+
+#login_menu {
+	height: auto;
+	width: auto;
+	display: none;
+	position: absolute;
+	padding-left: 25px;
+	padding-right: 25px;
+	top: 60px;
+	right: 5%;
+	z-index: 999;    
+	background: #fff;
+	border-left: 5px solid #263545;
+	border-bottom-right-radius: 2px;
+	border-bottom-left-radius: 2px;
+	box-shadow: 3px 3px 10px #2c3e50;	
+	color: #373D3D;
+}
+.clicked_login{
+	display: block !important;
+}
+#log_in_button {
+	height: 30px;
+	width: 100%;
+	background-color: #00AE53;
+	color: white;
+	font-family: Museo;
+	border-radius: 3px;
+}
+
+.login_input {
+	font-size: 15px;
 }
