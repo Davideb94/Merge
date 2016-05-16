@@ -29,7 +29,8 @@ function registration(){
                     die($message);
             
             }else{
-                $_SESSION['username'] = $username; setcookie("usermerge",$username,time()+84600,"/",$_SERVER['SERVER_NAME']);
+                $_SESSION['email'] = $email; 
+                setcookie("usermerge",$email,time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
                 header("Location: secure.php");
                 
             }

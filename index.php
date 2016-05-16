@@ -27,12 +27,12 @@ session_start();
 	
 	<body>
 		<header id="header">
-			<span id="logo_container">
+			<div id="logo_container">
 				<p>merge</p>
-			</span>
-			<span id="login_container">
-				<p>Log In</p>
-			</span>
+			</div>
+			<div id="login_container">
+                <p>Log in</p>
+			</div>
 			<div id="login_menu">
 				<form action="elaborate/Login.php" method="POST">
 					<div class="input-field">
@@ -55,7 +55,7 @@ session_start();
 					<a id="sign_up" href="#section_3">Sign Up</a>
 					<a id="discover" href="#section_2">
 						Discover More<br>
-						<img src="./assets/icons/scroll-arrow-to-down.svg" alt="Down Arrow" height="40px">
+						<img id="Down_Arrow" src="./assets/icons/scroll-arrow-to-down.svg" alt="Down Arrow">
 					</a>
 			</div>
 		</section>
@@ -95,7 +95,7 @@ session_start();
 			</div>
 		</section>
 		<section id="section_3">
-			<span id="container_3">
+			<div id="container_3">
 				<p style="font-size:30px">
                     Sign Up!
 				</p>
@@ -122,7 +122,7 @@ session_start();
 					
 					<input type="submit" id="submit" value="Register!" />
 				</form>
-			</span>
+			</div>
 		</section>
 		<footer>
 			<span id="footer_content">© 2016 Created by Davide Brunetti and Gabriele Martino.</span>

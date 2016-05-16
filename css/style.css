@@ -40,6 +40,7 @@ header{
 	padding-right: 20px;
 	background-color: transparent;
 	color: #00AE53;
+    vertical-align:text-bottom;
 }
 #logo_container > p{
 	margin-top: 10%;
@@ -92,6 +93,9 @@ section{
 }
 #container_1 > p{
 	font-size: 30px;
+}
+#Down_Arrow{
+    height: 40px;
 }
 #sign_up{
 	width: 130px;
@@ -203,7 +207,7 @@ input{
 #submit {
 	width: 100px;
 	height: 40px;
-	//padding: 10px;
+	padding: 10px;
 	margin-top: 10%;
 	border: none;
 	border-radius: 3px;

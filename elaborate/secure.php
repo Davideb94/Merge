@@ -10,7 +10,7 @@
 <body>
 <div class="form">
 <p>Welcome 
-    <?php echo $_SESSION['username']; 
+    <?php echo $_SESSION['email']; 
         echo $_COOKIE["usermerge"];
     ?>!
     </p>

@@ -20,9 +20,8 @@ function Login(){
             }
         
          if($result->num_rows>0){
-             $username = $result->fetch_assoc();
-             $_SESSION['username'] = $username['Name'];
-             setcookie("usermerge",$_SESSION['username'],time()+84600,"/",$_SERVER['SERVER_NAME']);
+             $_SESSION['email'] = $email;
+             setcookie("usermerge",$email,time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
             header("Location: secure.php"); // Redirect user to secure.php
          }else{
              echo "<div class='form'><h3>Username/password is       incorrect.</h3><br/>Click here to <a                href='../index.php'>Login</a></div>";
