@@ -21,17 +21,32 @@ function registration(){
             $password=md5($password);
             $query = "INSERT INTO USER (Name,Password,Email) values ('$username','$password','$email');";
             $result = $mysqli->query($query);
-            
-            //error control
             if(!$result){
                    $message = 'Invalid query: ' . $mysqli->error . "\n";
                     $message .= 'Whole query: ' . $query;
                     die($message);
             
+            }
+            
+            
+            $query1 = "SELECT ID FROM `user` WHERE email='$email' and password='$password' ";
+            
+           $result1 = $mysqli->query($query1);
+            
+            
+            //error control
+            if(!$result1){
+                   $message = 'Invalid query: ' . $mysqli->error . "\n";
+                    $message .= 'Whole query: ' . $query;
+                    die($message);
+            
             }else{
-                $_SESSION['email'] = $email; 
-                setcookie("usermerge",$email,time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
-                header("Location: secure.php");
+                $id= $result1->fetch_assoc();
+                $_SESSION["email"] = $email;
+                $_SESSION['username'] = $username;
+                $_SESSION["IDuser"] = $id; setcookie("usermerge",$username,time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
+                setcookie("idusermerge",$id,time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
+                header("Location: ./main.php");
                 
             }
         }

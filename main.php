@@ -1,3 +1,7 @@
+<?php 
+include("./php/Auth.php"); //include auth.php file on all secure pages 
+?>
+
 <!DOCTYPE html>
 <html>
 	
@@ -116,7 +120,9 @@
 				<h1>Others</h1>
 				<p>This will show a desk I can work on, since someone gave me permissions to accede it.</p>
 			</div>
+            <form id="file-form" method="POST" enctype= "multipart/form-data">
 			<button class="add_file" id="add_button">+</button>
+            </form>
 		</main>
 	</body>
 	

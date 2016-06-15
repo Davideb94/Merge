@@ -6,10 +6,10 @@ session_start();
  if(empty($_SESSION["username"]) && !empty($_COOKIE["usermerge"])){
     //start session
     $_SESSION["username"] = $_COOKIE["usermerge"];
-    header("Location: ./elaborate/secure.php");
+    header("Location: main.php");
      //in the extreme case in wich you enter in the index when you're logged redirect to your page
 }else if(!empty($_SESSION["username"]) && !empty($_COOKIE["usermerge"])){
-       header("Location: ./elaborate/secure.php");
+       header("Location: main.php");
  }
 ?>
 
@@ -22,7 +22,7 @@ session_start();
 		
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script src="client.js" type="text/javascript"></script><!-- just in order to work with Flujd, an npm package for live programming -->
-		<script src="js/app.js"></script>
+		<script src="js/index.js"></script>
 	</head>
 	
 	<body>
@@ -34,7 +34,7 @@ session_start();
                 <p>Log in</p>
 			</div>
 			<div id="login_menu">
-				<form action="elaborate/Login.php" method="POST">
+				<form action="./php/Login.php" method="POST">
 					<div class="input-field">
 						<input class="login_input" name="Lemail" type="email" placeholder="Email" required>
 					</div>
@@ -102,7 +102,7 @@ session_start();
 				<p>
 					It's free and it won't take more than 1 minute...
                 </p>
-				<form id="sign_up_form" action="elaborate/Signup.php" onsubmit="return validate()" method="POST">
+				<form id="sign_up_form" action="./php/Signup.php" onsubmit="return validate()" method="POST">
 					<div class="input-field">
 						<img src="./assets/icons/name.svg" alt="Name" class="icon">
 						<input class="validate" name="username" type="text" placeholder="Name" required>
