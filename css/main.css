@@ -207,7 +207,8 @@ and (min-device-width: 801px)
 		float: left;
 		margin-left: 0;
 		background-color: #E9EBEE;
-		overflow: scroll;
+		overflow-x: hidden;
+		overflow-y: auto;
 		z-index: 10;
 	}
 	.tab_head{
@@ -518,7 +519,8 @@ and (max-device-width: 800px)
 		float: left;
 		margin-left: 0;
 		background-color: #E9EBEE;
-		overflow: scroll;
+		overflow-x: hidden;
+		overflow-y: auto;
 		z-index: 10;
 	}
 	.tab_head{
