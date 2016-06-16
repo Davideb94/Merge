@@ -12,9 +12,10 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 		<script src="client.js" type="text/javascript"></script><!-- just in order to work with Flujd, an npm package for live programming -->
 		<script src="js/main.js" type="text/javascript"></script>
+        <script src="js/ajax.js" type="text/javascript"></script>
 	</head>
 	
-	<body>
+	<body onload="preview()">
 		<header id="header">
 			<span id="logo_container">
 				<p>merge</p>
@@ -33,7 +34,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 					<li class="navs_li" id="search_block">
 						<div class="vertical_center"></div>
 						<div class="vertical_center">
-							<input id="search" type="text">
+							<input id="search" type="text" placeholder="search@mail.com">
 							<img src="assets/img/search.svg" id="search_icon">
 						</div>
 						<div class="vertical_center"></div>
@@ -63,7 +64,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 		<aside>
 			<div class="aside_container" id="desks"><!--UI BUG: aside_title must stay on top when scrolling-->
 				<div class="aside_title">
-					<img id="desk_pic" src="assets/img/desk.png"/><!--UI BUG: imgs are not responsive-->
+					<img id="desk_pic" src="assets/img/desk.png"/>
 					DESKS
 				</div>
 				<div class="list_container">
@@ -104,24 +105,33 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 			<div id="my_desk" class="tab">
 				<div class="file_card">
 					<div class="card_cover">
-						<div class="cover_text_size">
-							700.50
-							<div class="cover_text_unit">
-							MB
-						</div>
+						<div class="cover_text_extension">
+							.mp4
+							<div class="cover_text_size">
+								700.50
+								<div class="cover_text_unit">
+									MB
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="card_footer">
 						<p>myfile.mp4</p>
 					</div>
-				</div>				
+				</div>
 			</div>
 			<div id="others" class="tab">
 				<h1>Others</h1>
 				<p>This will show a desk I can work on, since someone gave me permissions to accede it.</p>
 			</div>
             <form id="file-form" method="POST" enctype= "multipart/form-data">
-			<button class="add_file" id="add_button">+</button>
+				<!--<button class="add_file" id="add_button">+</button>-->
+				<label>
+					<div class="add_file" id="add_button">
+						<div class="plus">+</div>
+					</div>
+					<input type="file" id="input_file" name="input_file" onchange="loadfile()" multiple/>
+				</label>
             </form>
 		</main>
 	</body>

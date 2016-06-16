@@ -302,8 +302,11 @@ and (min-device-width: 801px)
 	.add_file{
 		height: 45px;
 		width: 45px;
+		display: table;
 		border: none;
 		border-radius: 50%;
+		cursor: pointer;
+		text-align: center;
 		background-color: #00AE53;
 		color: #E9EBEE;
 		font-size: 20px;
@@ -319,6 +322,13 @@ and (min-device-width: 801px)
 	}
 	.hide_button{
 		display: none;
+	}
+	.plus{
+		display: table-cell;
+		vertical-align: middle;
+	}
+	#input_file{
+		visibility: hidden;
 	}
 	
 	#others{

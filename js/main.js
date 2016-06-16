@@ -46,3 +46,8 @@ function openTab(mytab) {
 	else
 		alert('An error occured');
 }
+
+function upload(){
+    var input = document.getElementById("input_upload");
+    input.submit();
+}
