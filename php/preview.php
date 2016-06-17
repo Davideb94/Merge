@@ -39,6 +39,7 @@
         if($extension == "png" || $extension == "jpeg" || $extension == "jpg"){
                
             echo "<div class='file_card'
+                    name='$name'
                     style='background-color: transparent' 
                 >
 					<div class='card_cover'     

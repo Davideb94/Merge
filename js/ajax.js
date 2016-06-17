@@ -36,3 +36,70 @@ function preview(){
     xhr.open("POST","./php/preview.php",true);
     xhr.send();
 }
+//ajax function for livesearch
+function showResult(str){
+    var searchbox = document.getElementById("search");
+    var list =  document.getElementById("result_search");
+    if(!(searchbox === document.activeElement)|| str.length==0){
+         list.className=''; 
+            return;
+    }
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange=function() {
+        if (xhr.readyState==4 && xhr.status==200) {
+            list.innerHTML=xhr.responseText;                          
+            list.className='visible_search';
+        }
+      }
+
+    xhr.open("GET","./php/livesearch.php?q="+str,true);
+    xhr.send();
+}
+
+//ajax function for add people searched
+function addpeople(ele){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange=function() {
+        
+    if (xhr.readyState==4 && xhr.status==200) {
+        alert(xhr.responseText);
+        viewcontacts()
+    }
+  }
+   var str = ele.getAttribute('value');
+  xhr.open("GET","./php/addpeople.php?q="+str,true);
+  xhr.send();
+}
+
+//ajax function for contacts 
+function viewcontacts(){
+    //view of contacts
+    
+    var xhr1 = new XMLHttpRequest();
+    xhr1.readyState = 0;
+    xhr1.open('POST', './php/listofcontacts.php', true);
+    xhr1.send();    
+   
+     xhr1.onreadystatechange = function() {
+        if (xhr1.readyState == 4) {
+            document.getElementById("aside_list_contacts").innerHTML =xhr1.responseText;
+        }
+    };
+}
+//ajax function for listing of other desks 
+function viewdesks(){
+    //view of contacts
+    
+    var xhr1 = new XMLHttpRequest();
+    xhr1.readyState = 0;
+    xhr1.open('POST', './php/listofdesks.php', true);
+    xhr1.send("");    
+   
+     xhr1.onreadystatechange = function() {
+        if (xhr1.readyState == 4) {
+            document.getElementById("aside_list_desks").innerHTML =xhr1.responseText;
+        }
+    };
+}

@@ -25,7 +25,7 @@ function Login(){
              $_SESSION["username"] = $username["Name"];
              $_SESSION["IDuser"] = $username["ID"];
                 setcookie("usermerge",$username["Name"],time()+84600,"/",$_SERVER['SERVER_NAME'],false,true); setcookie("idusermerge",$username["ID"],time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
-            header("Location: ./main.php"); // Redirect user to secure.php
+            header("Location: ../main.php"); // Redirect user to secure.php
          }else{
              echo "<div class='form'><h3>Username/password is       incorrect.</h3><br/>Click here to <a                href='../index.php'>Login</a></div>";
          }

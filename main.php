@@ -15,7 +15,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
         <script src="js/ajax.js" type="text/javascript"></script>
 	</head>
 	
-	<body onload="preview()">
+	<body onload="preview();viewdesks();viewcontacts();">
 		<header id="header">
 			<span id="logo_container">
 				<p>merge</p>
@@ -34,9 +34,15 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 					<li class="navs_li" id="search_block">
 						<div class="vertical_center"></div>
 						<div class="vertical_center">
-							<input id="search" type="text" placeholder="search@mail.com">
+							<input id="search" type="text" placeholder="search@mail.com" onkeyup="showResult(this.value)"
+                            onblur="showResult(this.value)">
 							<img src="assets/img/search.svg" id="search_icon">
 						</div>
+                        <!-- searching -->
+                        <span id="result_search">
+                            
+                        </span>
+                        
 						<div class="vertical_center"></div>
 					</li>
 					<li class="navs_li">
@@ -59,6 +65,9 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 					</li>
 				</ul>
 			</nav>
+              <?php
+                echo $_SESSION['username'];
+            ?>
 		</header>
 		
 		<aside>
@@ -68,12 +77,12 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 					DESKS
 				</div>
 				<div class="list_container">
-					<ul class="aside_list">
-						<li class="aside_element">
-							<img class="aside_pic" src="assets/img/user.png"/>
-							<div class="aside_element_name">Garreth Wesley</div>
-						</li>
-						
+					<ul class="aside_list" id="aside_list_desks">	
+                            <!--
+                                HERE PHP REALTIME CONTENT
+
+                            -->
+                        
 					</ul>
 				</div>
 			</div>
@@ -84,11 +93,11 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 					PEOPLE
 				</div>
 				<div class="list_container">
-					<ul class="aside_list">
-						<li id="people_element" class="aside_element">
-							<img class="aside_pic" src="assets/img/user.png"/>
-							<div class="aside_element_name">William Brown</div>
-						</li>						
+					<ul class="aside_list" id="aside_list_contacts">
+							<!--
+                                HERE PHP REALTIME CONTENT
+
+                            -->		
 					</ul>
 				</div>
 			</div>
@@ -103,22 +112,10 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 				</li>
 			</ul>
 			<div id="my_desk" class="tab">
-				<div class="file_card">
-					<div class="card_cover">
-						<div class="cover_text_extension">
-							.mp4
-							<div class="cover_text_size">
-								700.50
-								<div class="cover_text_unit">
-									MB
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="card_footer">
-						<p>myfile.mp4</p>
-					</div>
-				</div>
+				<!--
+                HERE PHP REALTIME CONTENT
+
+                -->
 			</div>
 			<div id="others" class="tab">
 				<h1>Others</h1>

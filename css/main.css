@@ -334,6 +334,75 @@ and (min-device-width: 801px)
 	#others{
 		display: none;
 	}
+    
+    /* style for search results*/
+    
+    .searched_elem{
+        width: 100%;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		cursor: pointer;
+		color: #C5C9C9;
+		font-size: 12px;
+		display:table;
+        vertical-align: middle;
+    }
+    .searched_elem:hover{
+		background-color: #507191;
+	}
+    
+    #result_search{
+        width: 20%;
+		font-family: Museo;
+		float: left;
+        margin-top: 5px;
+		margin-left: 0;
+        text-align: center;
+		background-color: #45617D;	/*give it a box shadow*/
+		z-index: 99;
+        position: fixed;
+        visibility: hidden;
+        box-shadow: 3px 3px 10px #2c3e50;	
+    }
+    .searched_pic{
+		height: 30px;
+        width: 30px;
+        margin-left: 10px;
+        margin-top: 6px;
+        margin-right: 2%;
+		border-radius: 50%;
+		float: left;
+	}
+    .visible_search {
+        visibility:visible !important;
+    }
+    .searched_name{
+        display: table;
+    }
+    .searched_username{
+        display: table-row;
+        max-width: 60%;
+		float: left;
+        text-align: left;
+        font-size: 15px;
+        color: white;
+	  	white-space: nowrap;
+		margin-left: 10%;
+		margin-top: 3%;	
+        
+    }
+    .searched_email{
+        display: table-row;
+		max-width: 60%;
+		float: left;
+		overflow:hidden;
+        text-align: left;
+	  	text-overflow: ellipsis;
+	  	white-space: nowrap;
+		margin-left: 10%;
+		margin-top: 3%;		
+	}	
+    	
 	
 }
 
@@ -651,3 +720,4 @@ and (max-device-width: 800px)
 		display: none;
 	}
 } 
+
