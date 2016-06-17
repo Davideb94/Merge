@@ -34,19 +34,18 @@
         $info = new SplFileInfo($name);
         $extension = $info->getExtension();
         
-        $url = "./upload/{$name}";
+        $url = '"./upload/'.$name.'"';
      
         if($extension == "png" || $extension == "jpeg" || $extension == "jpg"){
                
             echo "<div class='file_card'
                     name='$name'
-                    style='background-color: transparent' 
-                >
+                    style='background-color: transparent'>
 					<div class='card_cover'     
                           style=' background-image: url($url);
-                                       background-repeat: no-repeat;
-                                       background-position: center center;
-                                       background-size: auto 249px;'
+                               background-repeat: no-repeat;
+                               background-position: center center;
+                               background-size: auto 249px;'
                             ";
         }else{
             echo "<div class='file_card'>

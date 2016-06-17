@@ -37,12 +37,20 @@ function preview(){
     xhr.send();
 }
 //ajax function for livesearch
-function showResult(str){
+function closeresult(){
     var searchbox = document.getElementById("search");
     var list =  document.getElementById("result_search");
-    if(!(searchbox === document.activeElement)|| str.length==0){
-         list.className=''; 
-            return;
+    list.className=''; 
+    searchbox.value = "";
+}
+function showResult(str){
+    
+    var searchbox = document.getElementById("search");
+    var list =  document.getElementById("result_search");  
+    if(str.length==0){
+        list.className=''; 
+        searchbox.value = "";
+        return;
     }
 
     var xhr = new XMLHttpRequest();
@@ -57,20 +65,29 @@ function showResult(str){
     xhr.open("GET","./php/livesearch.php?q="+str,true);
     xhr.send();
 }
+function leftMousePressed(e)
+{
+    e = e || window.event;
+    var button = e.which || e.button;
+    return button == 1;
+}
 
 //ajax function for add people searched
-function addpeople(ele){
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange=function() {
-        
-    if (xhr.readyState==4 && xhr.status==200) {
-        alert(xhr.responseText);
-        viewcontacts()
+function addpeople(e,ele){
+    if (leftMousePressed(e)){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange=function() {
+
+        if (xhr.readyState==4 && xhr.status==200) {
+            alert(xhr.responseText);
+            viewcontacts();
+        }
+      }
+      var str = ele.getAttribute('value');
+      xhr.open("GET","./php/addpeople.php?q="+str,true);
+      xhr.send();
     }
-  }
-   var str = ele.getAttribute('value');
-  xhr.open("GET","./php/addpeople.php?q="+str,true);
-  xhr.send();
+      
 }
 
 //ajax function for contacts 

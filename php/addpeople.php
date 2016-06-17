@@ -5,7 +5,7 @@ require('AuthConnection.php');
 $contact = $_GET["q"];
 $me = $_SESSION["IDuser"];
 
-$query = "SELECT ID FROM user where email = '$contact';";
+$query = "SELECT ID FROM user where email = '{$contact} ';";
 $result = $mysqli->query($query);
 if(!$result){
     echo "trovato nessun contato con quel nome";

@@ -12,7 +12,7 @@ if($q!= '@' && $q!= '.'){
         from contacts
         where IDuser = {$_SESSION['IDuser']}
     )
-    limit 10;";
+    limit 6;";
     $result = $mysqli->query($query);
     if(!$result){
        echo $mysqli->error;
@@ -21,7 +21,8 @@ if($q!= '@' && $q!= '.'){
     $hint = "";
     while($row=$result->fetch_assoc()){
         $email = $row["Email"];        
-        $hint = $hint."<div class='searched_elem' value='$email' onclick='addpeople(this)'>
+        $hint = $hint."<div class='searched_elem' value='$email' onmousedown='addpeople(event,this)'>
+                            <div class='profile_pic'>
 							<img class='searched_pic'";
         if(!empty($row['image'])){
             $image = $row['image'];
@@ -31,9 +32,9 @@ if($q!= '@' && $q!= '.'){
             $image = "assets/img/user.png";
             $hint = $hint."src='$image'/>";
         }
-        $hint = $hint."     <div class='searched_name'>
-                            <div class='searched_username'>".$row['Name']."</div>
-                            <div class='searched_email'>".$email."</div>
+        $hint = $hint."   </div> <div class='searched_name'>
+                                <div class='searched_username'>".$row['Name']."</div>
+                                <div class='searched_email'>".$email."</div>
                             </div>
 				        </div>";
     }

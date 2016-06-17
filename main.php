@@ -34,8 +34,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 					<li class="navs_li" id="search_block">
 						<div class="vertical_center"></div>
 						<div class="vertical_center">
-							<input id="search" type="text" placeholder="search@mail.com" onkeyup="showResult(this.value)"
-                            onblur="showResult(this.value)">
+							<input id="search" type="text" placeholder="search@mail.com" onkeyup="showResult(this.value)" onblur="closeresult()">
 							<img src="assets/img/search.svg" id="search_icon">
 						</div>
                         <!-- searching -->

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2016 at 12:49 PM
+-- Generation Time: Jun 18, 2016 at 01:45 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -36,12 +36,14 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`IDuser`, `IDcontact`) VALUES
-(21, 23),
-(21, 24),
-(21, 25),
-(21, 26),
-(21, 27),
-(26, 23);
+(23, 21),
+(26, 21),
+(26, 23),
+(26, 24),
+(26, 25),
+(26, 27),
+(26, 29),
+(26, 30);
 
 -- --------------------------------------------------------
 
@@ -55,15 +57,9 @@ CREATE TABLE `file` (
   `Type` varchar(15) NOT NULL,
   `Name` varchar(50) NOT NULL,
   `IDuser` int(3) NOT NULL,
-  `last_modify` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `last_modify` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `reference` varchar(80) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `file`
---
-
-INSERT INTO `file` (`ID`, `Size`, `Type`, `Name`, `IDuser`, `last_modify`) VALUES
-(2549, 2605983, 'image/png', 'vlcsnap-2016-05-01-21h51m37s317.png', 21, '2016-06-16 11:21:58');
 
 -- --------------------------------------------------------
 
@@ -83,13 +79,26 @@ CREATE TABLE `notifies` (
 --
 
 INSERT INTO `notifies` (`ID`, `Who`, `Type`, `Forwho`) VALUES
+(20, 'davide', 'Adding', 21),
+(21, 'davide', 'Adding', 23),
+(22, 'davide', 'Adding', 25),
+(19, 'davide', 'Adding', 26),
+(23, 'davide', 'Adding', 29),
+(25, 'davide', 'Adding', 30),
 (12, 'gabriele', 'Adding', 23),
 (8, 'gabriele', 'Adding', 24),
 (14, 'gabriele', 'Adding', 25),
 (9, 'gabriele', 'Adding', 26),
 (13, 'gabriele', 'Adding', 27),
 (7, 'luca', 'Adding', 21),
-(15, 'vichy', 'Adding', 23);
+(30, 'ok', 'Adding', 21),
+(29, 'vichy', 'Adding', 21),
+(15, 'vichy', 'Adding', 23),
+(18, 'vichy', 'Adding', 24),
+(16, 'vichy', 'Adding', 25),
+(26, 'vichy', 'Adding', 27),
+(17, 'vichy', 'Adding', 29),
+(24, 'vichy', 'Adding', 30);
 
 -- --------------------------------------------------------
 
@@ -175,12 +184,12 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT for table `file`
 --
 ALTER TABLE `file`
-  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2550;
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `notifies`
 --
 ALTER TABLE `notifies`
-  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `user`
 --
