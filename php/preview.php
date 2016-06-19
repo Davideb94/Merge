@@ -30,19 +30,19 @@
     while ($row = $result->fetch_assoc()){
         $mysize = $row['Size'];
         sizeConvert($mysize,$mytype);
-        $name = $row['Name'];
+        $name = $row['reference'];
         $info = new SplFileInfo($name);
         $extension = $info->getExtension();
         
-        $url = "./upload/{$name}";
-     
+        $url = '"./upload/'.$name.'"';
+        $url_download = 'upload/'.$name;
         if($extension == "png" || $extension == "jpeg" || $extension == "jpg"){
                
             echo "	<div class='file_card'
                     style='background-color: transparent' 
                 	>
 					<div class='card_hover'>
-						<a href='$url' download>
+						<a href='$url_download' download>
 							<div class='card_download' name='$name' onclick='downloadFile(this)'>
 								<img class='download_icon' src='./assets/img/download.png'>
 							</div>
