@@ -34,27 +34,37 @@
         $info = new SplFileInfo($name);
         $extension = $info->getExtension();
         
-        $url = '"./upload/'.$name.'"';
+        $url = "./upload/{$name}";
      
         if($extension == "png" || $extension == "jpeg" || $extension == "jpg"){
                
-            echo "<div class='file_card'
-                    name='$name'
-                    style='background-color: transparent'>
+            echo "	<div class='file_card'
+                    style='background-color: transparent' 
+                	>
+					<div class='card_hover'>
+						<a href='$url' download>
+							<div class='card_download' name='$name' onclick='downloadFile(this)'>
+								<img class='download_icon' src='./assets/img/download.png'>
+							</div>
+						</a>
+						<div class='card_delete' name='$name' onclick='deleteFile(this)'>
+							<img class='delete_icon' src='./assets/img/delete.png'>
+						</div>
+					</div>
 					<div class='card_cover'     
-                          style=' background-image: url($url);
-                               background-repeat: no-repeat;
-                               background-position: center center;
-                               background-size: auto 249px;'
-                            ";
+                          style='  background-image: url($url);
+								   background-repeat: no-repeat;
+								   background-position: center center;
+								   background-size: auto 249px;'
+                  ";
         }else{
             echo "<div class='file_card'>
 					<div class='card_cover' ";
         }
                     
                         
-        echo    " >
-                <div class='cover_text_extension'>.".
+        echo    "   >
+                  <div class='cover_text_extension'>.".
                     $extension
                     ."<div class='cover_text_size'>".
                         $mysize

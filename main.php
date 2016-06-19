@@ -34,7 +34,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 					<li class="navs_li" id="search_block">
 						<div class="vertical_center"></div>
 						<div class="vertical_center">
-							<input id="search" type="text" placeholder="search@mail.com" onkeyup="showResult(this.value)" onblur="closeresult()">
+							<input id="search" type="text" placeholder="search@mail.com" onkeyup="showResult(this.value)">
 							<img src="assets/img/search.svg" id="search_icon">
 						</div>
                         <!-- searching -->
@@ -62,11 +62,26 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 						</div>
 						<div class="vertical_center"></div>
 					</li>
+					<li class="navs_li" id="profile_elem">
+						<div class="vertical_center"></div>
+						<div class="vertical_center">
+							<a href="#">
+								<img id="profile_pic" src="assets/img/user.png" />
+							</a>
+						</div>
+						<div class="vertical_center"></div>
+					</li>
+					<li class="navs_li" id="logout">
+						<div class="vertical_center"></div>
+						<div class="vertical_center">
+							<a href="php/Logout.php">
+								<img id="logout_img" src="assets/img/logout.png" />
+							</a>
+						</div>
+						<div class="vertical_center"></div>
+					</li>
 				</ul>
 			</nav>
-              <?php
-                echo $_SESSION['username'];
-            ?>
 		</header>
 		
 		<aside>

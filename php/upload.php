@@ -7,8 +7,8 @@
         $counter =  sizeof($_FILES);
         for ($i = 0; $i<$counter;$i++){
             if($_FILES['file'.$i]['error']== 0){
-                $reference = rand(1000,100000)."-".$_FILES['file'.$i]['name'];
-                $query ="INSERT INTO file (Size,Type,Name,IDuser,reference) values('{$_FILES['file'.$i]['size']}','{$_FILES['file'.$i]['type']}','{$_FILES['file'.$i]['name']}','{$_SESSION['IDuser']}','$reference');";
+                
+                $query ="INSERT INTO file (Size,Type,Name,IDuser) values('{$_FILES['file'.$i]['size']}','{$_FILES['file'.$i]['type']}','{$_FILES['file'.$i]['name']}','{$_SESSION['IDuser']}');";
                 
                 $mysqli->query($query);
                 
@@ -16,9 +16,10 @@
                     echo $mysqli->error;
                     
                 }
+                $file = $_FILES['file'.$i]['name'];
                 $file_loc = $_FILES['file'.$i]['tmp_name'];
                 $folder="../upload/";
-                move_uploaded_file($file_loc,$folder.$reference);
+                move_uploaded_file($file_loc,$folder.$file);
             }
             
         }

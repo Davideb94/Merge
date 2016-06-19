@@ -34,6 +34,7 @@ session_start();
                 <p>Log in</p>
 			</div>
 			<div id="login_menu">
+				<img id="triangle" src="assets/img/triangle.png">
 				<form action="./php/Login.php" method="POST">
 					<div class="input-field">
 						<input class="login_input" name="Lemail" type="email" placeholder="Email" required>
@@ -96,10 +97,10 @@ session_start();
 		</section>
 		<section id="section_3">
 			<div id="container_3">
-				<p style="font-size:30px">
+				<p id="text_title">
                     Sign Up!
 				</p>
-				<p>
+				<p id="text_subtitle">
 					It's free and it won't take more than 1 minute...
                 </p>
 				<form id="sign_up_form" action="./php/Signup.php" onsubmit="return validate()" method="POST">

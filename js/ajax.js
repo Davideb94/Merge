@@ -13,7 +13,6 @@ function loadfile(){
     
     xhr.onreadystatechange = function (){
         if(xhr.readyState == 4 && xhr.status == 200){
-           alert("File Caricato con successo");
             preview();
         }
     }
@@ -37,20 +36,12 @@ function preview(){
     xhr.send();
 }
 //ajax function for livesearch
-function closeresult(){
+function showResult(str){
     var searchbox = document.getElementById("search");
     var list =  document.getElementById("result_search");
-    list.className=''; 
-    searchbox.value = "";
-}
-function showResult(str){
-    
-    var searchbox = document.getElementById("search");
-    var list =  document.getElementById("result_search");  
-    if(str.length==0){
-        list.className=''; 
-        searchbox.value = "";
-        return;
+    if(!(searchbox === document.activeElement)|| str.length==0){
+         list.className=''; 
+            return;
     }
 
     var xhr = new XMLHttpRequest();
@@ -65,29 +56,20 @@ function showResult(str){
     xhr.open("GET","./php/livesearch.php?q="+str,true);
     xhr.send();
 }
-function leftMousePressed(e)
-{
-    e = e || window.event;
-    var button = e.which || e.button;
-    return button == 1;
-}
 
 //ajax function for add people searched
-function addpeople(e,ele){
-    if (leftMousePressed(e)){
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange=function() {
-
-        if (xhr.readyState==4 && xhr.status==200) {
-            alert(xhr.responseText);
-            viewcontacts();
-        }
-      }
-      var str = ele.getAttribute('value');
-      xhr.open("GET","./php/addpeople.php?q="+str,true);
-      xhr.send();
+function addpeople(ele){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange=function() {
+        
+    if (xhr.readyState==4 && xhr.status==200) {
+        alert(xhr.responseText);
+        viewcontacts();
     }
-      
+  }
+   var str = ele.getAttribute('value');
+  xhr.open("GET","./php/addpeople.php?q="+str,true);
+  xhr.send();
 }
 
 //ajax function for contacts 
@@ -100,7 +82,7 @@ function viewcontacts(){
     xhr1.send();    
    
      xhr1.onreadystatechange = function() {
-        if (xhr1.readyState == 4) {
+        if (xhr1.readyState == 4 && xhr1.status==200) {
             document.getElementById("aside_list_contacts").innerHTML =xhr1.responseText;
         }
     };
@@ -114,9 +96,31 @@ function viewdesks(){
     xhr1.open('POST', './php/listofdesks.php', true);
     xhr1.send("");    
    
-     xhr1.onreadystatechange = function() {
-        if (xhr1.readyState == 4) {
+    xhr1.onreadystatechange = function() {
+        if (xhr1.readyState == 4 && xhr1.status==200) {
             document.getElementById("aside_list_desks").innerHTML =xhr1.responseText;
         }
     };
+}
+//ajax function to download a file
+function downloadFile(elem){
+	alert('File downloaded correctly to your pc!');
+}
+
+//ajax function to delete a file
+function deleteFile(elem){
+	if(confirm('Are you sure you want to delete this file?')){
+		var xhr = new XMLHttpRequest();
+		var name = elem.getAttribute('name');
+
+		xhr.open('GET','./php/delete_file.php?name=' + name, true);
+		xhr.send();
+
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status==200) {
+				console.log("Element " + xhr.responseText + " deleted succesfully.");
+				preview();
+			}
+		};
+	}
 }
