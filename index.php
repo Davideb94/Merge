@@ -55,7 +55,9 @@ session_start();
                 </p>
 					<a id="sign_up" href="#section_3">Sign Up</a>
 					<a id="discover" href="#section_2">
-						Discover More<br>
+						<p>
+                            Discover More
+                        </p>
 						<img id="Down_Arrow" src="./assets/icons/scroll-arrow-to-down.svg" alt="Down Arrow">
 					</a>
 			</div>

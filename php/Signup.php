@@ -44,9 +44,9 @@ function registration(){
                 $id= $result1->fetch_assoc();
                 $_SESSION["email"] = $email;
                 $_SESSION['username'] = $username;
-                $_SESSION["IDuser"] = $id; setcookie("usermerge",$username,time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
+                $_SESSION["IDuser"] = $id['ID']; setcookie("usermerge",$username,time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
                 setcookie("idusermerge",$id,time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
-                header("Location: ./main.php");
+                header("Location: ../main.php");
                 
             }
         }

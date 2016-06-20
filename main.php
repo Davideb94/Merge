@@ -15,7 +15,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
         <script src="js/ajax.js" type="text/javascript"></script>
 	</head>
 	
-	<body onload="preview();viewdesks();viewcontacts();">
+	<body onload="start()">
 		<header id="header">
 			<span id="logo_container">
 				<p>merge</p>
@@ -30,7 +30,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 				</li>
 			</ul>
 			<nav class="navs">
-				<ul class="navs_ul">
+				<ul class="navs_ul" id="navs_ul">
 					<li class="navs_li" id="search_block">
 						<div class="vertical_center"></div>
 						<div class="vertical_center">
@@ -64,13 +64,13 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 						<div class="vertical_center"></div>
 					</li>
 					<li class="navs_li" id="profile_elem">
-						<div class="vertical_center"></div>
+						<!--<div class="vertical_center"></div>
 						<div class="vertical_center">
 							<a href="#">
 								<img id="profile_pic" src="assets/img/user.png" />
 							</a>
 						</div>
-						<div class="vertical_center"></div>
+						<div class="vertical_center"></div>-->
 					</li>
 					<li class="navs_li" id="logout">
 						<div class="vertical_center"></div>
@@ -97,7 +97,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
                                 HERE PHP REALTIME CONTENT
 
                             -->
-                        
+                       
 					</ul>
 				</div>
 			</div>
@@ -120,21 +120,24 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 		<main>
 			<ul class="tab_head">
 				<li id="my_desk_tab" class="tab_active" onclick="openTab('mydesk')">
-					<a href="#">My Desk</a>
+					<a href="#" id="link_mydesk">My Desk</a>
 				</li>
 				<li id="others_tab" onclick="openTab('others')">
-					<a href="#">Others</a>
+					<a href="#" id="link_others">Others</a>
 				</li>
 			</ul>
 			<div id="my_desk" class="tab">
 				<!--
-                HERE PHP REALTIME CONTENT
+                    HERE PHP REALTIME CONTENT
 
                 -->
+             
 			</div>
 			<div id="others" class="tab">
-				<h1>Others</h1>
-				<p>This will show a desk I can work on, since someone gave me permissions to accede it.</p>
+                <!--
+                    HERE PHP REALTIME CONTENT
+
+                -->
 			</div>
             <form id="file-form" method="POST" enctype= "multipart/form-data">
 				<!--<button class="add_file" id="add_button">+</button>-->

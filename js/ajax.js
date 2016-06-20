@@ -1,5 +1,4 @@
 //ajax function for upload file
-
 function loadfile(){
     var formData = new FormData();// form in js
     var input = document.getElementById("input_file");
@@ -20,6 +19,22 @@ function loadfile(){
     xhr.send(formData);
 }
 
+function identification(){
+    var xhr = new XMLHttpRequest();
+    
+    xhr.onreadystatechange = function (){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            var profile_elem = document.getElementById("profile_elem");
+            profile_elem.innerHTML = xhr.response;
+            
+        }
+    }
+    xhr.open("POST","./php/identification.php",true);
+    xhr.send();
+    
+    
+}
+
 //ajax function for preview file
 
 function preview(){
@@ -35,7 +50,7 @@ function preview(){
     xhr.open("POST","./php/preview.php",true);
     xhr.send();
 }
-//ajax function for livesearch
+//ajax function for close results of livesearch
 function closeresult(){
     var searchbox = document.getElementById("search");
     var list =  document.getElementById("result_search");
@@ -143,4 +158,24 @@ function deleteFile(elem){
 			}
 		};
 	}
+}
+
+//ajax function for preview file
+
+function otherDesks(ele){
+    var a = document.getElementById("link_others");
+    a.className = "";
+    
+    var xhr = new XMLHttpRequest();
+  
+    xhr.onreadystatechange = function (){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            var desk = document.getElementById("others");
+            desk.innerHTML = xhr.response;
+            openTab('others');
+        }
+    }
+    xhr.open("POST","./php/otherdesk.php",true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send('str='+ele.getAttribute('value'));  
 }

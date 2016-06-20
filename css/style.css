@@ -125,7 +125,12 @@ and (min-device-width: 801px)
 		color: #00AE53;
 		font-size: 20px;
 	}
-
+    #discover p{
+        margin-top: 18%;
+        margin-bottom: 2%;
+        font-size: 23px;
+    }
+ 
 	#section_2{
 		background-color: #eff1f2;
 	}

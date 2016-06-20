@@ -14,7 +14,7 @@ require('AuthConnection.php');
         $query1 = "SELECT Name,email from user where ID = '{$row['iduser']}'; ";
         $contactsname = $mysqli->query($query1);
         $contactsname = $contactsname->fetch_assoc();
-        echo "<li class='aside_element'  value='{$row['iduser']}'>
+        echo "<li class='aside_element'  value='{$row['iduser']}' onclick='otherDesks(this)'>
                 <img class='aside_pic' src='assets/img/user.png'/>
                 <div class='aside_element_name'>".$contactsname['Name']."</div>
             </li>";

@@ -1,5 +1,20 @@
 var show = false;
 
+
+function start(){
+    var others_tab = document.getElementById("others_tab");
+    others_tab.className = "not_active";
+    var others_link = document.getElementById("link_others");
+    others_link.style.color = "gray";
+    
+    preview();
+    viewdesks();
+    viewcontacts();
+    identification();
+    
+}
+
+
 function showMenu(){
 	var aside = document.getElementsByTagName("aside")[0];
 	
@@ -21,6 +36,9 @@ function openTab(mytab) {
 	var mydesk_tab = document.getElementById("my_desk_tab");
 	var others_tab = document.getElementById("others_tab");
 	
+    var mydesk_link = document.getElementById("link_mydesk");
+    var others_link = document.getElementById("link_others");
+    
 	var button = document.getElementById("add_button");
 	
 	if(mytab == 'mydesk'){
@@ -29,8 +47,10 @@ function openTab(mytab) {
 		others.className = "tab";
 		
 		mydesk_tab.className = "tab_active";
+        mydesk_link.style.color = "#2c3e50";
+            
 		others_tab.className = "";
-		
+		others_link.style.color = "gray";
 		button.className = "add_file";
 	}
 	else if(mytab == 'others'){
@@ -39,8 +59,10 @@ function openTab(mytab) {
 		others.style.display = "block";
 		
 		mydesk_tab.className = "";
+        mydesk_link.style.color = "gray";
+            
 		others_tab.className = "tab_active";
-		
+		others_link.style.color = "#2c3e50";
 		button.className = "add_file hide_button";
 	}
 	else
