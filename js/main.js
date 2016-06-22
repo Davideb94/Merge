@@ -1,6 +1,5 @@
 var show = false;
 
-
 function start(){
     var others_tab = document.getElementById("others_tab");
     others_tab.className = "not_active";

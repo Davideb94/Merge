@@ -50,7 +50,7 @@ function preview(){
     xhr.open("POST","./php/preview.php",true);
     xhr.send();
 }
-//ajax function for close results of livesearch
+//ajax function to close results of livesearch
 function closeresult(){
     var searchbox = document.getElementById("search");
     var list =  document.getElementById("result_search");
@@ -160,7 +160,7 @@ function deleteFile(elem){
 	}
 }
 
-//ajax function for preview file
+//ajax function to show file preview
 
 function otherDesks(ele){
     var a = document.getElementById("link_others");
@@ -178,4 +178,31 @@ function otherDesks(ele){
     xhr.open("POST","./php/otherdesk.php",true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send('str='+ele.getAttribute('value'));  
+}
+
+//ajax function to show notifications box
+var show_notifications = false;
+
+function showNotifications(){
+	var menu = document.getElementById("notifications_menu");
+	
+	if(!show_notifications){		
+		var xhr = new XMLHttpRequest();
+		
+		xhr.onreadystatechange = function (){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				menu.innerHTML = xhr.response;
+			}
+		}
+		
+		xhr.open("POST","./php/notifications.php",true);
+		xhr.send();
+		
+		menu.className = "show_notifications_menu";
+		show_notifications = true;
+	}
+	else if(show_notifications){
+		menu.className = " ";
+		show_notifications = false;
+	}
 }

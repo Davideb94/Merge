@@ -15,7 +15,7 @@ require('AuthConnection.php');
         $contactsname = $mysqli->query($query1);
         $contactsname = $contactsname->fetch_assoc();
         $image = $contactsname["image"];
-        echo 	"<li class='aside_element' value='{$contactsname["Name"]}'>";
+        echo 	"<li class='aside_element people_element' value='{$contactsname["Name"]}'>";
             if(is_null($image)){
                 echo "<img class='aside_pic' src='assets/img/user.png'/>";
             }else{
