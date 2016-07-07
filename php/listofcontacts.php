@@ -1,6 +1,7 @@
 <?php
 session_start();
-require('AuthConnection.php'); 
+require('AuthConnection.php');
+require('ajaxresponse.php');
 
     $id = $_SESSION["IDuser"];
     $query = "Select IDcontact from contacts where iduser = '$id' ;";
@@ -10,12 +11,17 @@ require('AuthConnection.php');
         echo $mysqli->error;
         exit;
     }
+
+	$response = array();
+	$counter = 0;
     while($row = $result->fetch_assoc()){
-        $query1 = "SELECT Name,email,image from user where ID = '{$row['IDcontact']}'; ";
+        $query1 = "SELECT Name,image from user where ID = '{$row['IDcontact']}'; ";
         $contactsname = $mysqli->query($query1);
         $contactsname = $contactsname->fetch_assoc();
-        $image = $contactsname["image"];
-        echo 	"<li class='aside_element people_element' value='{$contactsname["Name"]}'>";
+		
+		$response[$counter] = setresponse(0, $contactsname);
+		$counter++;
+        /*echo 	"<li class='aside_element people_element' value='{$contactsname["Name"]}'>";
             if(is_null($image)){
                 echo "<img class='aside_pic' src='assets/img/user.png'/>";
             }else{
@@ -23,6 +29,8 @@ require('AuthConnection.php');
                 
             }
 			echo "<div class='aside_element_name'>".$contactsname['Name']."</div>
-            	</li>";
+            	</li>";*/
     }
+	
+	echo json_encode($response);
 ?>

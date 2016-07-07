@@ -64,7 +64,6 @@ function myparsing(data,idfunction){
                 
                 var div1 = document.createElement("div");
                 div1.className = "file_card";
-                div1.style = 'background-color: transparent';
                 
                 var div2 = document.createElement("div");
                 div2.className ="card_hover";
@@ -136,6 +135,37 @@ function myparsing(data,idfunction){
                 
             }
          break;
+		case 4:
+			var container = document.getElementById("aside_list_contacts");
+			for(var i=0; i<data.length; i++){
+				var myname = data[i]["data"]["Name"];
+				var myimg = data[i]["data"]["image"];
+				console.log(myimg);
+				
+				var element = document.createElement("li");
+				element.className = "aside_element people_element";
+				element.setAttribute("value", myname);
+				
+				var image = document.createElement("img");
+				image.className = "aside_pic";
+				if(myimg == null){
+					image.src = 'assets/img/user.png';
+				}
+				else{
+					image.src = "data:image/jpeg;base64," + myimg;				
+				}
+				
+				var element_name = document.createElement("div");
+				element_name.className = "aside_element_name";
+				
+				var name = document.createTextNode(myname);
+				
+				element_name.appendChild(name);
+				element.appendChild(image);
+				element.appendChild(element_name);
+				container.appendChild(element);
+			}
+			break;
     }
 
 }
@@ -266,10 +296,12 @@ function viewcontacts(){
     xhr1.open('POST', './php/listofcontacts.php', true);
     xhr1.send();    
    
-     xhr1.onreadystatechange = function() {
-        if (xhr1.readyState == 4 && xhr1.status==200) {
-            document.getElementById("aside_list_contacts").innerHTML =xhr1.responseText;
-        }
+		 xhr1.onreadystatechange = function() {
+			if (xhr1.readyState == 4 && xhr1.status==200) {
+				console.log(xhr1.responseText);
+				var decoded_json = JSON.parse(xhr1.responseText);
+				myparsing(decoded_json, 4);
+		 }
     };
 }
 //ajax function for listing of other desks 
