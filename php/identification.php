@@ -2,7 +2,7 @@
     session_start();
 
     require('AuthConnection.php');
-    
+    require('ajaxresponse.php');
     $query = "Select image from user where id = '{$_SESSION['IDuser']}'";
 
     $result = $mysqli->query($query);
@@ -11,42 +11,14 @@
         echo $mysqli->error;
     }else{
         $row = $result->fetch_assoc();
-        
-        
-        if(is_null($row['image'])){
-            echo "<span class='ident'>
-                    <div class='vertical_center'></div>
-						<div class='vertical_center'>
-							<a href='#'>
-								<img id='ident_pic' src='assets/img/user.png' />
-							</a>
-						</div>
-						<div class='vertical_center'></div>";            
-        }else{
-              echo "<span class='ident'>
-                    <div class='vertical_center'></div>
-						<div class='vertical_center'>
-							<a href='#'>
-								<img id='ident_pic' src='data:image/jpeg;base64,". base64_encode($row['image'])."'/>"."
-							</a>
-						</div>
-						<div class='vertical_center'></div>";   
-            
+        $row['username'] = $_SESSION['username'];
+        if(!is_null($row['image'])){
+            $row['image'] = base64_encode($row['image']);
         }
         
-        echo "</span>
-                <span class='ident'>
-                <div class='vertical_center'></div>
-						<div class='vertical_center' id='ident_name'><p>".
-                            $_SESSION['username']
-						."</p></div>
-						<div class='vertical_center'></div>
-                </span>"; 
-        echo "</li>";
+        $response = setresponse(0,$row);
         
+        echo json_encode($response);
     }
-    
-
-
 
 ?>

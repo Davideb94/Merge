@@ -5,7 +5,7 @@ function start(){
     others_tab.className = "not_active";
     var others_link = document.getElementById("link_others");
     others_link.style.color = "gray";
-    
+    var desk = document.getElementById("my_desk");
     preview();
     viewdesks();
     viewcontacts();

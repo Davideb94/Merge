@@ -2,7 +2,7 @@
     session_start();
 
     require('AuthConnection.php');
-    
+    require('ajaxresponse.php');
     $query ="Select * from file where iduser = '{$_SESSION['IDuser']}'; ";
 
     $result = $mysqli->query($query);
@@ -27,58 +27,21 @@
         
     }
 
+    $array = array();
+    $counter = 0;
+
     while ($row = $result->fetch_assoc()){
-        $mysize = $row['Size'];
-        sizeConvert($mysize,$mytype);
-        $name = $row['reference'];
-        $info = new SplFileInfo($name);
-        $extension = $info->getExtension();
+        $array[$counter] = new ajaxResponse();
         
-        $url = '"./upload/'.$name.'"';
-        $url_download = 'upload/'.$name;
-        if($extension == "png" || $extension == "jpeg" || $extension == "jpg"){
-               
-            echo "	<div class='file_card'
-                    style='background-color: transparent' 
-                	>
-					<div class='card_hover'>
-						<a href='$url_download' download>
-							<div class='card_download' name='$name' onclick='downloadFile(this)'>
-								<img class='download_icon' src='./assets/img/download.png'>
-							</div>
-						</a>
-						<div class='card_delete' name='$name' onclick='deleteFile(this)'>
-							<img class='delete_icon' src='./assets/img/delete.png'>
-						</div>
-					</div>
-					<div class='card_cover'     
-                          style='  background-image: url($url);
-								   background-repeat: no-repeat;
-								   background-position: center center;
-								   background-size: auto 249px;'
-                  ";
-        }else{
-            echo "<div class='file_card'>
-					<div class='card_cover' ";
-        }
-                    
-                        
-        echo    "   >
-                  <div class='cover_text_extension'>.".
-                    $extension
-                    ."<div class='cover_text_size'>".
-                        $mysize
-                        ."<div class='cover_text_unit'>".
-                        $mytype
-                        ."</div>
-                    </div>
-                </div>
-            </div>
-            <div class='card_footer'>
-            <p>".
-                $row['Name']
-            ."</p>
-            </div>
-        </div>";
+        sizeConvert($row['Size'],$mytype);
+        $name = $row['reference'];
+        $row['info'] = new SplFileInfo($name);
+        $row['info'] = $row['info']->getExtension();
+        
+        $row['dim'] = $mytype;
+        $array[$counter] = setresponse(0,$row);
+        $counter++;
     }
+    echo json_encode($array);
+
 ?>
