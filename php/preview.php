@@ -31,7 +31,6 @@
     $counter = 0;
 
     while ($row = $result->fetch_assoc()){
-        $array[$counter] = new ajaxResponse();
         
         sizeConvert($row['Size'],$mytype);
         $name = $row['reference'];

@@ -135,12 +135,76 @@ function myparsing(data,idfunction){
                 
             }
          break;
+            
+        case 3:
+            var list =  document.getElementById("result_search");
+            
+            
+            if(data[0] == null){
+                    var empty_search = document.createElement("div");
+                    empty_search.className = "aside_element"
+
+                    var text = document.createTextNode("No result accoured");
+                    empty_search.appendChild(text);
+
+                    list.appendChild(empty_search);
+                
+            }else{
+                    for(var i = 0; i<data.length; i++){
+
+                        var searched_elem = document.createElement("div");
+                        searched_elem.className = "searched_elem";
+                        searched_elem.setAttribute("value",data[i]['data']['Email']);
+                        searched_elem.setAttribute("onmousedown",'addpeople(event,this)');
+
+                        var profile_pic = document.createElement("div");
+                        profile_pic.className = "profile_pic";
+
+                        var image = document.createElement("img");
+                        image.className = "searched_pic";
+
+                        if(data[i]['data']['image'] == null){
+                            image.src = 'assets/img/user.png';
+                        }else{
+                            image.src = 'data:image/jpeg;base64,'+data[i]['data']['image'];                   
+                        }
+
+                        var searched_name = document.createElement("div");
+                        searched_name.className = "searched_name";
+
+                        var seached_username = document.createElement("div");
+                        seached_username.className = "searched_username";
+
+                        var name = document.createTextNode(data[i]['data']['Name']);
+
+                        seached_username.appendChild(name);
+
+                        var seached_email = document.createElement("div");
+                        seached_email.className = "searched_email";
+
+                        var email = document.createTextNode(data[i]['data']['Email']);
+
+                        seached_email.appendChild(email);
+
+
+                        searched_elem.appendChild(profile_pic);
+                        profile_pic.appendChild(image);
+                        searched_elem.appendChild(searched_name);
+                        searched_name.appendChild(seached_username);
+                        searched_name.appendChild(seached_email);
+
+
+                        list.appendChild(searched_elem);
+
+                }
+            }
+            break;
+            
 		case 4:
 			var container = document.getElementById("aside_list_contacts");
 			for(var i=0; i<data.length; i++){
 				var myname = data[i]["data"]["Name"];
 				var myimg = data[i]["data"]["image"];
-				console.log(myimg);
 				
 				var element = document.createElement("li");
 				element.className = "aside_element people_element";
@@ -166,6 +230,143 @@ function myparsing(data,idfunction){
 				container.appendChild(element);
 			}
 			break;
+        case 5:
+            
+            var container = document.getElementById("aside_list_desks");
+			for(var i=0; i<data.length; i++){
+				var myname = data[i]["data"]["Name"];
+				var myimg = data[i]["data"]["image"];
+				
+				var element = document.createElement("li");
+				element.className = "aside_element";
+				element.setAttribute("value", data[i]["data"]["ID"]);
+				element.setAttribute("onclick", 'otherDesks(this)');
+                
+				var image = document.createElement("img");
+				image.className = "aside_pic";
+                
+				if(myimg == null){
+					image.src = 'assets/img/user.png';
+				}
+				else{
+					image.src = "data:image/jpeg;base64," + myimg;				
+				}
+				
+				var element_name = document.createElement("div");
+				element_name.className = "aside_element_name";
+				
+				var name = document.createTextNode(myname);
+				
+				element_name.appendChild(name);
+				element.appendChild(image);
+				element.appendChild(element_name);
+				container.appendChild(element);
+			}
+			break;
+        case 6:
+             //preview other desk
+            var desk = document.getElementById("others");
+            
+            if(data[0] == null){
+                    var text = document.createTextNode("The Desk is empty.");
+
+                    desk.appendChild(text);
+                
+            }else{
+                for(var i = 0;i<data.length;i++){
+
+                    var div1 = document.createElement("div");
+                    div1.className = "file_card";
+
+                    var div2 = document.createElement("div");
+                    div2.className ="card_hover";
+                    var link1 = document.createElement("a");
+                    link1.href = "upload/" + data[i]['data']['reference'];
+                    link1.setAttribute("download","");
+                    var div3 = document.createElement("div");
+                    div3.className ="card_download";
+                    div3.setAttribute("name",data[i]['data']['reference']);
+
+                    var downimage = document.createElement('img');
+                    downimage.className = "download_icon";
+                    downimage.src = './assets/img/download.png';
+
+                    var delimage = document.createElement('img');
+                    delimage.className = "delete_icon";
+                    delimage.src = './assets/img/delete.png';
+                    var div5 = document.createElement("div");
+                    div5.className = "card_cover";
+                    var url = "./upload/" + data[i]['data']['reference'];
+                    div5.style.backgroundImage = "url('"+url+"')";
+                    div5.style.backgroundRepeat = "no-repeat";
+                    div5.style.backgroundPosition = "center center";
+                    div5.style.backgroundSize = "auto 249px";
+
+
+
+                    var text1 = document.createTextNode(data[i]['data']['info']);
+                    var text2 = document.createTextNode(data[i]['data']['Size']);
+                    var text3 = document.createTextNode(data[i]['data']['dim']);
+                    var text4 = document.createTextNode(data[i]['data']['Name']);
+                    var pelem = document.createElement('p');
+                    pelem.appendChild(text4);
+
+                    var div6 = document.createElement("div");
+                    div6.className = "cover_text_extension";
+                    div6.appendChild(text1);
+
+                    var div7 = document.createElement("div");
+                    div7.className = "cover_text_size";
+                    div7.appendChild(text2);
+
+                    var div8 = document.createElement("div");
+                    div8.className = "cover_text_unit";
+                    div8.appendChild(text3);
+
+                    var div9 = document.createElement("div");
+                    div9.className = "card_footer";
+                    div9.appendChild(pelem);
+
+
+
+                    link1.appendChild(div3);
+                    div3.appendChild(downimage);
+                    div1.appendChild(div2);
+                    div2.appendChild(link1);
+                    div1.appendChild(div5);
+                    div5.appendChild(div6);
+                    div6.appendChild(div7);
+                    div7.appendChild(div8);
+                    div1.appendChild(div9);
+                    desk.appendChild(div1);
+
+                }
+            }
+         break;
+            
+        case 7:
+            
+            var menu = document.getElementById("notifications_menu");
+            
+            for(var i = 0;i<data['data'].length; i++){
+                var elem = document.createElement("div");
+                elem.className = "notification_element";
+                
+                var not_elem = document.createElement("div");
+                not_elem.className = "notification_text";
+                
+                var pelem = document.createElement("p");
+                
+                var text = document.createTextNode(data['data'][i] + " added you, go check his desk");
+                
+                pelem.appendChild(text);
+                not_elem.appendChild(pelem);
+                elem.appendChild(not_elem);
+                menu.appendChild(elem);
+                
+                
+            }
+            break;
     }
 
 }
@@ -242,6 +443,10 @@ function showResult(str){
     
     var searchbox = document.getElementById("search");
     var list =  document.getElementById("result_search");  
+    
+    while (list.firstChild) {
+        list.removeChild(list.firstChild);
+    }
     if(str.length==0){
         list.className=''; 
         searchbox.value = "";
@@ -252,7 +457,8 @@ function showResult(str){
 
     xhr.onreadystatechange=function() {
         if (xhr.readyState==4 && xhr.status==200) {
-            list.innerHTML=xhr.responseText;                          
+            var search = JSON.parse(xhr.responseText);
+            myparsing(search,3);                       
             list.className='visible_search';
         }
     }
@@ -290,7 +496,10 @@ function addpeople(e,ele){
 //ajax function for contacts 
 function viewcontacts(){
     //view of contacts
-    
+    var container = document.getElementById("aside_list_contacts");
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
     var xhr1 = new XMLHttpRequest();
     xhr1.readyState = 0;
     xhr1.open('POST', './php/listofcontacts.php', true);
@@ -298,7 +507,6 @@ function viewcontacts(){
    
 		 xhr1.onreadystatechange = function() {
 			if (xhr1.readyState == 4 && xhr1.status==200) {
-				console.log(xhr1.responseText);
 				var decoded_json = JSON.parse(xhr1.responseText);
 				myparsing(decoded_json, 4);
 		 }
@@ -308,6 +516,12 @@ function viewcontacts(){
 function viewdesks(){
     //view of contacts
     
+ 
+    var container = document.getElementById("aside_list_desks");
+    
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
     var xhr1 = new XMLHttpRequest();
     xhr1.readyState = 0;
     xhr1.open('POST', './php/listofdesks.php', true);
@@ -315,7 +529,8 @@ function viewdesks(){
    
     xhr1.onreadystatechange = function() {
         if (xhr1.readyState == 4 && xhr1.status==200) {
-            document.getElementById("aside_list_desks").innerHTML =xhr1.responseText;
+            var decoded_json = JSON.parse(xhr1.responseText);
+            myparsing(decoded_json, 5);
         }
     };
 }
@@ -330,7 +545,6 @@ function deleteFile(elem){
 
 		xhr.onreadystatechange = function() {
 			if (xhr.readyState == 4 && xhr.status==200) {
-				console.log("Element " + xhr.responseText + " deleted succesfully.");
 				preview();
 			}
 		};
@@ -344,11 +558,14 @@ function otherDesks(ele){
     a.className = "";
     
     var xhr = new XMLHttpRequest();
-  
+    var desk = document.getElementById("others");
+    while (desk.firstChild) {
+        desk.removeChild(desk.firstChild);
+    }
     xhr.onreadystatechange = function (){
         if(xhr.readyState == 4 && xhr.status == 200){
-            var desk = document.getElementById("others");
-            desk.innerHTML = xhr.response;
+            var preview_desk = JSON.parse(xhr.responseText);
+            myparsing(preview_desk, 6);
             openTab('others');
         }
     }
@@ -362,13 +579,19 @@ var show_notifications = false;
 
 function showNotifications(){
 	var menu = document.getElementById("notifications_menu");
-	
+	while (menu.firstChild) {
+        menu.removeChild(menu.firstChild);
+    }
 	if(!show_notifications){		
 		var xhr = new XMLHttpRequest();
 		
 		xhr.onreadystatechange = function (){
 			if(xhr.readyState == 4 && xhr.status == 200){
-				menu.innerHTML = xhr.response;
+                var notification = JSON.parse(xhr.responseText);
+                if(!notification.responseCode){
+                    myparsing(notification,7);
+                }
+                
 			}
 		}
 		

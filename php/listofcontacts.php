@@ -18,7 +18,9 @@ require('ajaxresponse.php');
         $query1 = "SELECT Name,image from user where ID = '{$row['IDcontact']}'; ";
         $contactsname = $mysqli->query($query1);
         $contactsname = $contactsname->fetch_assoc();
-		
+		if(!is_null($contactsname['image'])){
+            $contactsname['image'] = base64_encode($contactsname['image']);
+        }
 		$response[$counter] = setresponse(0, $contactsname);
 		$counter++;
         /*echo 	"<li class='aside_element people_element' value='{$contactsname["Name"]}'>";
@@ -31,6 +33,5 @@ require('ajaxresponse.php');
 			echo "<div class='aside_element_name'>".$contactsname['Name']."</div>
             	</li>";*/
     }
-	
 	echo json_encode($response);
 ?>

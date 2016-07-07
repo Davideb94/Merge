@@ -1,6 +1,7 @@
 <?php
 session_start();
 require('AuthConnection.php'); 
+require('ajaxresponse.php');
  //printing your file
     function sizeConvert(&$size,&$type){
         if($size>1073741824){
@@ -39,9 +40,21 @@ require('AuthConnection.php');
     if(!$result){
         echo $mysqli->error;
     }
+
+    $array = array();
     $counter = 0;
     while ($row = $result->fetch_assoc()){
-      
+        
+        sizeConvert($row['Size'],$mytype);
+        $name = $row['reference'];
+        $row['info'] = new SplFileInfo($name);
+        $row['info'] = $row['info']->getExtension();
+        
+        $row['dim'] = $mytype;
+        $array[$counter] = setresponse(0,$row);
+        $counter++;
+        
+        /*
         $mysize = $row['Size'];
         sizeConvert($mysize,$mytype);
         $name = $row['reference'];
@@ -92,8 +105,7 @@ require('AuthConnection.php');
             </div>
         </div>";
         $counter = $counter + 1;
+        */
     }
-  if($counter == 0){
-    echo "<p>This Desk is empty.</p>";
-  }
+    echo json_encode($array);
 ?>

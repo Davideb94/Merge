@@ -55,15 +55,6 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 						<div class="vertical_center"></div>
 						<!-- drop down menu -->
 						<span id="notifications_menu">
-							
-							<div class="notification_element">
-								<div class="notification_pic_container">
-									<img class="notification_pic" src="./assets/img/user.png">
-								</div>
-								<div class="notification_text">
-									<p><b>someone someone</b> added you, go check his desk!</p>
-								</div>
-							</div>
 						</span>
 					</li>
 				  	<li class="navs_li">

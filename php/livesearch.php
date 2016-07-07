@@ -1,7 +1,7 @@
 <?php
 session_start();
 require('../php/AuthConnection.php'); 
-
+require('ajaxresponse.php');
 $q =  mysql_real_escape_string($_GET["q"]);
 
 if($q!= '@' && $q!= '.'){
@@ -18,8 +18,19 @@ if($q!= '@' && $q!= '.'){
        echo $mysqli->error;
         exit;
     }
-    $hint = "";
+    $array = array();
+    
+    $counter = 0;
+    
     while($row=$result->fetch_assoc()){
+        
+        if(!is_null($row['image'])){
+            $row['image'] = base64_encode($row['image']);
+        }
+        
+        $array[$counter] = setresponse(0,$row);
+        
+        /*
         $email = $row["Email"];        
         $hint = $hint."<div class='searched_elem' value='$email' onmousedown='addpeople(event,this)'>
                             <div class='profile_pic'>
@@ -37,13 +48,18 @@ if($q!= '@' && $q!= '.'){
                                 <div class='searched_email'>".$email."</div>
                             </div>
 				        </div>";
+                        
+                        
+        */
+        $counter++;
     }
+    /*
     if($hint == ""){
-
         $hint = "<div class='aside_element'>
                             <p>No result accoured</p>
 				</div>";
     }
-    echo $hint;
+    echo $hint;*/
+    echo json_encode($array);
 }
 ?> 
