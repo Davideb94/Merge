@@ -73,7 +73,17 @@ function myparsing(data,idfunction){
                 var div3 = document.createElement("div");
                 div3.className ="card_download";
                 div3.setAttribute("name",data[i]['data']['reference']);
-              
+                
+                
+                
+                //div for change policy 
+                var lock = document.createElement("div");
+                lock.setAttribute("onclick","change_policy(this)");
+                lock.style="height:10px; background-color: yellow;";
+                lock.setAttribute("name",data[i]['data']['reference']);
+                //---------------------//
+                
+                
                 var downimage = document.createElement('img');
                 downimage.className = "download_icon";
                 downimage.src = './assets/img/download.png';
@@ -121,6 +131,7 @@ function myparsing(data,idfunction){
                 
                 
                 link1.appendChild(div3);
+                div2.appendChild(lock);
                 div3.appendChild(downimage);
                 div4.appendChild(delimage);
                 div1.appendChild(div2);
@@ -236,7 +247,6 @@ function myparsing(data,idfunction){
 			for(var i=0; i<data.length; i++){
 				var myname = data[i]["data"]["Name"];
 				var myimg = data[i]["data"]["image"];
-				
 				var element = document.createElement("li");
 				element.className = "aside_element";
 				element.setAttribute("value", data[i]["data"]["ID"]);
@@ -608,4 +618,23 @@ function showNotifications(){
 		menu.className = " ";
 		show_notifications = false;
 	}
+}
+
+//ajax function to change policy
+function change_policy(ele){
+    if(confirm("Change privacy of this file?")){
+        var xhr = new XMLHttpRequest();
+        var name = ele.getAttribute('name');
+
+        xhr.open('GET','./php/change_policy.php?name='+name, true);
+        xhr.send();
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status==200) {
+                if(xhr.response== "ok"){
+
+                }
+            }
+        }; 
+    }
 }

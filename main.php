@@ -17,14 +17,14 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 	
 	<body onload="start()">
 		<header id="header">
-			<span id="logo_container">
+			<div id="logo_container">
 				<p>merge</p>
-			</span>
+			</div>
 			<ul class="navs_ul" id="hamburger_menu">
 				<li onclick="showMenu()" class="navs_li">
 					<div class="vertical_center"></div>
 					<div class="vertical_center">
-						<img class="navs_img" src="assets/img/hamburger.png" />
+						<img class="navs_img" src="assets/img/hamburger.png" alt="hamburger"/>
 					</div>
 					<div class="vertical_center"></div>
 				</li>
@@ -36,7 +36,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 						<div class="vertical_center">
 							<input id="search" type="text" placeholder="search@mail.com" onkeyup="showResult(this.value)"
                             onblur="closeresult()">
-							<img src="assets/img/search.svg" id="search_icon">
+							<img src="assets/img/search.svg" alt="search" id="search_icon">
 						</div>
                         <!-- searching -->
                         <span id="result_search">
@@ -49,7 +49,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 						<div class="vertical_center"></div>
 						<div class="vertical_center">
 							<a href="#">
-								<img class="navs_img" src="assets/img/notification.svg" />
+								<img class="navs_img" alt="notification" src="assets/img/notification.svg" />
 							</a>
 						</div>
 						<div class="vertical_center"></div>
@@ -61,25 +61,19 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 						<div class="vertical_center"></div>
 						<div class="vertical_center">
 							<a href="http://localhost/merge/settings.html">
-								<img class="navs_img" src="assets/img/settings.svg" />
+								<img class="navs_img" alt="settings" src="assets/img/settings.svg" />
 							</a>
 						</div>
 						<div class="vertical_center"></div>
 					</li>
 					<li class="navs_li" id="profile_elem">
-						<!--<div class="vertical_center"></div>
-						<div class="vertical_center">
-							<a href="#">
-								<img id="profile_pic" src="assets/img/user.png" />
-							</a>
-						</div>
-						<div class="vertical_center"></div>-->
+					
 					</li>
 					<li class="navs_li" id="logout">
 						<div class="vertical_center"></div>
 						<div class="vertical_center">
 							<a href="php/Logout.php">
-								<img id="logout_img" src="assets/img/logout.png" />
+								<img id="logout_img" alt="logout" src="assets/img/logout.png" />
 							</a>
 						</div>
 						<div class="vertical_center"></div>
@@ -91,7 +85,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 		<aside>
 			<div class="aside_container" id="desks"><!--UI BUG: aside_title must stay on top when scrolling-->
 				<div class="aside_title">
-					<img id="desk_pic" src="assets/img/desk.png"/>
+					<img id="desk_pic" alt="desk" src="assets/img/desk.png"/>
 					DESKS
 				</div>
 				<div class="list_container">
@@ -107,7 +101,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 			
 			<div class="aside_container" id="people">
 				<div class="aside_title">
-					<img id="people_pic" src="assets/img/people.png"/>
+					<img id="people_pic" alt="people" src="assets/img/people.png"/>
 					PEOPLE
 				</div>
 				<div class="list_container">
@@ -134,7 +128,6 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
                     HERE PHP REALTIME CONTENT
 
                 -->
-             
 			</div>
 			<div id="others" class="tab">
                 <!--
@@ -143,13 +136,12 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
                 -->
 			</div>
             <form id="file-form" method="POST" enctype= "multipart/form-data">
-				<!--<button class="add_file" id="add_button">+</button>-->
 				<label>
-					<div class="add_file" id="add_button">
+                    <div class="add_file" id="add_button">
 						<div class="plus">+</div>
 					</div>
 					<input type="file" id="input_file" name="input_file" onchange="loadfile()" multiple/>
-				</label>
+                </label>
             </form>
 		</main>
 	</body>

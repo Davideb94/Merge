@@ -20,9 +20,6 @@ require('ajaxresponse.php');
         
         $contactsname = $mysqli->query($query1);
         $contactsname = $contactsname->fetch_assoc();
-		if(!is_null($contactsname['image'])){
-            $contactsname['image'] = base64_encode($contactsname['image']);
-        }
 		$response[$counter] = setresponse(0, $contactsname);
 		$counter++;
         

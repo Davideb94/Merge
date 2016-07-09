@@ -403,6 +403,7 @@ and (min-device-width: 801px)
 		right: 20px;
 		bottom: 20px;
 		z-index: 999;
+        vertical-align: middle;
 	}
 	.add_file:focus{
 		outline: 0;
@@ -413,6 +414,7 @@ and (min-device-width: 801px)
 	.plus{
 		display: table-cell;
 		vertical-align: middle;
+
 	}
 	#input_file{
 		visibility: hidden;

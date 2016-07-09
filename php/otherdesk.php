@@ -34,7 +34,7 @@ require('ajaxresponse.php');
         echo "YOU HAVE NOT AUTHORIZATION TO SEE THIS!";
         exit;       
     }
-      $query ="Select * from file where iduser = '{$otherdesk}'; ";
+      $query ="Select * from file where iduser = '{$otherdesk}' and policy = 'PUBLIC'; ";
 
     $result = $mysqli->query($query);
     if(!$result){

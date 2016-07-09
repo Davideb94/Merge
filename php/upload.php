@@ -8,7 +8,7 @@
         for ($i = 0; $i<$counter;$i++){
             if($_FILES['file'.$i]['error']== 0){
                 $reference = rand(1000,100000)."-".$_FILES['file'.$i]['name'];
-                $query ="INSERT INTO file (Size,Type,Name,IDuser,reference) values('{$_FILES['file'.$i]['size']}','{$_FILES['file'.$i]['type']}','{$_FILES['file'.$i]['name']}','{$_SESSION['IDuser']}','$reference');";
+                $query ="INSERT INTO file (Size,Type,Name,IDuser,reference,policy) values('{$_FILES['file'.$i]['size']}','{$_FILES['file'.$i]['type']}','{$_FILES['file'.$i]['name']}','{$_SESSION['IDuser']}','$reference','PUBLIC');";
                 
                 $mysqli->query($query);
                 
