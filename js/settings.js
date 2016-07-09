@@ -61,3 +61,60 @@ function info_space(){
     xhr.open("POST","./php/info_space.php",true);
     xhr.send();
 }
+
+//function to alert not matching passwords
+function validate(){
+	var pass = document.getElementById('password').value;
+    var confirmed_pass = document.getElementById('confirmed_password').value;
+    var ok = true;
+    if (pass != confirmed_pass) {
+        //alert("Passwords Do not match");
+        document.getElementById('password').style.borderColor = "#E34234";
+        document.getElementById('confirmed_password').style.borderColor = "#E34234";
+        ok = false;
+    }
+    else {
+        //alert("Passwords Match!!!");
+    }
+    return ok;
+}
+
+//veeery ugly functions to show the accordions
+var change_name_shown = false;
+function showChangeName(){
+	var tbody = document.getElementById("change_name_id");
+	if(change_name_shown){
+		tbody.className = "change";
+		change_name_shown = false;
+	}
+	else{
+		tbody.className = "active";
+		change_name_shown = true;
+	}
+}
+
+var change_mail_shown = false;
+function showChangeMail(){
+	var tbody = document.getElementById("change_mail_id");
+	if(change_mail_shown){
+		tbody.className = "change";
+		change_mail_shown = false;
+	}
+	else{
+		tbody.className = "active";
+		change_mail_shown = true;
+	}
+}
+
+var change_password_shown = false;
+function showChangePassword(){
+	var tbody = document.getElementById("change_password_id");
+	if(change_password_shown){
+		tbody.className = "change";
+		change_password_shown = false;
+	}
+	else{
+		tbody.className = "active";
+		change_password_shown = true;
+	}
+}

@@ -60,7 +60,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 				  	<li class="navs_li">
 						<div class="vertical_center"></div>
 						<div class="vertical_center">
-							<a href="#news">
+							<a href="http://localhost/merge/settings.html">
 								<img class="navs_img" src="assets/img/settings.svg" />
 							</a>
 						</div>

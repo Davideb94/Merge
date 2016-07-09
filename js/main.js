@@ -10,7 +10,6 @@ function start(){
     viewdesks();
     viewcontacts();
     identification();
-    
 }
 
 
