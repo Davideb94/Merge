@@ -14,15 +14,15 @@
     function sizeConvert(&$size,&$type){
         if($size>1073741824){
             $type = "GB";
-            $size= round($size/1073741824,2);//KB
+            $size= round($size/1073741824,2);
             
         }else if($size>1048576){
             $type = "MB";
-            $size= round($size/1048576,2); //MB
+            $size= round($size/1048576,2);
             
         }else{
             $type = "KB";
-             $size= round($size/1024,2); //GB
+             $size= round($size/1024,2);
         }
         
     }

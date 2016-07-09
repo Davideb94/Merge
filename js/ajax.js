@@ -23,7 +23,7 @@ function myparsing(data,idfunction){
             if(data['image'] == null){
                    image.src = 'assets/img/user.png';
             }else{
-                image.src = "data:image/jpeg;base64,"+ data['image'];
+                image.src = "profile_pic/" +data['image'];
             }
             profileSpan.appendChild(profilediv1);
             profileSpan.appendChild(profilediv2);
@@ -166,7 +166,7 @@ function myparsing(data,idfunction){
                         if(data[i]['data']['image'] == null){
                             image.src = 'assets/img/user.png';
                         }else{
-                            image.src = 'data:image/jpeg;base64,'+data[i]['data']['image'];                   
+                            image.src = "profile_pic/"+data[i]['data']['image'];                   
                         }
 
                         var searched_name = document.createElement("div");
@@ -216,7 +216,7 @@ function myparsing(data,idfunction){
 					image.src = 'assets/img/user.png';
 				}
 				else{
-					image.src = "data:image/jpeg;base64," + myimg;				
+					image.src = "profile_pic/"+ myimg;				
 				}
 				
 				var element_name = document.createElement("div");
@@ -249,7 +249,7 @@ function myparsing(data,idfunction){
 					image.src = 'assets/img/user.png';
 				}
 				else{
-					image.src = "data:image/jpeg;base64," + myimg;				
+					image.src = "profile_pic/" +myimg;				
 				}
 				
 				var element_name = document.createElement("div");
@@ -387,7 +387,10 @@ function loadfile(){
     
     xhr.onreadystatechange = function (){
         if(xhr.readyState == 4 && xhr.status == 200){
-            preview();
+            if(xhr.response == "ok"){
+                alert("Files uploaded successfull");   
+                preview();
+            }
         }
     }
     xhr.open("POST","./php/upload.php",true);

@@ -12,9 +12,6 @@
     }else{
         $row = $result->fetch_assoc();
         $row['username'] = $_SESSION['username'];
-        if(!is_null($row['image'])){
-            $row['image'] = base64_encode($row['image']);
-        }
         
         $response = setresponse(0,$row);
         

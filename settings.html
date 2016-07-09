@@ -10,7 +10,7 @@
         <script src="js/ajax.js" type="text/javascript"></script>
 		<script src="js/settings.js" type="text/javascript"></script>
 	</head>
-	<body>
+	<body onload="fetch_info()">
 		<header id="header" >
 			<span id="logo_container">
 				merge
@@ -38,7 +38,7 @@
 		</header>
 		
 		<div class="card">
-			<div class="card_title">
+			<div class="card_title" id="space_left">
 				<p>Space left</p>
 			</div>
 		</div>
@@ -50,7 +50,9 @@
 				<table>
 					<tr>
 						<td class="row_title">Nickname</td>
-						<td>Davide</td>
+						<td id="nickname">
+                        
+                        </td>
 						<td class="modify" onclick="showChangeName()">
 							<img class="edit" src="assets/img/edit.png">
 							Modify
@@ -60,19 +62,22 @@
 						<tr>
 							<th>New nickname</th>
 							<td>
-								<input class="validate" name="name" type="text" placeholder="new nickname" required>
+								<input class="validate" name="name" type="text" placeholder="new nickname"
+                                       id="newnick" required>
 							</td>
 						</tr>
 						<tr>
 							<td></td>
 							<td class="confirm">
-								<button>CONFIRM</button>
+								<button onclick="modify_nick()">CONFIRM</button>
 							</td>
 						</tr>
 					</tbody>
 					<tr>
 						<td class="row_title">Mail</td>
-						<td>davide@unito.it</td>
+						<td id="email">
+                        
+                        </td>
 						<td class="modify" onclick="showChangeMail()">
 							<img class="edit" src="assets/img/edit.png">
 							Modify
@@ -82,13 +87,13 @@
 						<tr>
 							<th>New mail</th>
 							<td>
-								<input class="validate" name="mail" type="text" placeholder="new mail" required>
+								<input class="validate" name="mail" type="text" placeholder="new mail" id="Email" required>
 							</td>
 						</tr>
 						<tr>
 							<td></td>
 							<td class="confirm">
-								<button>CONFIRM</button>
+								<button onclick="modify_email()">CONFIRM</button>
 							</td>
 						</tr>
 					</tbody>
@@ -104,19 +109,19 @@
 						<tr>
 							<th>Old password</th>
 							<td>
-								<input class="validate" name="username" type="password" placeholder="****" required>
+								<input class="validate" name="username" id="oldpassword" type="password" placeholder="**********" required>
 							</td>
 						</tr>
 						<tr>
 							<th>New password</th>
 							<td>
-								<input class="validate" id="password" name="username" type="password" placeholder="****" required>
+								<input class="validate" id="password" name="username" type="password" placeholder="**********" required>
 							</td>
 						</tr>
 						<tr>
 							<th>Confirm password</th>
 							<td>
-								<input class="validate" id="confirmed_password" name="username" type="password" placeholder="****" required>
+								<input class="validate" id="confirmed_password" name="username" type="password" placeholder="**********" required>
 							</td>
 						</tr>
 						<tr>
@@ -128,12 +133,21 @@
 					</tbody>
 					<tr>
 						<td class="row_title">Image</td>
-						<td>
-							<img src="assets/img/user.png">
+						<td id="profile_pic">
+							
 						</td>
-						<td class="modify">
-							<img class="edit" src="assets/img/edit.png">
-							Modify
+						<td class="modify" >
+							<!-- <img class="edit" src="assets/img/edit.png">
+							Modify-->
+                            <label>
+                                <div>
+                                        <img class="edit" src="assets/img/edit.png">
+							             Modify
+                                </div>
+                                 <form id="file-form" method="POST" enctype= "multipart/form-data">
+                                <input type="file" id="prof_pic" hidden name="input_file" onchange="upload_profile_pic()"/>
+                                </form>
+                            </label>
 						</td>
 					</tr>
 				</table>
@@ -143,7 +157,7 @@
 			<div class="card_title" id="danger_zone_title">
 				<p>Danger zone</p>
 			</div>
-			<div class="card_content" id="danger_zone_content">
+			<div class="card_content" id="danger_zone_content" onclick="delete_profile()">
 				<p>Delete account</p>
 			</div>
 		</div>

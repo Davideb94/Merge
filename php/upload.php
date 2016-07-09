@@ -19,12 +19,10 @@
                 $file_loc = $_FILES['file'.$i]['tmp_name'];
                 $folder="../upload/";
                 move_uploaded_file($file_loc,$folder.$reference);
+                echo "ok";
             }
             
         }
-        
-        
-        
     }else{
         echo "trasmission error";
         

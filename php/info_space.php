@@ -9,7 +9,7 @@ if(!$result){
     
 }else{
     $value = $result->fetch_assoc();
-    echo $value['size'];
+    echo  $size = 100 - round($value['size']/1073741824,2);
 
 }
 ?>
