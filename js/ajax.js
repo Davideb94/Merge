@@ -638,3 +638,42 @@ function change_policy(ele){
         }; 
     }
 }
+
+//to fetch infos used in settings.html
+function fetch_info(){
+    var xhr1 = new XMLHttpRequest();
+    xhr1.readyState = 0;
+    xhr1.onreadystatechange = function() {
+        if (xhr1.readyState == 4 && xhr1.status==200) {
+            var info = JSON.parse(xhr1.responseText);
+            if(!info.responseCode){
+                //nickname
+                var nick = document.getElementById("nickname");
+                var nick_fetched = document.createTextNode(info.data['Name']);
+                nick.appendChild(nick_fetched);
+                
+                var email = document.getElementById("email");
+                var email_fetched = document.createTextNode(info.data['Email']);
+                email.appendChild(email_fetched);
+                
+                var image = document.getElementById("profile_pic");
+                var prof = document.createElement("img");
+                if(info.data['image']== null){
+                    prof.src = "assets/img/user.png";
+                }else{
+                    prof.src = "profile_pic/" +info.data['image'];
+                    
+                }
+                prof.style="height:50px;width: 50px;border-radius: 50%;";
+                image.appendChild(prof);
+                
+                var percentage_value = document.getElementById("percentage_value");
+                var space = 100 - Math.round((info.data['space_occupied']/1073741824)*100)/100;
+                var percent = document.createTextNode(space+"%");
+                percentage_value.appendChild(percent);
+            }
+        }
+    };
+    xhr1.open('POST', './php/fetch_info.php', true);
+    xhr1.send();       
+}

@@ -57,7 +57,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 						<span id="notifications_menu">
 						</span>
 					</li>
-				  	<li class="navs_li">
+				  	<li class="navs_li" onclick="window.location.href='http://localhost/merge/settings.html'">
 						<div class="vertical_center"></div>
 						<div class="vertical_center">
 							<a href="http://localhost/merge/settings.html">

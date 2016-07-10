@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require('AuthConnection.php');
 
@@ -14,4 +15,7 @@ if(!$result){
 }else{
     echo "ok";
 }
+
+$_SESSION['username'] = $new_nickname;
+
 ?>

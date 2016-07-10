@@ -41,6 +41,23 @@
 			<div class="card_title" id="space_left">
 				<p>Space left</p>
 			</div>
+			<div class="card_content">
+				<div class="progress-radial progress-30">
+					<div class="overlay">
+						<p id="percentage_value"><!--30%--></p>
+					</div>
+				</div>
+				<div id="infos">
+					<b>Used space: </b>
+					<p>700mb</p>
+					<br>
+					<b>Remaining space:</b>
+					<p>300mb</p>
+				</div>
+				<div style="clear:both"></div>
+				
+				<button class="get_more">Get More</button>
+			</div>
 		</div>
 		<div class="card">
 			<div class="card_title">
@@ -140,12 +157,12 @@
 							<!-- <img class="edit" src="assets/img/edit.png">
 							Modify-->
                             <label>
-                                <div>
-                                        <img class="edit" src="assets/img/edit.png">
-							             Modify
+                            	<div>
+									<img class="edit" src="assets/img/edit.png">
+									Modify
                                 </div>
-                                 <form id="file-form" method="POST" enctype= "multipart/form-data">
-                                <input type="file" id="prof_pic" hidden name="input_file" onchange="upload_profile_pic()"/>
+                                <form id="file-form" method="POST" enctype= "multipart/form-data">
+                                	<input type="file" id="prof_pic" hidden name="input_file" onchange="upload_profile_pic()"/>
                                 </form>
                             </label>
 						</td>

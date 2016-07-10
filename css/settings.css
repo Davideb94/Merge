@@ -20,7 +20,7 @@ and (min-device-width: 801px)
 	body{
 		height: 100%;
 		width: 100%;
-		padding-bottom: 20%;
+		padding-bottom: 50%;
 		background-color: #E9EBEE;
 		z-index: 1;
 	}
@@ -113,7 +113,7 @@ and (min-device-width: 801px)
 		margin-right: auto;
 		margin-top: 3%;
 		padding-top: 5px;
-		padding-bottom: 30px;
+		padding-bottom: 3%;
 		background-color: #fff;
 		border-radius: 3px;
 		box-shadow: 0px 3px 10px 1px #bdc3c7;
@@ -129,8 +129,131 @@ and (min-device-width: 801px)
 	.card_content{
 		width: 95%;
 		padding-left: 5%;
+		padding-top: 3%;
 		color: #7f8c8d;
 		font-size: 15px;
+	}
+	.progress-radial {
+		width: 200px;
+		height: 200px;
+		float: left;
+		border-radius: 50%;
+		border: 1px solid #fff;
+		background-color: tomato;
+	}
+	.progress-radial .overlay {
+	  	width: 190px;
+	  	height: 190px;
+		display: table;
+		background-color: #fff;
+	  	border-radius: 50%;
+	  	margin-left: 5px;
+	  	margin-top: 5px;
+	  	text-align: center;
+	}
+	.progress-radial .overlay p{
+		display: table-cell;
+		vertical-align: middle;
+		font-weight: 100;
+		font-size: 30px;
+	}
+	#infos{
+		float: left;
+		margin-left: 10%;
+	}
+	.get_more{
+		float: right;
+		margin-right: 5%;
+		margin-top: -20px;
+		border: none;
+		border-radius: 2px;
+		background-color: #4183D7;
+		color: #fff;
+		font-size: 15px;
+		padding: 10px;
+	}
+	.progress-0 {
+	  background-image: linear-gradient(90deg, #2c3e50 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(90deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-5 {
+	  background-image: linear-gradient(90deg, #2c3e50 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(108deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-10 {
+	  background-image: linear-gradient(90deg, #2c3e50 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(126deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-15 {
+	  background-image: linear-gradient(90deg, #2c3e50 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(144deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-20 {
+	  background-image: linear-gradient(90deg, #2c3e50 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(162deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-25 {
+	  background-image: linear-gradient(90deg, #2c3e50 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(180deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-30 {
+	  background-image: linear-gradient(90deg, #2c3e50 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(198deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-35 {
+	  background-image: linear-gradient(90deg, #2c3e50 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(216deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-40 {
+	  background-image: linear-gradient(90deg, #2c3e50 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(234deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-45 {
+	  background-image: linear-gradient(90deg, #2c3e50 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(252deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-50 {
+	  background-image: linear-gradient(-90deg, #00AE53 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-55 {
+	  background-image: linear-gradient(-72deg, #00AE53 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-60 {
+	  background-image: linear-gradient(-54deg, #00AE53 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-65 {
+	  background-image: linear-gradient(-36deg, #00AE53 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-70 {
+	  background-image: linear-gradient(-18deg, #00AE53 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-75 {
+	  background-image: linear-gradient(0deg, #00AE53 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-80 {
+	  background-image: linear-gradient(18deg, #00AE53 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-85 {
+	  background-image: linear-gradient(36deg, #00AE53 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-90 {
+	  background-image: linear-gradient(54deg, #00AE53 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-95 {
+	  background-image: linear-gradient(72deg, #00AE53 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
+	}
+
+	.progress-100 {
+	  background-image: linear-gradient(90deg, #00AE53 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), linear-gradient(270deg, #00AE53 50%, #2c3e50 50%, #2c3e50);
 	}
 	table{
 		width: 95%;
@@ -200,6 +323,12 @@ and (min-device-width: 801px)
 		padding: 10px;
 		color: white;
 		font-size: 15px;
+	}
+	
+	#profile_pic img{
+		height: 50px;
+		width: 50px;
+		border-radius: 50%;
 	}
 	#danger_zone_title{
 		color: #D64541;
