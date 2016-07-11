@@ -4,19 +4,31 @@
     require('AuthConnection.php');
     require('ajaxresponse.php');
 	$user = $_SESSION['IDuser'];
-
-	$query ="Select Who from notifies where Forwho = '{$user}'
-            limit 5; "; //Suppongo che Forwho sia l'utente nella cui pagina viene mostrata la notifica
+    //fetch notification
+	$query ="Select Who from notifies where Forwho = '{$user}'; "; 
 
     $result = $mysqli->query($query);
     if(!$result){
         echo $mysqli->error;
     }
-	$array = array();
+	$array = array();  
 	$counter = 0;
  	while ($row = $result->fetch_assoc()){
+        //fetch names
+        $query ="Select Name from user where ID = '{$row['Who']}'; "; 
+
+        $result1 = $mysqli->query($query);
+        if(!$result1){
+            echo $mysqli->error;
+        }
+        $name = $result1->fetch_assoc();
         
-		$array[$counter] = $row['Who'];
+        $packet = array();
+        
+        $packet['Name']= $name['Name'];
+        $packet['ID']= $row['Who'];
+        
+		$array[$counter] = setresponse(0,$packet);
         /*
 		echo'
 			<div class="notification_element">

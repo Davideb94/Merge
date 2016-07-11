@@ -10,9 +10,6 @@
 	font-family: "Museo";
 	src: url('../assets/fonts/Museo/Webfonts/museosans_500_macroman/MuseoSans_500-webfont.ttf');
 }
-
-
-
 @media only screen 
 and (min-device-width: 801px) 
 {
@@ -132,6 +129,18 @@ and (min-device-width: 801px)
         box-shadow: 3px 3px 10px #2c3e50;
 		display: none;
 	}
+    
+    .notification_number{
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: red;
+        display: inline-block;
+        font-size: 8px;
+        text-align: center;
+        
+    }
+    
 	.show_notifications_menu{
 		display: block !important;
 	}
@@ -143,10 +152,10 @@ and (min-device-width: 801px)
 		color: #45617D;
 		display:table;
         vertical-align: middle;
+        border-left: 1px solid #2c3e50;
 	}
 	.notification_element:hover{
 		background-color: #DADFE1;
-		border-left: 1px solid #2c3e50;
 	}
 	.notification_text{
 		width: 85%;
@@ -154,7 +163,24 @@ and (min-device-width: 801px)
 		margin: auto;
 		vertical-align: middle;
 		text-align: center;
+        cursor:pointer;
 	}
+    .notification_text >p{
+        display: inline-block;
+    }
+    .visualize_notification{
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        border: 2px solid #b3b3b3;
+        display: inline-block;
+        margin-left: 8%;
+        
+    }
+    
+    .visualized:hover{
+        background-color: #b3b3b3;
+    }
 	#profile_elem{
 		cursor: auto;
 		background-color: #2c3e50;

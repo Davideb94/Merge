@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Creato il: Lug 09, 2016 alle 16:59
--- Versione del server: 10.1.13-MariaDB
--- Versione PHP: 5.6.20
+-- Generation Time: Jul 11, 2016 at 03:48 PM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `contacts`
+-- Table structure for table `contacts`
 --
 
 CREATE TABLE `contacts` (
@@ -32,34 +32,17 @@ CREATE TABLE `contacts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dump dei dati per la tabella `contacts`
+-- Dumping data for table `contacts`
 --
 
 INSERT INTO `contacts` (`IDuser`, `IDcontact`) VALUES
-(21, 23),
-(21, 24),
-(21, 26),
-(21, 27),
-(21, 28),
-(21, 29),
-(21, 32),
-(21, 33),
-(21, 34),
-(23, 21),
-(24, 21),
-(24, 23),
-(24, 29),
-(26, 21),
-(26, 23),
-(26, 24),
-(26, 27),
-(26, 29),
-(32, 26);
+(24, 26),
+(26, 21);
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `file`
+-- Table structure for table `file`
 --
 
 CREATE TABLE `file` (
@@ -74,25 +57,14 @@ CREATE TABLE `file` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dump dei dati per la tabella `file`
+-- Dumping data for table `file`
 --
 
 INSERT INTO `file` (`ID`, `Size`, `Type`, `Name`, `IDuser`, `last_modify`, `reference`, `policy`) VALUES
-(11, 1952749, 'image/png', 'vlcsnap-2016-05-01-21h44m53s155.png', 21, '2016-06-19 15:32:39', '74048-vlcsnap-2016-05-01-21h44m53s155.png', 'PUBLIC'),
-(12, 272178, 'image/jpeg', 'maxresdefault.jpg', 26, '2016-06-19 23:57:59', '59742-maxresdefault.jpg', 'PUBLIC'),
-(13, 2605983, 'image/png', 'vlcsnap-2016-05-01-21h51m37s317.png', 26, '2016-06-20 00:04:14', '23154-vlcsnap-2016-05-01-21h51m37s317.png', 'PUBLIC'),
-(16, 2992653, 'image/png', 'vlcsnap-2015-03-22-13h37m32s207.png', 27, '2016-06-20 09:48:20', '33294-vlcsnap-2015-03-22-13h37m32s207.png', 'PUBLIC'),
-(17, 1952749, 'image/png', 'vlcsnap-2016-05-01-21h44m53s155.png', 27, '2016-06-20 09:56:25', '19731-vlcsnap-2016-05-01-21h44m53s155.png', 'PUBLIC'),
-(18, 2920435, 'image/jpeg', 'Porto_di Brindisi.jpg', 21, '2016-06-22 08:08:58', '60470-Porto_di Brindisi.jpg', 'PUBLIC'),
-(19, 2631299, 'image/jpeg', 'puglia_8376t.T0.jpg', 21, '2016-06-25 19:13:21', '40361-puglia_8376t.T0.jpg', 'PUBLIC'),
-(20, 2992653, 'image/png', 'vlcsnap-2015-03-22-13h37m32s207.png', 21, '2016-06-25 19:13:21', '65428-vlcsnap-2015-03-22-13h37m32s207.png', 'PUBLIC'),
-(22, 30559, 'application/zip', 'mini-upload-form.zip', 26, '2016-07-07 12:42:07', '4676-mini-upload-form.zip', 'PUBLIC'),
-(25, 272178, 'image/jpeg', 'maxresdefault.jpg', 21, '2016-07-09 11:17:48', '65833-maxresdefault.jpg', ''),
-(26, 2692896, 'image/jpeg', 'IMG_20140616_001210.jpg', 21, '2016-07-09 14:55:30', '61241-IMG_20140616_001210.jpg', ''),
-(29, 30208, 'image/jpeg', '[005893].jpg', 21, '2016-07-09 14:57:23', '58603-[005893].jpg', '');
+(49, 2605983, 'image/png', 'vlcsnap-2016-05-01-21h51m37s317.png', 26, '2016-07-11 13:37:37', '74347-vlcsnap-2016-05-01-21h51m37s317.png', 'PUBLIC');
 
 --
--- Trigger `file`
+-- Triggers `file`
 --
 DELIMITER $$
 CREATE TRIGGER `refresh_space_occupied` AFTER INSERT ON `file` FOR EACH ROW BEGIN
@@ -102,39 +74,41 @@ CREATE TRIGGER `refresh_space_occupied` AFTER INSERT ON `file` FOR EACH ROW BEGI
 END
 $$
 DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `refresh_space_occupied_DELETE` AFTER DELETE ON `file` FOR EACH ROW BEGIN
+	UPDATE user
+    set space_occupied = space_occupied - old.size
+    where ID = old.IDuser;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `notifies`
+-- Table structure for table `notifies`
 --
 
 CREATE TABLE `notifies` (
   `ID` int(3) NOT NULL,
-  `Who` varchar(50) NOT NULL,
+  `Who` int(3) NOT NULL,
   `Type` varchar(30) NOT NULL,
   `Forwho` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dump dei dati per la tabella `notifies`
+-- Dumping data for table `notifies`
 --
 
 INSERT INTO `notifies` (`ID`, `Who`, `Type`, `Forwho`) VALUES
-(6, 'davide', 'Adding', 21),
-(5, 'davide', 'Adding', 23),
-(2, 'davide', 'Adding', 29),
-(3, 'gabriele', 'Adding', 32),
-(1, 'gabriele', 'Adding', 33),
-(4, 'gabriele', 'Adding', 34),
-(8, 'prova', 'Adding', 21),
-(9, 'prova', 'Adding', 24),
-(10, 'prova', 'Adding', 27);
+(12, 21, 'Adding', 32),
+(38, 24, 'Adding', 29),
+(39, 24, 'Adding', 32);
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -148,15 +122,15 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dump dei dati per la tabella `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`ID`, `Name`, `Password`, `Email`, `Registration_date`, `image`, `space_occupied`) VALUES
-(21, 'gabriele', '444bcb3a3fcf8389296c49467f27e1d6', 'gafire@hotmail.it', '2016-05-14 19:54:51', '43841-vlcsnap-2015-03-22-13h37m32s207.png', 13903042),
+(21, 'gabriele', '444bcb3a3fcf8389296c49467f27e1d6', 'gafire@hotmail.it', '2016-05-14 19:54:51', '43841-vlcsnap-2015-03-22-13h37m32s207.png', 0),
 (23, 'ok', '444bcb3a3fcf8389296c49467f27e1d6', 'gabriele-martino@libero.it', '2016-05-14 19:57:50', NULL, 0),
 (24, 'davide', '6e6bc4e49dd477ebc98ef4046c067b5f', 'davidedb@unito.it', '2016-05-15 20:12:19', NULL, 0),
-(26, 'vichy', '6e6bc4e49dd477ebc98ef4046c067b5f', 'vichy@libero.it', '2016-05-15 22:41:06', NULL, 2908720),
-(27, 'luca', '444bcb3a3fcf8389296c49467f27e1d6', 'luca@ok.it', '2016-05-16 08:57:43', NULL, 4945402),
+(26, 'vichy', '6e6bc4e49dd477ebc98ef4046c067b5f', 'vichy@libero.it', '2016-05-15 22:41:06', NULL, 2605983),
+(27, 'luca', '444bcb3a3fcf8389296c49467f27e1d6', 'luca@ok.it', '2016-05-16 08:57:43', NULL, 0),
 (28, 'gabriele', '6e6bc4e49dd477ebc98ef4046c067b5f', 'ok@mmm.it', '2016-05-21 14:00:45', NULL, 0),
 (29, 'rosa', '6e6bc4e49dd477ebc98ef4046c067b5f', 'rosa@hotmail.it', '2016-05-25 14:46:30', NULL, 0),
 (32, 'enrico', '5b1b4dee9103f759fdb57197a78780a6', 'enrico@ciao.it', '2016-06-20 11:27:53', NULL, 0),
@@ -164,11 +138,11 @@ INSERT INTO `user` (`ID`, `Name`, `Password`, `Email`, `Registration_date`, `ima
 (34, 'ciao', '6e6bc4e49dd477ebc98ef4046c067b5f', 'ciao@ok.it', '2016-06-20 14:54:56', NULL, 0);
 
 --
--- Indici per le tabelle scaricate
+-- Indexes for dumped tables
 --
 
 --
--- Indici per le tabelle `contacts`
+-- Indexes for table `contacts`
 --
 ALTER TABLE `contacts`
   ADD PRIMARY KEY (`IDuser`,`IDcontact`),
@@ -176,7 +150,7 @@ ALTER TABLE `contacts`
   ADD KEY `IDcontact` (`IDcontact`);
 
 --
--- Indici per le tabelle `file`
+-- Indexes for table `file`
 --
 ALTER TABLE `file`
   ADD PRIMARY KEY (`ID`),
@@ -184,7 +158,7 @@ ALTER TABLE `file`
   ADD KEY `IDuser` (`IDuser`);
 
 --
--- Indici per le tabelle `notifies`
+-- Indexes for table `notifies`
 --
 ALTER TABLE `notifies`
   ADD PRIMARY KEY (`ID`),
@@ -192,7 +166,7 @@ ALTER TABLE `notifies`
   ADD KEY `not` (`Who`,`Type`,`Forwho`);
 
 --
--- Indici per le tabelle `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`ID`),
@@ -203,42 +177,42 @@ ALTER TABLE `user` ADD FULLTEXT KEY `Name_2` (`Name`);
 ALTER TABLE `user` ADD FULLTEXT KEY `Email_3` (`Email`);
 
 --
--- AUTO_INCREMENT per le tabelle scaricate
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT per la tabella `contacts`
+-- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
   MODIFY `IDuser` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
--- AUTO_INCREMENT per la tabella `file`
+-- AUTO_INCREMENT for table `file`
 --
 ALTER TABLE `file`
-  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
--- AUTO_INCREMENT per la tabella `notifies`
+-- AUTO_INCREMENT for table `notifies`
 --
 ALTER TABLE `notifies`
-  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
--- AUTO_INCREMENT per la tabella `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
--- Limiti per le tabelle scaricate
+-- Constraints for dumped tables
 --
 
 --
--- Limiti per la tabella `contacts`
+-- Constraints for table `contacts`
 --
 ALTER TABLE `contacts`
   ADD CONSTRAINT `contacts_ibfk_1` FOREIGN KEY (`IDuser`) REFERENCES `user` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `contacts_ibfk_2` FOREIGN KEY (`IDcontact`) REFERENCES `user` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limiti per la tabella `file`
+-- Constraints for table `file`
 --
 ALTER TABLE `file`
   ADD CONSTRAINT `file_ibfk_1` FOREIGN KEY (`IDuser`) REFERENCES `user` (`ID`);

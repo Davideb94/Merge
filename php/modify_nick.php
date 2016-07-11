@@ -17,5 +17,5 @@ if(!$result){
 }
 
 $_SESSION['username'] = $new_nickname;
-
+setcookie("usermerge",$new_nickname,time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
 ?>

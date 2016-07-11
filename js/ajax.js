@@ -54,6 +54,21 @@ function myparsing(data,idfunction){
             usernameSpan.appendChild(userdiv2);
             usernameSpan.appendChild(userdiv3);
             profile_elem.appendChild(usernameSpan);
+            
+            
+            //refresh notifications number
+            var logo = document.getElementById("notifications_icon");
+            logo.removeChild(logo.childNodes[2]);
+            if(data['number'] != 0){
+                var number_div = document.createElement("div");
+                number_div.className = "notification_number";
+
+                var number = document.createTextNode(data['number']);
+                
+                number_div.appendChild(number);
+                logo.appendChild(number_div);
+            }
+            
             break;
         case 2:
             
@@ -76,7 +91,7 @@ function myparsing(data,idfunction){
                 
                 
                 
-                //div for change policy 
+                //div to change policy 
                 var lock = document.createElement("div");
                 lock.setAttribute("onclick","change_policy(this)");
                 lock.style="height:10px; background-color: yellow;";
@@ -358,29 +373,52 @@ function myparsing(data,idfunction){
             
             var menu = document.getElementById("notifications_menu");
             
-            for(var i = 0;i<data['data'].length; i++){
+            for(var i = 0;i<data.length; i++){
                 var elem = document.createElement("div");
                 elem.className = "notification_element";
                 
                 var not_elem = document.createElement("div");
                 not_elem.className = "notification_text";
-                
+                not_elem.setAttribute("value",data[i]['data']['ID']);
+                not_elem.setAttribute("onclick"," visualized_not(this); otherDesks(this);");
                 var pelem = document.createElement("p");
-                
-                var text = document.createTextNode(data['data'][i] + " added you, go check his desk");
-                
+                var text = document.createTextNode("'" + data[i]['data']['Name'] + "' added you, go check his desk");
+                // little ball
+                var visulized = document.createElement("div");
+                visulized.className ="visualize_notification";
+                visulized.className += " visualized";
+                visulized.setAttribute("onclick","visualized_not(this)")
                 pelem.appendChild(text);
                 not_elem.appendChild(pelem);
+                not_elem.appendChild(visulized);
                 elem.appendChild(not_elem);
                 menu.appendChild(elem);
-                
-                
+
             }
             break;
     }
 
 }
-
+function visualized_not(ele){
+    var not_id;
+    if(ele.getAttribute("value")== null){
+        not_id = ele.parentElement.getAttribute("value");
+    }else{
+        not_id = ele.getAttribute("value");
+    }
+    console.log(not_id);
+    var xhr = new XMLHttpRequest();
+  
+    xhr.onreadystatechange = function (){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            console.log(xhr.response);
+            identification();
+        }
+    }
+    xhr.open("POST","./php/del_notification.php",true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send('IDnot='+not_id);  
+}
 
 
 //ajax function for upload file
@@ -397,10 +435,11 @@ function loadfile(){
     
     xhr.onreadystatechange = function (){
         if(xhr.readyState == 4 && xhr.status == 200){
+            console.log(xhr.response);
             if(xhr.response == "ok"){
                 alert("Files uploaded successfull");   
-                preview();
             }
+            preview();
         }
     }
     xhr.open("POST","./php/upload.php",true);
@@ -409,7 +448,12 @@ function loadfile(){
 
 function identification(){
     var xhr = new XMLHttpRequest();
-    
+    var profile_elem = document.getElementById("profile_elem");
+
+   
+    while (profile_elem.firstChild) {
+        profile_elem.removeChild(profile_elem.firstChild);
+    }
     xhr.onreadystatechange = function (){
         if(xhr.readyState == 4 && xhr.status == 200){
             var packet = JSON.parse(xhr.responseText);
@@ -602,7 +646,7 @@ function showNotifications(){
 			if(xhr.readyState == 4 && xhr.status == 200){
                 var notification = JSON.parse(xhr.responseText);
                 if(!notification.responseCode){
-                    myparsing(notification,7);
+                    myparsing(notification.data,7);
                 }
                 
 			}
@@ -637,43 +681,4 @@ function change_policy(ele){
             }
         }; 
     }
-}
-
-//to fetch infos used in settings.html
-function fetch_info(){
-    var xhr1 = new XMLHttpRequest();
-    xhr1.readyState = 0;
-    xhr1.onreadystatechange = function() {
-        if (xhr1.readyState == 4 && xhr1.status==200) {
-            var info = JSON.parse(xhr1.responseText);
-            if(!info.responseCode){
-                //nickname
-                var nick = document.getElementById("nickname");
-                var nick_fetched = document.createTextNode(info.data['Name']);
-                nick.appendChild(nick_fetched);
-                
-                var email = document.getElementById("email");
-                var email_fetched = document.createTextNode(info.data['Email']);
-                email.appendChild(email_fetched);
-                
-                var image = document.getElementById("profile_pic");
-                var prof = document.createElement("img");
-                if(info.data['image']== null){
-                    prof.src = "assets/img/user.png";
-                }else{
-                    prof.src = "profile_pic/" +info.data['image'];
-                    
-                }
-                prof.style="height:50px;width: 50px;border-radius: 50%;";
-                image.appendChild(prof);
-                
-                var percentage_value = document.getElementById("percentage_value");
-                var space = 100 - Math.round((info.data['space_occupied']/1073741824)*100)/100;
-                var percent = document.createTextNode(space+"%");
-                percentage_value.appendChild(percent);
-            }
-        }
-    };
-    xhr1.open('POST', './php/fetch_info.php', true);
-    xhr1.send();       
 }

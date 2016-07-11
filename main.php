@@ -48,7 +48,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 					<li class="navs_li" onclick="showNotifications()">
 						<div class="vertical_center"></div>
 						<div class="vertical_center">
-							<a href="#">
+							<a href="#" id="notifications_icon">
 								<img class="navs_img" alt="notification" src="assets/img/notification.svg" />
 							</a>
 						</div>
@@ -60,7 +60,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 				  	<li class="navs_li" onclick="window.location.href='http://localhost/merge/settings.html'">
 						<div class="vertical_center"></div>
 						<div class="vertical_center">
-							<a href="http://localhost/merge/settings.html">
+							<a href="http://localhost/merge/settings.php">
 								<img class="navs_img" alt="settings" src="assets/img/settings.svg" />
 							</a>
 						</div>

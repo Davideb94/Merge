@@ -145,5 +145,62 @@ function delete_profile(){
         xhr.open("POST","./php/del_profile.php",true);
         xhr.send();
     }
- 
+}
+
+//to fetch infos used in settings.html
+function fetch_info(){
+    var xhr1 = new XMLHttpRequest();
+    xhr1.readyState = 0;
+    xhr1.onreadystatechange = function() {
+        if (xhr1.readyState == 4 && xhr1.status==200) {
+            var info = JSON.parse(xhr1.responseText);
+            if(!info.responseCode){
+                //nickname
+                var nick = document.getElementById("nickname");
+                var nick_fetched = document.createTextNode(info.data['Name']);
+                nick.appendChild(nick_fetched);
+                
+                var email = document.getElementById("email");
+                var email_fetched = document.createTextNode(info.data['Email']);
+                email.appendChild(email_fetched);
+                
+                var image = document.getElementById("profile_pic");
+                var prof = document.createElement("img");
+                if(info.data['image']== null){
+                    prof.src = "assets/img/user.png";
+                }else{
+                    prof.src = "profile_pic/" +info.data['image'];
+                    
+                }
+                prof.style="height:50px;width: 50px;border-radius: 50%;";
+                image.appendChild(prof);
+                
+                var percentage_value = document.getElementById("percentage_value");
+                
+                var space =Math.round((info.data['space_occupied']/1073741824)*100)/100;
+                var percent = document.createTextNode(space+"%");
+                percentage_value.appendChild(percent);
+                
+                var used_space = document.getElementById("used_space");
+                var remaining_space = document.getElementById("remaining_space");
+                
+                var used_value = document.createTextNode(Math.round((info.data['space_occupied']/1048576)*100)/100+"mb");
+                
+                var remaining_value;
+                
+                if(1024 -Math.round((info.data['space_occupied']/1048576)*100)/100 == 1024){
+                    remaining_value = document.createTextNode(1+"Gb");
+                }else{
+                    remaining_value = document.createTextNode(1024 -Math.round((info.data['space_occupied']/1048576)*100)/100+"mb");
+                }
+                used_space.appendChild(used_value);
+                remaining_space.appendChild(remaining_value);
+                
+                var progress_bar = document.getElementById("progress_bar");
+                progress_bar.className = "progress-radial progress-"+(Math.ceil((info.data['space_occupied']/1073741824)/5)*5-5);  
+            }
+        }
+    };
+    xhr1.open('POST', './php/fetch_info.php', true);
+    xhr1.send();       
 }

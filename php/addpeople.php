@@ -25,9 +25,9 @@ if(!$result){
         exit;
     }
     echo "Contatto aggiunto";
-    $myname =$_SESSION["username"];
+    $myID =$_SESSION["IDuser"];
     
-    $notcreate = "INSERT into notifies(who,Type,forwho) values ('$myname','Adding','{$idcontact['ID']}')";
+    $notcreate = "INSERT into notifies(who,Type,forwho) values ('$myID','Adding','{$idcontact['ID']}')";
     $result2 = $mysqli->query($notcreate);
 }
 

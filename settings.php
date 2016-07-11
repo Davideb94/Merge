@@ -1,8 +1,6 @@
-<?php 
-include("./php/Auth.php"); //include auth.php file on all secure pages 
-?>
 <!DOCTYPE html>
 <html>
+	
 	<head>
 		<meta charset="utf-8">
 		<title>Merge</title>
@@ -21,13 +19,13 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 				<ul class="navs_ul">
 					<li class="navs_li">
 						<a id="desk_link" href="http://localhost/merge/main.php">
-							<img id="desk_img" alt="back_arrow" src="assets/img/back_arrow.png" />
+							<img id="desk_img" src="assets/img/back_arrow.png" />
 							My desk
 						</a>	
 					</li>
 					<li class="navs_li" id="logout">
 						<a id="logout_link" href="php/Logout.php">
-							<img id="logout_img" alt="logout" src="assets/img/logout.png" />
+							<img id="logout_img" src="assets/img/logout.png" />
 						</a>
 					</li>
 				</ul>
@@ -43,6 +41,23 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 			<div class="card_title" id="space_left">
 				<p>Space left</p>
 			</div>
+			<div class="card_content">
+				<div id="progress_bar" class="progress-radial progress-30">
+					<div class="overlay">
+						<p id="percentage_value"></p>
+					</div>
+				</div>
+				<div id="infos">
+					<b>Used space: </b>
+					<p id="used_space"></p>
+					<br>
+					<b>Remaining space:</b>
+					<p id="remaining_space"></p>
+				</div>
+				<div style="clear:both"></div>
+				
+				<button class="get_more">Get More</button>
+			</div>
 		</div>
 		<div class="card">
 			<div class="card_title">
@@ -56,7 +71,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
                         
                         </td>
 						<td class="modify" onclick="showChangeName()">
-							<img class="edit" alt="edit" src="assets/img/edit.png">
+							<img class="edit" src="assets/img/edit.png">
 							Modify
 						</td>
 					</tr>
@@ -81,7 +96,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
                         
                         </td>
 						<td class="modify" onclick="showChangeMail()">
-							<img class="edit" alt="edit" src="assets/img/edit.png">
+							<img class="edit" src="assets/img/edit.png">
 							Modify
 						</td>
 					</tr>
@@ -103,7 +118,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 						<td class="row_title">Password</td>
 						<td>****</td>
 						<td class="modify" onclick="showChangePassword()">
-							<img class="edit" alt ="edit" src="assets/img/edit.png">
+							<img class="edit" src="assets/img/edit.png">
 							Modify
 						</td>
 					</tr>
@@ -142,12 +157,12 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 							<!-- <img class="edit" src="assets/img/edit.png">
 							Modify-->
                             <label>
-                                <div>
-                                        <img class="edit" alt="edit" src="assets/img/edit.png">
-							             Modify
+                            	<div>
+									<img class="edit" src="assets/img/edit.png">
+									Modify
                                 </div>
-                                 <form id="file-form" method="POST" enctype= "multipart/form-data">
-                                <input type="file" id="prof_pic" hidden name="input_file" onchange="upload_profile_pic()"/>
+                                <form id="file-form" method="POST" enctype= "multipart/form-data">
+                                	<input type="file" id="prof_pic" hidden name="input_file" onchange="upload_profile_pic()"/>
                                 </form>
                             </label>
 						</td>

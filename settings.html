@@ -42,17 +42,17 @@
 				<p>Space left</p>
 			</div>
 			<div class="card_content">
-				<div class="progress-radial progress-30">
+				<div id="progress_bar" class="progress-radial progress-30">
 					<div class="overlay">
-						<p id="percentage_value"><!--30%--></p>
+						<p id="percentage_value"></p>
 					</div>
 				</div>
 				<div id="infos">
 					<b>Used space: </b>
-					<p>700mb</p>
+					<p id="used_space"></p>
 					<br>
 					<b>Remaining space:</b>
-					<p>300mb</p>
+					<p id="remaining_space"></p>
 				</div>
 				<div style="clear:both"></div>
 				
@@ -154,8 +154,6 @@
 							
 						</td>
 						<td class="modify" >
-							<!-- <img class="edit" src="assets/img/edit.png">
-							Modify-->
                             <label>
                             	<div>
 									<img class="edit" src="assets/img/edit.png">
