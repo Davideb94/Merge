@@ -19,13 +19,21 @@
 				<ul class="navs_ul">
 					<li class="navs_li">
 						<a id="desk_link" href="http://localhost/merge/main.php">
-							<img id="desk_img" src="assets/img/back_arrow.png" />
-							My desk
+							<div class="vertical_align"></div>
+							<div class="vertical_align">
+								<img id="desk_img" src="assets/img/back_arrow.png" />
+								My desk
+							</div>
+							<div class="vertical_align"></div>
 						</a>	
 					</li>
 					<li class="navs_li" id="logout">
 						<a id="logout_link" href="php/Logout.php">
-							<img id="logout_img" src="assets/img/logout.png" />
+							<div class="vertical_align"></div>
+							<div class="vertical_align">
+								<img id="logout_img" src="assets/img/logout.png" />
+							</div>
+							<div class="vertical_align"></div>
 						</a>
 					</li>
 				</ul>
@@ -39,7 +47,7 @@
 		
 		<div class="card">
 			<div class="card_title" id="space_left">
-				<p>Space left</p>
+				<p>Space</p>
 			</div>
 			<div class="card_content">
 				<div id="progress_bar" class="progress-radial progress-30">

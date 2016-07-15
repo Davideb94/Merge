@@ -26,8 +26,19 @@ function showMenu(){
 	}
 	
 }
-
-function openTab(mytab) {
+function fetchId(mytab){
+	var container = document.getElementById("aside_list_desks");
+	
+	for(var i=0; i<container.childNodes.length; i++){
+		if(container.childNodes[i].className == 'aside_element active_desk'){
+			openTab(mytab, container.childNodes[i].value);
+			break;
+		}
+	}
+}
+function openTab(mytab, id_other) {
+	var container = document.getElementById("aside_list_desks");
+	
 	var mydesk = document.getElementById("my_desk");
 	var others = document.getElementById("others");
 	
@@ -40,6 +51,12 @@ function openTab(mytab) {
 	var button = document.getElementById("add_button");
 	
 	if(mytab == 'mydesk'){
+		for(var i=0; i<container.childNodes.length; i++){
+			if(container.childNodes[i].value == id_other){
+				container.childNodes[i].childNodes[2].className = "desk_triangle";
+				break;
+			}
+		}
 		mydesk.style.display = "block";
 		others.style.display = "none";
 		others.className = "tab";
@@ -52,6 +69,12 @@ function openTab(mytab) {
 		button.className = "add_file";
 	}
 	else if(mytab == 'others'){
+		for(var i=0; i<container.childNodes.length; i++){
+			if(container.childNodes[i].value == id_other){
+				container.childNodes[i].childNodes[2].className = "desk_triangle active_desk_triangle";
+				break;
+			}
+		}
 		mydesk.style.display = "none";
 		mydesk.className = "tab";
 		others.style.display = "block";
@@ -70,4 +93,12 @@ function openTab(mytab) {
 function upload(){
     var input = document.getElementById("input_upload");
     input.submit();
+}
+
+function cleanUi(){
+	var container = document.getElementById("aside_list_desks");
+	for(var i=0; i<container.childNodes.length; i++){
+		container.childNodes[i].className = "aside_element";
+		container.childNodes[i].childNodes[2].className = "desk_triangle";
+	}
 }

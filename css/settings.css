@@ -72,6 +72,9 @@ and (min-device-width: 801px)
 		cursor: pointer;
 		color: #00AE53 !important;
 	}
+	.vertical_align{
+		height: 20px;
+	}
 	#desk_link{
 		display: table-cell;
 		vertical-align: middle;

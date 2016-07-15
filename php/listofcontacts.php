@@ -15,7 +15,7 @@ require('ajaxresponse.php');
 	$response = array();
 	$counter = 0;
     while($row = $result->fetch_assoc()){
-        $query1 = "SELECT Name,image from user where ID = '{$row['IDcontact']}'; ";
+        $query1 = "SELECT Name,image,ID from user where ID = '{$row['IDcontact']}'; ";
         $contactsname = $mysqli->query($query1);
         $contactsname = $contactsname->fetch_assoc();
 		$response[$counter] = setresponse(0, $contactsname);

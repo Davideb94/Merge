@@ -57,7 +57,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 						<span id="notifications_menu">
 						</span>
 					</li>
-				  	<li class="navs_li" onclick="window.location.href='http://localhost/merge/settings.html'">
+				  	<li class="navs_li" onclick="window.location.href='http://localhost/merge/settings.php'">
 						<div class="vertical_center"></div>
 						<div class="vertical_center">
 							<a href="http://localhost/merge/settings.php">
@@ -116,10 +116,10 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 		</aside>
 		<main>
 			<ul class="tab_head">
-				<li id="my_desk_tab" class="tab_active" onclick="openTab('mydesk')">
+				<li id="my_desk_tab" class="tab_active" onclick="fetchId('mydesk')">
 					<a href="#" id="link_mydesk">My Desk</a>
 				</li>
-				<li id="others_tab" onclick="openTab('others')">
+				<li id="others_tab" onclick="fetchId('others')">
 					<a href="#" id="link_others">Others</a>
 				</li>
 			</ul>

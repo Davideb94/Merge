@@ -92,10 +92,24 @@ function myparsing(data,idfunction){
                 
                 
                 //div to change policy 
+				var status = data[i]['data']['policy'];
+				
                 var lock = document.createElement("div");
                 lock.setAttribute("onclick","change_policy(this)");
-                lock.style="height:10px; background-color: yellow;";
+                lock.className = "privacy_bar";
                 lock.setAttribute("name",data[i]['data']['reference']);
+				
+				var lock_img = document.createElement("img");
+				lock_img.className= "lock_img";
+				if(status == "PRIVATE"){
+					lock_img.setAttribute("src", "./assets/img/locked.png");
+				}
+				else if(status == "PUBLIC"){
+					lock_img.setAttribute("src", "./assets/img/unlocked.png");
+				}
+				else{
+					console.log(status);
+				}
                 //---------------------//
                 
                 
@@ -146,6 +160,7 @@ function myparsing(data,idfunction){
                 
                 
                 link1.appendChild(div3);
+				lock.appendChild(lock_img);
                 div2.appendChild(lock);
                 div3.appendChild(downimage);
                 div4.appendChild(delimage);
@@ -229,12 +244,13 @@ function myparsing(data,idfunction){
 		case 4:
 			var container = document.getElementById("aside_list_contacts");
 			for(var i=0; i<data.length; i++){
+				var myid = data[i]["data"]["ID"];
 				var myname = data[i]["data"]["Name"];
 				var myimg = data[i]["data"]["image"];
 				
 				var element = document.createElement("li");
 				element.className = "aside_element people_element";
-				element.setAttribute("value", myname);
+				element.setAttribute("value", myid);
 				
 				var image = document.createElement("img");
 				image.className = "aside_pic";
@@ -250,9 +266,17 @@ function myparsing(data,idfunction){
 				
 				var name = document.createTextNode(myname);
 				
+				var delete_element = document.createElement("div");
+				delete_element.className = "delete_contact";
+				delete_element.setAttribute("onclick", "deleteContact(this.parentElement.value)");
+				var delete_content = document.createElement("img");
+				delete_content.src = "./assets/img/delete_contact.png";
+
+				delete_element.appendChild(delete_content);
 				element_name.appendChild(name);
 				element.appendChild(image);
 				element.appendChild(element_name);
+				element.appendChild(delete_element);
 				container.appendChild(element);
 			}
 			break;
@@ -282,9 +306,14 @@ function myparsing(data,idfunction){
 				
 				var name = document.createTextNode(myname);
 				
+				var triangle = document.createElement("img");
+				triangle.src = "./assets/img/triangle_desk.png";
+				triangle.className = "desk_triangle";
+				
 				element_name.appendChild(name);
 				element.appendChild(image);
 				element.appendChild(element_name);
+				element.appendChild(triangle);
 				container.appendChild(element);
 			}
 			break;
@@ -379,18 +408,22 @@ function myparsing(data,idfunction){
                 
                 var not_elem = document.createElement("div");
                 not_elem.className = "notification_text";
-                not_elem.setAttribute("value",data[i]['data']['ID']);
-                not_elem.setAttribute("onclick"," visualized_not(this); otherDesks(this);");
+                not_elem.setAttribute("value", data[i]['data']['ID']);
+				not_elem.setAttribute("onclick", "visualized_not(this,event); otherDesks(this)");
                 var pelem = document.createElement("p");
-                var text = document.createTextNode("'" + data[i]['data']['Name'] + "' added you, go check his desk");
+				var boldname = document.createElement("b");
+				var boldtext  = document.createTextNode(data[i]['data']['Name']);
+                var text = document.createTextNode(" added you, go check his desk");
                 // little ball
-                var visulized = document.createElement("div");
-                visulized.className ="visualize_notification";
-                visulized.className += " visualized";
-                visulized.setAttribute("onclick","visualized_not(this)")
-                pelem.appendChild(text);
+                var visualized = document.createElement("div");
+                visualized.className ="visualize_notification";
+                visualized.className += " visualized";
+                visualized.setAttribute("onclick", "visualized_not(this,event)");
+                boldname.appendChild(boldtext);
+				pelem.appendChild(boldname);
+				pelem.appendChild(text);
                 not_elem.appendChild(pelem);
-                not_elem.appendChild(visulized);
+                not_elem.appendChild(visualized);
                 elem.appendChild(not_elem);
                 menu.appendChild(elem);
 
@@ -399,7 +432,24 @@ function myparsing(data,idfunction){
     }
 
 }
-function visualized_not(ele){
+function deleteContact(id){
+	if(confirm("Are you sure you want to delete this contact?")){
+		var xhr = new XMLHttpRequest();
+  
+		xhr.onreadystatechange = function (){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				if(xhr.responseText == "ok"){
+					viewcontacts();
+				}
+				console.log(xhr.responseText);
+			}
+		}
+		xhr.open("GET","./php/deleteContact.php?contact=" + id, true);
+		xhr.send();
+	}
+}
+function visualized_not(ele, e){
+	console.log(ele);
     var not_id;
     if(ele.getAttribute("value")== null){
         not_id = ele.parentElement.getAttribute("value");
@@ -417,7 +467,9 @@ function visualized_not(ele){
     }
     xhr.open("POST","./php/del_notification.php",true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send('IDnot='+not_id);  
+    xhr.send('IDnot='+not_id);
+	
+    e.stopPropagation();
 }
 
 
@@ -488,6 +540,7 @@ function preview(){
     xhr.open("POST","./php/preview.php",true);
     xhr.send();
 }
+
 //ajax function to close results of livesearch
 function closeresult(){
     var searchbox = document.getElementById("search");
@@ -610,10 +663,16 @@ function deleteFile(elem){
 
 //ajax function to show file preview
 
-function otherDesks(ele){
+function otherDesks(ele, e){
+	cleanUi();
+	
     var a = document.getElementById("link_others");
     a.className = "";
     
+	ele.className = "aside_element active_desk";
+	
+	ele.childNodes[2].className = "desk_triangle active_desk_triangle";
+	
     var xhr = new XMLHttpRequest();
     var desk = document.getElementById("others");
     while (desk.firstChild) {
@@ -623,12 +682,12 @@ function otherDesks(ele){
         if(xhr.readyState == 4 && xhr.status == 200){
             var preview_desk = JSON.parse(xhr.responseText);
             myparsing(preview_desk, 6);
-            openTab('others');
+            openTab('others', ele.getAttribute("value"));
         }
     }
     xhr.open("POST","./php/otherdesk.php",true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send('str='+ele.getAttribute('value'));  
+    xhr.send('str='+ele.getAttribute('value'));
 }
 
 //ajax function to show notifications box
@@ -676,7 +735,7 @@ function change_policy(ele){
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status==200) {
                 if(xhr.response== "ok"){
-
+					preview();
                 }
             }
         }; 

@@ -251,6 +251,19 @@ and (min-device-width: 801px)
 	.aside_element:hover{
 		background-color: #507191;
 	}
+	.active_desk{
+		background-color: #507191;
+	}
+	.desk_triangle{
+		height: 15px;
+		display: none;
+		float: right;
+		margin-top: 9px;
+		margin-right: -1px;
+	}
+	.active_desk_triangle{
+		display: block;
+	}
 	.aside_pic{
 		height: 30px;
         width: 30px;
@@ -269,6 +282,19 @@ and (min-device-width: 801px)
 	}	
 	.people_element{
 		cursor: auto;
+	}
+	.people_element:hover .delete_contact{
+		display: inline-block;
+	}
+	.delete_contact{
+		display: none;
+		cursor: pointer;
+		float: right;
+		margin-right: 20px;
+		margin-top: 9px;
+	}
+	.delete_contact > img{
+		height: 10px;
 	}
 	
 	main{
@@ -349,10 +375,20 @@ and (min-device-width: 801px)
 	.file_card:hover .card_hover{
 		display: block;
 	}
+	.privacy_bar{
+		height: 30px;
+		padding-top: 10px;
+		background-color: #4C5661;
+	}
+	.lock_img{
+		height: 20px;
+		display: block;
+		margin: auto;
+	}
 	.card_download{
 		width: 150px;
-		height: 74px;
-		padding-top: 55px;
+		height: 90px;
+		padding-top: 25px;
 		border-top-left-radius: 3px;
 		border-top-right-radius: 3px;
 		background-color: transparent;
@@ -364,14 +400,15 @@ and (min-device-width: 801px)
 	}
 	.card_delete{
 		width: 150px;
-		height: 51px;
-		padding-top: 21px;
+		height: 30px;
+		padding-top: 10px;
+		padding-bottom: 5px;
 		border-bottom-left-radius: 3px;
 		border-bottom-right-radius: 3px;
 		background-color: #96281B;
 	}
 	.delete_icon{
-		height: 30px;
+		height: 23px;
 		display: block;
 		margin: auto;
 	}
