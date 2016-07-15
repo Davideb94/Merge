@@ -335,10 +335,10 @@ and (min-device-width: 801px)
 		color: #2c3e50;
 	}
     .not_active>a{
-        cursor: auto !important;
+        cursor: default!important;
     }
     .not_active:hover{
-        cursor: auto !important;
+        cursor: default!important;
         border-bottom: none !important;
     }
 	.tab{

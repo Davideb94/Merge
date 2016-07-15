@@ -79,7 +79,8 @@ function myparsing(data,idfunction){
                 
                 var div1 = document.createElement("div");
                 div1.className = "file_card";
-                
+                var div_relative = document.createElement("div");
+				div_relative.style.position = "relative";
                 var div2 = document.createElement("div");
                 div2.className ="card_hover";
                 var link1 = document.createElement("a");
@@ -89,7 +90,7 @@ function myparsing(data,idfunction){
                 div3.className ="card_download";
                 div3.setAttribute("name",data[i]['data']['reference']);
                 
-                
+                div_relative.appendChild(div2);
                 
                 //div to change policy 
 				var status = data[i]['data']['policy'];
@@ -164,7 +165,7 @@ function myparsing(data,idfunction){
                 div2.appendChild(lock);
                 div3.appendChild(downimage);
                 div4.appendChild(delimage);
-                div1.appendChild(div2);
+                div1.appendChild(div_relative);
                 div2.appendChild(link1);
                 div2.appendChild(div4);
                 div1.appendChild(div5);
@@ -334,6 +335,9 @@ function myparsing(data,idfunction){
 
                     var div2 = document.createElement("div");
                     div2.className ="card_hover";
+					var div_relative = document.createElement("div");
+					div_relative.style.position = "relative";
+					div_relative.appendChild(div2);
                     var link1 = document.createElement("a");
                     link1.href = "upload/" + data[i]['data']['reference'];
                     link1.setAttribute("download","");
@@ -385,7 +389,7 @@ function myparsing(data,idfunction){
 
                     link1.appendChild(div3);
                     div3.appendChild(downimage);
-                    div1.appendChild(div2);
+                    div1.appendChild(div_relative);
                     div2.appendChild(link1);
                     div1.appendChild(div5);
                     div5.appendChild(div6);
