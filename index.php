@@ -14,8 +14,7 @@ session_start();
 ?>
 
 <!DOCTYPE html>
-<html>
-	
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<title>Merge</title>
@@ -42,6 +41,12 @@ session_start();
 					<div class="input-field">
 						<input class="login_input" name="Lpassword" type="password" placeholder="Password" required>
 					</div>
+                    <div id="check_keep_login">
+                        <input type="checkbox" name="keep_login">
+                            <p>
+                                Keep Login
+                            </p>
+                    </div>
 					<div class="input-field">
 						<input type="submit" id="log_in_button" value="Log In">
 					</div>
@@ -122,7 +127,10 @@ session_start();
 					    <img src="./assets/icons/password.svg" alt="Pass" class="icon">
 						<input class="validate" id="confirm_pass" name="confirm_pass" type="password" placeholder="Confirm password" required>
 					</div>
-					
+                    <div id="check">
+                        <input type="checkbox"   onClick="!this.checked;" required/>
+                        <p>I agree to <a href="">Terms and Conditions.</a></p>
+                    </div>
 					<input type="submit" id="submit" value="Register!" />
 				</form>
 			</div>

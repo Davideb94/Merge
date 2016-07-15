@@ -22,12 +22,7 @@ if($q!= '@' && $q!= '.'){
     
     $counter = 0;
     
-    while($row=$result->fetch_assoc()){
-        
-        if(!is_null($row['image'])){
-            $row['image'] = base64_encode($row['image']);
-        }
-        
+    while($row=$result->fetch_assoc()){        
         $array[$counter] = setresponse(0,$row);
         
         /*

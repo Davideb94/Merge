@@ -1,5 +1,9 @@
+<?php 
+include("./php/Auth.php"); //include auth.php file on all secure pages 
+?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	
 	<head>
 		<meta charset="utf-8">
@@ -79,7 +83,7 @@
                         
                         </td>
 						<td class="modify" onclick="showChangeName()">
-							<img class="edit" src="assets/img/edit.png">
+							<img class="edit" alt="edit" src="assets/img/edit.png">
 							Modify
 						</td>
 					</tr>
@@ -90,12 +94,16 @@
 								<input class="validate" name="name" type="text" placeholder="new nickname"
                                        id="newnick" required>
 							</td>
+                            <td>
+                            </td>
 						</tr>
 						<tr>
 							<td></td>
 							<td class="confirm">
 								<button onclick="modify_nick()">CONFIRM</button>
 							</td>
+                            <td>
+                            </td>
 						</tr>
 					</tbody>
 					<tr>
@@ -104,7 +112,7 @@
                         
                         </td>
 						<td class="modify" onclick="showChangeMail()">
-							<img class="edit" src="assets/img/edit.png">
+							<img class="edit" alt="edit" src="assets/img/edit.png">
 							Modify
 						</td>
 					</tr>
@@ -114,19 +122,23 @@
 							<td>
 								<input class="validate" name="mail" type="text" placeholder="new mail" id="Email" required>
 							</td>
+                            <td>
+                            </td>
 						</tr>
 						<tr>
 							<td></td>
 							<td class="confirm">
 								<button onclick="modify_email()">CONFIRM</button>
 							</td>
+                            <td>
+                            </td>
 						</tr>
 					</tbody>
 					<tr>
 						<td class="row_title">Password</td>
 						<td>****</td>
 						<td class="modify" onclick="showChangePassword()">
-							<img class="edit" src="assets/img/edit.png">
+							<img class="edit" alt="edit" src="assets/img/edit.png">
 							Modify
 						</td>
 					</tr>
@@ -136,24 +148,32 @@
 							<td>
 								<input class="validate" name="username" id="oldpassword" type="password" placeholder="**********" required>
 							</td>
+                            <td>
+                            </td>
 						</tr>
 						<tr>
 							<th>New password</th>
 							<td>
 								<input class="validate" id="password" name="username" type="password" placeholder="**********" required>
 							</td>
+                            <td>
+                            </td>
 						</tr>
 						<tr>
 							<th>Confirm password</th>
 							<td>
 								<input class="validate" id="confirmed_password" name="username" type="password" placeholder="**********" required>
 							</td>
+                            <td>
+                            </td>
 						</tr>
 						<tr>
 							<td></td>
 							<td class="confirm">
 								<button onclick="validate()">CONFIRM</button>
 							</td>
+                            <td>
+                            </td>
 						</tr>
 					</tbody>
 					<tr>
@@ -164,15 +184,14 @@
 						<td class="modify" >
 							<!-- <img class="edit" src="assets/img/edit.png">
 							Modify-->
+                            <form id="file-form" method="POST" enctype= "multipart/form-data">
                             <label>
-                            	<div>
-									<img class="edit" src="assets/img/edit.png">
+                                <img class="edit" alt="edit" src="assets/img/edit.png">
 									Modify
-                                </div>
-                                <form id="file-form" method="POST" enctype= "multipart/form-data">
+                                
                                 	<input type="file" id="prof_pic" hidden name="input_file" onchange="upload_profile_pic()"/>
-                                </form>
                             </label>
+                            </form>
 						</td>
 					</tr>
 				</table>

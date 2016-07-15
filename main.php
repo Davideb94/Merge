@@ -136,12 +136,12 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
                 -->
 			</div>
             <form id="file-form" method="POST" enctype= "multipart/form-data">
-				<label>
-                    <div class="add_file" id="add_button">
-						<div class="plus">+</div>
-					</div>
-					<input type="file" id="input_file" name="input_file" onchange="loadfile()" multiple/>
-                </label>
+                	<label for="input_file" class="add_file" id="add_button" >
+                        <img src="assets/icons/plus1.png" alt="plus"/>
+                        <input type="file" id="input_file" name="input_file" onchange="loadfile()" multiple/>	
+                    </label>
+					
+                
             </form>
 		</main>
 	</body>

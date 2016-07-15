@@ -449,14 +449,12 @@ function deleteContact(id){
 	}
 }
 function visualized_not(ele, e){
-	console.log(ele);
     var not_id;
     if(ele.getAttribute("value")== null){
         not_id = ele.parentElement.getAttribute("value");
     }else{
         not_id = ele.getAttribute("value");
     }
-    console.log(not_id);
     var xhr = new XMLHttpRequest();
   
     xhr.onreadystatechange = function (){
@@ -470,6 +468,8 @@ function visualized_not(ele, e){
     xhr.send('IDnot='+not_id);
 	
     e.stopPropagation();
+    var bell = document.getElementById("notifications_icon");
+    bell.click();
 }
 
 
@@ -663,15 +663,24 @@ function deleteFile(elem){
 
 //ajax function to show file preview
 
-function otherDesks(ele, e){
+function otherDesks(ele){
 	cleanUi();
 	
     var a = document.getElementById("link_others");
     a.className = "";
-    
-	ele.className = "aside_element active_desk";
-	
-	ele.childNodes[2].className = "desk_triangle active_desk_triangle";
+    if(ele.className == "notification_text"){
+        var list_desks = document.getElementById("aside_list_desks");
+        for(var i=0; i<list_desks.childNodes.length; i++){
+            if(list_desks.childNodes[i].value == ele.getAttribute("value")){
+                ele = list_desks.childNodes[i];
+                break;
+            }
+        }
+    }
+ 
+    ele.className = "aside_element active_desk";
+    ele.childNodes[2].className = "desk_triangle active_desk_triangle";
+
 	
     var xhr = new XMLHttpRequest();
     var desk = document.getElementById("others");

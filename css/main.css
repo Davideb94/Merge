@@ -334,7 +334,13 @@ and (min-device-width: 801px)
 		text-decoration: none;
 		color: #2c3e50;
 	}
-	
+    .not_active>a{
+        cursor: auto !important;
+    }
+    .not_active:hover{
+        cursor: auto !important;
+        border-bottom: none !important;
+    }
 	.tab{
 		padding-left: 40px;
 		padding-top: 40px;
@@ -452,7 +458,6 @@ and (min-device-width: 801px)
 	.add_file{
 		height: 45px;
 		width: 45px;
-		display: table;
 		border: none;
 		border-radius: 50%;
 		cursor: pointer;
@@ -466,19 +471,21 @@ and (min-device-width: 801px)
 		right: 20px;
 		bottom: 20px;
 		z-index: 999;
-        vertical-align: middle;
+        display: table-cell;
+		vertical-align: middle;
 	}
+    .add_file>img{
+        margin-top: 29%;
+        height: 15px;
+        width: 15px;
+    }
 	.add_file:focus{
 		outline: 0;
 	}
 	.hide_button{
 		display: none;
 	}
-	.plus{
-		display: table-cell;
-		vertical-align: middle;
-
-	}
+	
 	#input_file{
 		visibility: hidden;
 	}
@@ -556,10 +563,7 @@ and (min-device-width: 801px)
 		margin-left: 10%;
 		margin-top: 3%;	
 	}
-    .not_active{
-        pointer-events: none;
-        cursor: default;
-    }
+   
     #ident_pic{
         height: 30px;
         width: 30px;

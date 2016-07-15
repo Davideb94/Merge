@@ -194,7 +194,7 @@ and (min-device-width: 801px)
 	#sign_up_form{
 		margin-top: 15%;
 	}
-	input{
+	.input-field > input{
 		-webkit-appearance: textfield;
 		-moz-appearance: textfield;
 
@@ -282,6 +282,25 @@ and (min-device-width: 801px)
 	.login_input {
 		font-size: 15px;
 	}
+    #check >p{
+        font-size: 10px;
+        display: inline;
+        margin-left: 2%;
+    }
+    #check> input{
+        margin-left: 1%;
+    }
+    #check_keep_login >p{
+        display: inline;
+        font-size: 12px;
+        margin-left: 1%;
+    }
+    #check_keep_login{
+        margin-bottom: 5px;
+        vertical-align: middle;
+    }
+    
+    
 }
 
 @media only screen 
