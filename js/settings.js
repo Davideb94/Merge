@@ -177,7 +177,8 @@ function fetch_info(){
                 
                 var percentage_value = document.getElementById("percentage_value");
                 
-                var space =Math.round((info.data['space_occupied']/1073741824)*100)/100;
+                var space =Math.round((info.data['space_occupied']/1048576)*(100/1024));
+                
                 var percent = document.createTextNode(space+"%");
                 percentage_value.appendChild(percent);
                 
@@ -197,7 +198,7 @@ function fetch_info(){
                 remaining_space.appendChild(remaining_value);
                 
                 var progress_bar = document.getElementById("progress_bar");
-                progress_bar.className = "progress-radial progress-"+(Math.ceil((info.data['space_occupied']/1073741824)/5)*5-5);  
+                progress_bar.className = "progress-radial progress-"+(Math.ceil(((info.data['space_occupied']/1048576)*100)/5000)*5-5);
             }
         }
     };
