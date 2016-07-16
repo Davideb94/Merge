@@ -16,20 +16,10 @@ require('ajaxresponse.php');
     $counter = 0;
     while($row = $result->fetch_assoc()){
         $query1 = "SELECT Name,email,image,ID from user where ID = '{$row['iduser']}'; ";
-        
-        
         $contactsname = $mysqli->query($query1);
         $contactsname = $contactsname->fetch_assoc();
 		$response[$counter] = setresponse(0, $contactsname);
 		$counter++;
-        
-        /*
-        echo "<li class='aside_element'  value='{$row['iduser']}' onclick='otherDesks(this)'>
-                <img class='aside_pic' src='assets/img/user.png'/>
-                <div class='aside_element_name'>".$contactsname['Name']."</div>
-            </li>";
-            
-            */
     }
     echo json_encode($response);
 ?>

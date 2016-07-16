@@ -10,7 +10,6 @@
 		}
 	
 	}
-    
     function setresponse($ok,$result){
         $myresponse = new ajaxResponse($ok,$result);
         return $myresponse;

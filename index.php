@@ -33,7 +33,7 @@ session_start();
                 <p>Log in</p>
 			</div>
 			<div id="login_menu">
-				<img id="triangle" src="assets/img/triangle.png">
+				<img id="triangle" alt="triangle "src="assets/img/triangle.png">
 				<form action="./php/Login.php" method="POST">
 					<div class="input-field">
 						<input class="login_input" name="Lemail" type="email" placeholder="Email" required>

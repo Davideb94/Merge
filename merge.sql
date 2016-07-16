@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2016 at 03:48 PM
+-- Generation Time: Jul 16, 2016 at 01:25 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -36,8 +36,9 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`IDuser`, `IDcontact`) VALUES
-(24, 26),
-(26, 21);
+(35, 36),
+(36, 35),
+(37, 35);
 
 -- --------------------------------------------------------
 
@@ -61,7 +62,11 @@ CREATE TABLE `file` (
 --
 
 INSERT INTO `file` (`ID`, `Size`, `Type`, `Name`, `IDuser`, `last_modify`, `reference`, `policy`) VALUES
-(49, 2605983, 'image/png', 'vlcsnap-2016-05-01-21h51m37s317.png', 26, '2016-07-11 13:37:37', '74347-vlcsnap-2016-05-01-21h51m37s317.png', 'PUBLIC');
+(28, 2631299, 'image/jpeg', 'puglia_8376t.T0.jpg', 37, '2016-07-16 11:03:48', '62455-puglia_8376t.T0.jpg', 'PUBLIC'),
+(29, 1952749, 'image/png', 'vlcsnap-2016-05-01-21h44m53s155.png', 37, '2016-07-16 11:04:02', '34288-vlcsnap-2016-05-01-21h44m53s155.png', 'PUBLIC'),
+(30, 2605983, 'image/png', 'vlcsnap-2016-05-01-21h51m37s317.png', 37, '2016-07-16 11:04:02', '12973-vlcsnap-2016-05-01-21h51m37s317.png', 'PUBLIC'),
+(31, 1910751, 'image/png', 'vlcsnap-2016-05-13-00h24m56s736.png', 37, '2016-07-16 11:04:03', '51733-vlcsnap-2016-05-13-00h24m56s736.png', 'PUBLIC'),
+(56, 1690756, 'image/jpeg', 'IMG_20140810_190938_1.jpg', 35, '2016-07-16 11:12:09', '78299-IMG_20140810_190938_1.jpg', 'PUBLIC');
 
 --
 -- Triggers `file`
@@ -86,24 +91,15 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notifies`
+-- Table structure for table `notifications`
 --
 
-CREATE TABLE `notifies` (
+CREATE TABLE `notifications` (
   `ID` int(3) NOT NULL,
   `Who` int(3) NOT NULL,
   `Type` varchar(30) NOT NULL,
   `Forwho` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `notifies`
---
-
-INSERT INTO `notifies` (`ID`, `Who`, `Type`, `Forwho`) VALUES
-(12, 21, 'Adding', 32),
-(38, 24, 'Adding', 29),
-(39, 24, 'Adding', 32);
 
 -- --------------------------------------------------------
 
@@ -126,16 +122,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID`, `Name`, `Password`, `Email`, `Registration_date`, `image`, `space_occupied`) VALUES
-(21, 'gabriele', '444bcb3a3fcf8389296c49467f27e1d6', 'gafire@hotmail.it', '2016-05-14 19:54:51', '43841-vlcsnap-2015-03-22-13h37m32s207.png', 0),
-(23, 'ok', '444bcb3a3fcf8389296c49467f27e1d6', 'gabriele-martino@libero.it', '2016-05-14 19:57:50', NULL, 0),
-(24, 'davide', '6e6bc4e49dd477ebc98ef4046c067b5f', 'davidedb@unito.it', '2016-05-15 20:12:19', NULL, 0),
-(26, 'vichy', '6e6bc4e49dd477ebc98ef4046c067b5f', 'vichy@libero.it', '2016-05-15 22:41:06', NULL, 2605983),
-(27, 'luca', '444bcb3a3fcf8389296c49467f27e1d6', 'luca@ok.it', '2016-05-16 08:57:43', NULL, 0),
-(28, 'gabriele', '6e6bc4e49dd477ebc98ef4046c067b5f', 'ok@mmm.it', '2016-05-21 14:00:45', NULL, 0),
-(29, 'rosa', '6e6bc4e49dd477ebc98ef4046c067b5f', 'rosa@hotmail.it', '2016-05-25 14:46:30', NULL, 0),
-(32, 'enrico', '5b1b4dee9103f759fdb57197a78780a6', 'enrico@ciao.it', '2016-06-20 11:27:53', NULL, 0),
-(33, 'as', '444bcb3a3fcf8389296c49467f27e1d6', 'as@ok.it', '2016-06-20 14:52:33', NULL, 0),
-(34, 'ciao', '6e6bc4e49dd477ebc98ef4046c067b5f', 'ciao@ok.it', '2016-06-20 14:54:56', NULL, 0);
+(35, 'Gab', '444bcb3a3fcf8389296c49467f27e1d6', 'gabriele-martino@libero.it', '2016-07-16 11:01:46', '43615-IMG-20140808-WA0002.jpg', 1690756),
+(36, 'Davide', '444bcb3a3fcf8389296c49467f27e1d6', 'davide.db@unito.it', '2016-07-16 11:02:18', '83075-IMG_20140808_160600_1.jpg', 0),
+(37, 'Paola', '444bcb3a3fcf8389296c49467f27e1d6', 'Paola@ok.it', '2016-07-16 11:02:49', NULL, 9100782);
 
 --
 -- Indexes for dumped tables
@@ -158,9 +147,9 @@ ALTER TABLE `file`
   ADD KEY `IDuser` (`IDuser`);
 
 --
--- Indexes for table `notifies`
+-- Indexes for table `notifications`
 --
-ALTER TABLE `notifies`
+ALTER TABLE `notifications`
   ADD PRIMARY KEY (`ID`),
   ADD UNIQUE KEY `Who` (`Who`,`Type`,`Forwho`),
   ADD KEY `not` (`Who`,`Type`,`Forwho`);
@@ -184,22 +173,22 @@ ALTER TABLE `user` ADD FULLTEXT KEY `Email_3` (`Email`);
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `IDuser` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `IDuser` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `file`
 --
 ALTER TABLE `file`
-  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 --
--- AUTO_INCREMENT for table `notifies`
+-- AUTO_INCREMENT for table `notifications`
 --
-ALTER TABLE `notifies`
-  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+ALTER TABLE `notifications`
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- Constraints for dumped tables
 --

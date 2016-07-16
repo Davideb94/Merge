@@ -5,7 +5,7 @@
     require('ajaxresponse.php');
 	$user = $_SESSION['IDuser'];
     //fetch notification
-	$query ="Select Who from notifies where Forwho = '{$user}'; "; 
+	$query ="Select Who from notifications where Forwho = '{$user}'; "; 
 
     $result = $mysqli->query($query);
     if(!$result){
@@ -29,14 +29,6 @@
         $packet['ID']= $row['Who'];
         
 		$array[$counter] = setresponse(0,$packet);
-        /*
-		echo'
-			<div class="notification_element">
-				<div class="notification_text">
-					<p><b>'.$name.'</b> added you, go check his desk!</p>
-				</div>
-			</div>
-		';*/
 		$counter++;
 	}
     $response = setresponse(0,$array);

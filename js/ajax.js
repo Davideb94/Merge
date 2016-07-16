@@ -16,8 +16,6 @@ function myparsing(data,idfunction){
             var profilediv3 = document.createElement('div');
             profilediv3.className = "vertical_center";
             
-            var link = document.createElement('a');
-            link.href = "#";
             var image = document.createElement('img');
             image.id = "ident_pic"; 
             if(data['image'] == null){
@@ -27,8 +25,7 @@ function myparsing(data,idfunction){
             }
             profileSpan.appendChild(profilediv1);
             profileSpan.appendChild(profilediv2);
-            link.appendChild(image);
-            profileSpan.appendChild(link);
+            profileSpan.appendChild(image);
             profileSpan.appendChild(profilediv2);
             profile_elem.appendChild(profileSpan);
             
@@ -339,7 +336,7 @@ function myparsing(data,idfunction){
 					div_relative.style.position = "relative";
 					div_relative.appendChild(div2);
                     var link1 = document.createElement("a");
-                    link1.href = "upload/" + data[i]['data']['reference'];
+                    link1.href = "thumbnails/" + data[i]['data']['reference'];
                     link1.setAttribute("download","");
                     var div3 = document.createElement("div");
                     div3.className ="card_download";
@@ -463,7 +460,6 @@ function visualized_not(ele, e){
   
     xhr.onreadystatechange = function (){
         if(xhr.readyState == 4 && xhr.status == 200){
-            console.log(xhr.response);
             identification();
         }
     }
@@ -488,7 +484,7 @@ function loadfile(){
     }
     
     var xhr = new XMLHttpRequest();
-    
+    var _progress = document.getElementById("progress");
     xhr.onreadystatechange = function (){
         if(xhr.readyState == 4 && xhr.status == 200){
             console.log(xhr.response);
@@ -496,10 +492,19 @@ function loadfile(){
                 showDialog("upload");   
             }
             preview();
+            _progress.style.display = "none";
+            _progress.style.width = 0;
         }
     }
+    
+    _progress.className = "progress_bar";
+    _progress.style.display = "block";
+    xhr.upload.addEventListener('progress', function(e){
+        _progress.style.width = Math.round((e.loaded/e.total)*100) + '%';
+    }, false);
     xhr.open("POST","./php/upload.php",true);
     xhr.send(formData);
+
 }
 
 function identification(){

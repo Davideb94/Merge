@@ -17,7 +17,7 @@
         
         /*query for number*/
         $not_query = "SELECT COUNT(*) as number
-                        FROM notifies
+                        FROM notifications
                         WHERE ForWho = '{$_SESSION['IDuser']}'; ";
         
         $num_not = $mysqli->query($not_query);

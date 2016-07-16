@@ -36,7 +36,6 @@
         $name = $row['reference'];
         $row['info'] = new SplFileInfo($name);
         $row['info'] = $row['info']->getExtension();
-        
         $row['dim'] = $mytype;
         $array[$counter] = setresponse(0,$row);
         $counter++;

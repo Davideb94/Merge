@@ -5,7 +5,7 @@ require('AuthConnection.php');
 
 $not = $_POST['IDnot'];
 
-$query = "DELETE FROM notifies
+$query = "DELETE FROM notifications
             where Who = '{$not}' and Forwho = '{$_SESSION['IDuser']}';";
 
 $result = $mysqli->query($query);

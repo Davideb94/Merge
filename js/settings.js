@@ -41,11 +41,14 @@ function showChangePassword(){
 function modify_nick(){
 	var xhr = new XMLHttpRequest();
 	var newnick = document.getElementById('newnick').value;
+    console.log(newnick);
+    hideDialog();
 	xhr.onreadystatechange = function (){
 		if(xhr.readyState == 4 && xhr.status == 200){
 			console.log(xhr.response);
 			if(xhr.response == "ok"){
 				showDialog("nickname_alert");
+                
 			}
 		}
 	}
@@ -54,18 +57,21 @@ function modify_nick(){
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhr.send("newnick="+newnick);
 	
-	hideDialog();
+	
 }
 //ajax function to modify email address
 function modify_email(){
 	var xhr = new XMLHttpRequest();
+    hideDialog();
 	var newmail = document.getElementById('Email').value;
+    console.log(newmail);
 	xhr.onreadystatechange = function (){
 		if(xhr.readyState == 4 && xhr.status == 200){
 			console.log(xhr.response);
 			if(xhr.response == "ok"){
 				showDialog("email_alert");
 			}
+            
 		}
 	}
 
@@ -73,7 +79,7 @@ function modify_email(){
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhr.send("newmail="+newmail);
 
-	hideDialog();
+	
 }
 
 //ajax function to reset password
@@ -118,6 +124,7 @@ function validate(){
     else {
         //alert("Passwords Match!!!");
         showDialog("password_confirm");
+        resetPass();
         
     }
     return ok;
@@ -183,27 +190,28 @@ function fetch_info(){
                 
                 var percentage_value = document.getElementById("percentage_value");
                 
-                var space =Math.round((info.data['space_occupied']/1073741824)*100)/100;
+                var space =Math.round((info.data['space_occupied']/1048576)*(100/1024));    
+                
                 var percent = document.createTextNode(space+"%");
                 percentage_value.appendChild(percent);
                 
                 var used_space = document.getElementById("used_space");
                 var remaining_space = document.getElementById("remaining_space");
-                
-                var used_value = document.createTextNode(Math.round((info.data['space_occupied']/1048576)*100)/100+"mb");
+                var value = Math.round((info.data['space_occupied']/1048576)*100)/100;
+                var used_value = document.createTextNode(value+"mb");
                 
                 var remaining_value;
                 
-                if(1024 -Math.round((info.data['space_occupied']/1048576)*100)/100 == 1024){
+                if(1024 -value == 1024){
                     remaining_value = document.createTextNode(1+"Gb");
                 }else{
-                    remaining_value = document.createTextNode(1024 -Math.round((info.data['space_occupied']/1048576)*100)/100+"mb");
+                    remaining_value = document.createTextNode(1024-value+"mb");
                 }
                 used_space.appendChild(used_value);
                 remaining_space.appendChild(remaining_value);
                 
                 var progress_bar = document.getElementById("progress_bar");
-                progress_bar.className = "progress-radial progress-"+(Math.ceil((info.data['space_occupied']/1073741824)/5)*5-5);  
+                progress_bar.className = "progress-radial progress-"+(Math.ceil(space/5)*5-5);  
             }
         }
     };

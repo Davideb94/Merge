@@ -90,7 +90,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 					are you sure you want to modify your nickname?
 				</div>
 				<div class="buttons">
-					<button onclick="modify_nick()">OK</button>
+                    <button onclick="modify_nick()">OK</button>
 					<button onclick="hideDialog()">CANCEL</button>
 				</div>
 			</div>
@@ -132,7 +132,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 					do you really want to delete your account and all your uploaded files?
 				</div>
 				<div class="buttons">
-					<button onclick="deleteProfile()">OK</button>
+					<button  onclick="deleteProfile()">OK</button>
 					<button onclick="hideDialog()">CANCEL</button>
 				</div>
 			</div>
@@ -149,7 +149,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 						<a id="desk_link" href="http://localhost/merge/main.php">
 							<div class="vertical_align"></div>
 							<div class="vertical_align">
-								<img id="desk_img" src="assets/img/back_arrow.png" />
+								<img id="desk_img" alt ="back_arrow" src="assets/img/back_arrow.png" />
 								My desk
 							</div>
 							<div class="vertical_align"></div>
@@ -159,7 +159,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 						<a id="logout_link" href="php/Logout.php">
 							<div class="vertical_align"></div>
 							<div class="vertical_align">
-								<img id="logout_img" src="assets/img/logout.png" />
+								<img id="logout_img" alt="log_out" src="assets/img/logout.png" />
 							</div>
 							<div class="vertical_align"></div>
 						</a>

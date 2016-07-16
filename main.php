@@ -1,20 +1,16 @@
 <?php 
-include("./php/Auth.php"); //include auth.php file on all secure pages 
+    include("./php/Auth.php"); //include auth.php file on all secure pages 
 ?>
 
 <!DOCTYPE html>
-<html>
-	
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<title>Merge</title>
-		
 		<link rel="stylesheet" type="text/css" href="css/main.css">
-		<script src="client.js" type="text/javascript"></script><!-- just in order to work with Flujd, an npm package for live programming -->
 		<script src="js/main.js" type="text/javascript"></script>
         <script src="js/ajax.js" type="text/javascript"></script>
 	</head>
-	
 	<body onload="start()">
 		<!--alert and confirm boxes-->
 		<div id="upload" class="overlay">
@@ -128,10 +124,10 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 						<span id="notifications_menu">
 						</span>
 					</li>
-				  	<li class="navs_li" onclick="window.location.href='http://localhost/merge/settings.php'">
+				  	<li class="navs_li" onclick="location.href='./settings.php'">
 						<div class="vertical_center"></div>
 						<div class="vertical_center">
-							<a href="http://localhost/merge/settings.php">
+							<a href="./settings.php">
 								<img class="navs_img" alt="settings" src="assets/img/settings.svg" />
 							</a>
 						</div>
@@ -186,6 +182,8 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 			</div>
 		</aside>
 		<main>
+            <div id="progress">
+            </div>
 			<ul class="tab_head">
 				<li id="my_desk_tab" class="tab_active" onclick="fetchId('mydesk')">
 					<a href="#" id="link_mydesk">My Desk</a>
@@ -211,8 +209,6 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
                         <img src="assets/icons/plus1.png" alt="plus"/>
                         <input type="file" id="input_file" name="input_file" onchange="loadfile()" multiple/>	
                     </label>
-					
-                
             </form>
 		</main>
 	</body>

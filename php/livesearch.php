@@ -24,37 +24,8 @@ if($q!= '@' && $q!= '.'){
     
     while($row=$result->fetch_assoc()){        
         $array[$counter] = setresponse(0,$row);
-        
-        /*
-        $email = $row["Email"];        
-        $hint = $hint."<div class='searched_elem' value='$email' onmousedown='addpeople(event,this)'>
-                            <div class='profile_pic'>
-							<img class='searched_pic'";
-        if(!empty($row['image'])){
-            $image = $row['image'];
-            $hint = $hint."src='data:image/jpeg;base64,". base64_encode($image) ."'/>";
-            
-        }else{
-            $image = "assets/img/user.png";
-            $hint = $hint."src='$image'/>";
-        }
-        $hint = $hint."   </div> <div class='searched_name'>
-                                <div class='searched_username'>".$row['Name']."</div>
-                                <div class='searched_email'>".$email."</div>
-                            </div>
-				        </div>";
-                        
-                        
-        */
         $counter++;
     }
-    /*
-    if($hint == ""){
-        $hint = "<div class='aside_element'>
-                            <p>No result accoured</p>
-				</div>";
-    }
-    echo $hint;*/
     echo json_encode($array);
 }
 ?> 

@@ -618,6 +618,8 @@ and (min-device-width: 801px)
         width: 30px;
 		border-radius: 50%;
         margin-top: 4px;
+        margin-right: 5px;
+        margin-left: 5px;
     }
     .ident{
         display: inline-block;
@@ -630,6 +632,9 @@ and (min-device-width: 801px)
     }
     #ident_name p{
         font-family: Museo;
+    }
+    .progress_bar{
+        border: 2px solid #00AE53;
     }
 }
 

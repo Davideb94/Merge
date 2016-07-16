@@ -13,6 +13,6 @@
     }
 
 	unlink("../upload/".$name);
-
+    unlink("../thumbnails/".$name);
 	echo $name;
 ?>
