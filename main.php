@@ -16,6 +16,77 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 	</head>
 	
 	<body onload="start()">
+		<!--alert and confirm boxes-->
+		<div id="upload" class="overlay">
+			<div class="dialog">
+				<div class="title">
+					Good news,
+				</div>
+				<div class="content">
+					your file was uploaded correctly!
+				</div>
+				<div class="buttons">
+					<button onclick="hideDialog()">OK</button>
+				</div>
+			</div>
+		</div>
+		<div id="contact" class="overlay">
+			<div class="dialog">
+				<div class="title">
+					Good news,
+				</div>
+				<div class="content">
+					he/she can now see your <b>desk</b> and download your <b>public</b> files!
+				</div>
+				<div class="buttons">
+					<button onclick="hideDialog()">OK</button>
+				</div>
+			</div>
+		</div>
+		<div id="delete_contact" class="overlay">
+			<div class="dialog">
+				<div class="title">
+					Hey there,
+				</div>
+				<div class="content">
+					are you sure you want to delete this contact?
+				</div>
+				<div class="buttons">
+					<button id="delete_this_contact">OK</button>
+					<button id="do_not_delete_this_contact">CANCEL</button>
+				</div>
+			</div>
+		</div>
+		<div id="delete_file" class="overlay">
+			<div class="dialog">
+				<div class="title">
+					Hey there,
+				</div>
+				<div class="content">
+					are you sure you want to delete this file?
+				</div>
+				<div class="buttons">
+					<button id="delete_this_file">OK</button>
+					<button id="do_not_delete_this_file">CANCEL</button>
+				</div>
+			</div>
+		</div>
+		<div id="change_privacy" class="overlay">
+			<div class="dialog">
+				<div class="title">
+					To be clear...
+				</div>
+				<div class="content">
+					do you want to change the privacy to this file?
+				</div>
+				<div class="buttons">
+					<button id="change_it">OK</button>
+					<button id="do_not_change_it">CANCEL</button>
+				</div>
+			</div>
+		</div>
+		<!-- end of alert and confirm boxes -->
+		
 		<header id="header">
 			<div id="logo_container">
 				<p>merge</p>

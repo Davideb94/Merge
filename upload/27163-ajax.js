@@ -96,7 +96,7 @@ function myparsing(data,idfunction){
 				var status = data[i]['data']['policy'];
 				
                 var lock = document.createElement("div");
-                lock.setAttribute("onclick","showChangePrivacy(this)");
+                lock.setAttribute("onclick","change_policy(this)");
                 lock.className = "privacy_bar";
                 lock.setAttribute("name",data[i]['data']['reference']);
 				
@@ -120,7 +120,7 @@ function myparsing(data,idfunction){
                 var div4 = document.createElement("div");
                 div4.className = "card_delete";
                 div4.setAttribute("name",data[i]['data']['reference']);
-                div4.setAttribute("onclick","showDeleteFile(this)");
+                div4.setAttribute("onclick","deleteFile(this)");
               
                 var delimage = document.createElement('img');
                 delimage.className = "delete_icon";
@@ -269,7 +269,7 @@ function myparsing(data,idfunction){
 				
 				var delete_element = document.createElement("div");
 				delete_element.className = "delete_contact";
-				delete_element.setAttribute("onclick", "showDeleteContact(this.parentElement.value)");
+				delete_element.setAttribute("onclick", "deleteContact(this.parentElement.value)");
 				var delete_content = document.createElement("img");
 				delete_content.src = "./assets/img/delete_contact.png";
 
@@ -437,20 +437,20 @@ function myparsing(data,idfunction){
 
 }
 function deleteContact(id){
-	var xhr = new XMLHttpRequest();
-
-	xhr.onreadystatechange = function (){
-		if(xhr.readyState == 4 && xhr.status == 200){
-			if(xhr.responseText == "ok"){
-				viewcontacts();
+	if(confirm("Are you sure you want to delete this contact?")){
+		var xhr = new XMLHttpRequest();
+  
+		xhr.onreadystatechange = function (){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				if(xhr.responseText == "ok"){
+					viewcontacts();
+				}
+				console.log(xhr.responseText);
 			}
-			console.log(xhr.responseText);
 		}
+		xhr.open("GET","./php/deleteContact.php?contact=" + id, true);
+		xhr.send();
 	}
-	xhr.open("GET","./php/deleteContact.php?contact=" + id, true);
-	xhr.send();
-	
-	hideDialog();
 }
 function visualized_not(ele, e){
     var not_id;
@@ -493,7 +493,7 @@ function loadfile(){
         if(xhr.readyState == 4 && xhr.status == 200){
             console.log(xhr.response);
             if(xhr.response == "ok"){
-                showDialog("upload");   
+                alert("Files uploaded successfull");   
             }
             preview();
         }
@@ -595,7 +595,7 @@ function addpeople(e,ele){
         xhr.onreadystatechange=function() {
 
         if (xhr.readyState==4 && xhr.status==200) {
-            showDialog("contact");
+            alert(xhr.responseText);
             viewcontacts();
         }
       }
@@ -649,19 +649,20 @@ function viewdesks(){
     };
 }
 //ajax function to delete a file
-function deleteFile(name){
-	var xhr = new XMLHttpRequest();
+function deleteFile(elem){
+	if(confirm('Are you sure you want to delete this file?')){
+		var xhr = new XMLHttpRequest();
+		var name = elem.getAttribute('name');
 
-	xhr.open('GET','./php/delete_file.php?name=' + name, true);
-	xhr.send();
+		xhr.open('GET','./php/delete_file.php?name=' + name, true);
+		xhr.send();
 
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState == 4 && xhr.status==200) {
-			preview();
-		}
-	};
-	
-	hideDialog();
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 && xhr.status==200) {
+				preview();
+			}
+		};
+	}
 }
 
 //ajax function to show file preview
@@ -736,19 +737,20 @@ function showNotifications(){
 }
 
 //ajax function to change policy
-function changePolicy(name){
-	var xhr = new XMLHttpRequest();
+function change_policy(ele){
+    if(confirm("Change privacy of this file?")){
+        var xhr = new XMLHttpRequest();
+        var name = ele.getAttribute('name');
 
-	xhr.open('GET','./php/change_policy.php?name=' + name, true);
-	xhr.send();
+        xhr.open('GET','./php/change_policy.php?name='+name, true);
+        xhr.send();
 
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState == 4 && xhr.status==200) {
-			if(xhr.response== "ok"){
-				preview();
-			}
-		}
-	};
-	
-	hideDialog();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status==200) {
+                if(xhr.response== "ok"){
+					preview();
+                }
+            }
+        }; 
+    }
 }

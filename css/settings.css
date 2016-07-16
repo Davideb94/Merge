@@ -24,7 +24,56 @@ and (min-device-width: 801px)
 		background-color: #E9EBEE;
 		z-index: 1;
 	}
-	
+	.overlay{
+		height: 100%;
+		width: 100%;
+		display: none;
+		position: fixed;
+		background-color: rgba(34,49,63,0.2);
+		z-index: 1000;
+	}
+	.show_dialog{
+		display: block;
+	}
+	.dialog{
+		width: 40%;
+		height: 30%;
+		margin-top: 15%;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 2%;
+		padding-right: 2%;
+		padding-top: 2%;
+		padding-bottom: 2%;
+		border-radius: 3px;
+		font-family: Museo;
+		background-color: #fff;
+		box-shadow: 0 10px 20px #2c3e50;
+	}
+	.dialog .title{
+		height: 25%;
+		font-size: 23px;
+		color: #37474F;
+	}
+	.dialog .content{
+		height: 50%;
+		font-size: 18px;
+		color: #455A64;
+	}
+	.dialog .buttons{
+		height: 25%;
+	}
+	.dialog button{
+		float: right;
+		font-size: 23px;
+		color: #2c3e50;
+		border: none;
+		outline: none;
+		background-color: transparent;
+	}
+	.dialog button:hover{
+		color: #425D78;
+	}
 	#header{
 		width: 100%;
 		height: 8%;
@@ -147,12 +196,14 @@ and (min-device-width: 801px)
 	.progress-radial .overlay {
 	  	width: 190px;
 	  	height: 190px;
+		position: relative;
 		display: table;
 		background-color: #fff;
 	  	border-radius: 50%;
 	  	margin-left: 5px;
 	  	margin-top: 5px;
 	  	text-align: center;
+		z-index: 100;
 	}
 	.progress-radial .overlay p{
 		display: table-cell;

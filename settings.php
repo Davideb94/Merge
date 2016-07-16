@@ -15,6 +15,130 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 		<script src="js/settings.js" type="text/javascript"></script>
 	</head>
 	<body onload="fetch_info()">
+		<!--alert and confirm boxes-->
+		<div id="nickname_alert" class="overlay">
+			<div class="dialog">
+				<div class="title">
+					Good news,
+				</div>
+				<div class="content">
+					your nickname was updated correctly!
+				</div>
+				<div class="buttons">
+					<button onclick="hideDialog()">OK</button>
+				</div>
+			</div>
+		</div>
+		<div id="email_alert" class="overlay">
+			<div class="dialog">
+				<div class="title">
+					Good news,
+				</div>
+				<div class="content">
+					your email was updated correctly!
+				</div>
+				<div class="buttons">
+					<button onclick="hideDialog()">OK</button>
+				</div>
+			</div>
+		</div>
+		<div id="password_alert" class="overlay">
+			<div class="dialog">
+				<div class="title">
+					Good news,
+				</div>
+				<div class="content">
+					your password was updated correctly!
+				</div>
+				<div class="buttons">
+					<button onclick="hideDialog()">OK</button>
+				</div>
+			</div>
+		</div>
+		<div id="wrong_password_alert" class="overlay">
+			<div class="dialog">
+				<div class="title">
+					Watch out!
+				</div>
+				<div class="content">
+					you typed a wrong password!
+				</div>
+				<div class="buttons">
+					<button onclick="hideDialog()">OK</button>
+				</div>
+			</div>
+		</div>
+		<div id="image_alert" class="overlay">
+			<div class="dialog">
+				<div class="title">
+					Good news,
+				</div>
+				<div class="content">
+					your profile image was updated correctly!
+				</div>
+				<div class="buttons">
+					<button onclick="hideDialog()">OK</button>
+				</div>
+			</div>
+		</div>
+		<div id="nickname_confirm" class="overlay">
+			<div class="dialog">
+				<div class="title">
+					Hey there,
+				</div>
+				<div class="content">
+					are you sure you want to modify your nickname?
+				</div>
+				<div class="buttons">
+					<button onclick="modify_nick()">OK</button>
+					<button onclick="hideDialog()">CANCEL</button>
+				</div>
+			</div>
+		</div>
+		<div id="email_confirm" class="overlay">
+			<div class="dialog">
+				<div class="title">
+					Hey there,
+				</div>
+				<div class="content">
+					are you sure you want to modify your email?
+				</div>
+				<div class="buttons">
+					<button onclick="modify_email()">OK</button>
+					<button onclick="hideDialog()">CANCEL</button>
+				</div>
+			</div>
+		</div>
+		<div id="password_confirm" class="overlay">
+			<div class="dialog">
+				<div class="title">
+					Hey there,
+				</div>
+				<div class="content">
+					are you sure you want to modify your password?
+				</div>
+				<div class="buttons">
+					<button onclick="resetPass()">OK</button>
+					<button onclick="hideDialog()">CANCEL</button>
+				</div>
+			</div>
+		</div>
+		<div id="delete_accout_confirm" class="overlay">
+			<div class="dialog">
+				<div class="title">
+					Wait wait wait...
+				</div>
+				<div class="content">
+					do you really want to delete your account and all your uploaded files?
+				</div>
+				<div class="buttons">
+					<button onclick="deleteProfile()">OK</button>
+					<button onclick="hideDialog()">CANCEL</button>
+				</div>
+			</div>
+		</div>
+		<!--end of alert and confirm boxes -->
+		
 		<header id="header" >
 			<span id="logo_container">
 				merge
@@ -100,7 +224,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 						<tr>
 							<td></td>
 							<td class="confirm">
-								<button onclick="modify_nick()">CONFIRM</button>
+								<button onclick="showDialog('nickname_confirm')">CONFIRM</button>
 							</td>
                             <td>
                             </td>
@@ -128,7 +252,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 						<tr>
 							<td></td>
 							<td class="confirm">
-								<button onclick="modify_email()">CONFIRM</button>
+								<button onclick="showDialog('email_confirm')">CONFIRM</button>
 							</td>
                             <td>
                             </td>
@@ -201,7 +325,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 			<div class="card_title" id="danger_zone_title">
 				<p>Danger zone</p>
 			</div>
-			<div class="card_content" id="danger_zone_content" onclick="delete_profile()">
+			<div class="card_content" id="danger_zone_content" onclick="showDialog('delete_accout_confirm')">
 				<p>Delete account</p>
 			</div>
 		</div>

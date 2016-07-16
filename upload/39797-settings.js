@@ -39,69 +39,61 @@ function showChangePassword(){
 }
 //ajax function to modify nickname
 function modify_nick(){
-	var xhr = new XMLHttpRequest();
-	var newnick = document.getElementById('newnick').value;
-	xhr.onreadystatechange = function (){
-		if(xhr.readyState == 4 && xhr.status == 200){
-			console.log(xhr.response);
-			if(xhr.response == "ok"){
-				showDialog("nickname_alert");
-			}
-		}
-	}
-
-	xhr.open("POST","./php/modify_nick.php",true);
-	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhr.send("newnick="+newnick);
-	
-	hideDialog();
+    if(confirm("Are you sure to modify your nickname?")){
+        var xhr = new XMLHttpRequest();
+        var newnick = document.getElementById('newnick').value;
+        xhr.onreadystatechange = function (){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                console.log(xhr.response);
+                if(xhr.response == "ok"){
+                    alert("Nickname modified!");
+                }
+            }
+        }
+        
+        xhr.open("POST","./php/modify_nick.php",true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("newnick="+newnick);
+		
+		location.reload();
+    }
 }
 //ajax function to modify email address
 function modify_email(){
-	var xhr = new XMLHttpRequest();
-	var newmail = document.getElementById('Email').value;
-	xhr.onreadystatechange = function (){
-		if(xhr.readyState == 4 && xhr.status == 200){
-			console.log(xhr.response);
-			if(xhr.response == "ok"){
-				showDialog("email_alert");
-			}
-		}
-	}
-
-	xhr.open("POST","./php/modify_email.php",true);
-	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhr.send("newmail="+newmail);
-
-	hideDialog();
+    if(confirm("Are you sure to modify your Email?")){
+        var xhr = new XMLHttpRequest();
+        var newmail = document.getElementById('Email').value;
+        xhr.onreadystatechange = function (){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                console.log(xhr.response);
+                if(xhr.response == "ok"){
+                    alert("Email modified!");
+                }
+            }
+        }
+        
+        xhr.open("POST","./php/modify_email.php",true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("newmail="+newmail); 
+    }
 }
 
 //ajax function to reset password
-function resetPass(){
-	//to hide the current dialog box
-	var dialog = document.getElementsByClassName("overlay");
-	
-	for(var i=0; i<dialog.length; i++){
-		dialog[i].className = "overlay";
-	}
-	
-	var oldpass = document.getElementById('oldpassword').value;
-	var newpass = document.getElementById('password').value;
-
+function Resetpass(newpass,oldpass){
     var xhr1 = new XMLHttpRequest();
     xhr1.readyState = 0;
     xhr1.onreadystatechange = function() {
         if (xhr1.readyState == 4 && xhr1.status==200) {
             if(xhr1.responseText == "error match"){
-                showDialog("wrong_password_alert");
+                alert("old password wrong!");
             }else{
-                showDialog("password_alert");
+                alert("password changed!");
             }
         }
     };
     xhr1.open('POST', './php/ResetPassword.php', true);
     xhr1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr1.send('newpass='+newpass+'&oldpass='+oldpass);  
+    xhr1.send('newpass='+newpass+'&oldpass='+oldpass);    
 }
 //function to alert not matching passwords
 function validate(){
@@ -117,7 +109,7 @@ function validate(){
     }
     else {
         //alert("Passwords Match!!!");
-        showDialog("password_confirm");
+        Resetpass(pass,oldpass);
         
     }
     return ok;
@@ -131,7 +123,7 @@ function upload_profile_pic(){
     xhr.onreadystatechange = function (){
         if(xhr.readyState == 4 && xhr.status == 200){
             if(xhr.response == "ok"){
-                showDialog("image_alert");
+                alert("image upload successfull.");
             }
         }
     }
@@ -140,17 +132,19 @@ function upload_profile_pic(){
     xhr.send(formData);    
 }
 
-function deleteProfile(){
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function (){
-		if(xhr.readyState == 4 && xhr.status == 200){
-			if(xhr.response == "ok"){
-				location.href = "http://localhost/merge";
-			}
-		}
-	}
-	xhr.open("POST","./php/del_profile.php",true);
-	xhr.send();
+function delete_profile(){
+    if(confirm("Are you sure to delete your Account? Your files will finally deleted.")){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function (){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                if(xhr.response == "ok"){
+                    alert("Your account was deleted.");
+                }
+            }
+        }
+        xhr.open("POST","./php/del_profile.php",true);
+        xhr.send();
+    }
 }
 
 //to fetch infos used in settings.html
@@ -183,7 +177,8 @@ function fetch_info(){
                 
                 var percentage_value = document.getElementById("percentage_value");
                 
-                var space =Math.round((info.data['space_occupied']/1073741824)*100)/100;
+                var space =Math.round((info.data['space_occupied']/1048576)*(100/1024));
+                
                 var percent = document.createTextNode(space+"%");
                 percentage_value.appendChild(percent);
                 
@@ -203,25 +198,10 @@ function fetch_info(){
                 remaining_space.appendChild(remaining_value);
                 
                 var progress_bar = document.getElementById("progress_bar");
-                progress_bar.className = "progress-radial progress-"+(Math.ceil((info.data['space_occupied']/1073741824)/5)*5-5);  
+                progress_bar.className = "progress-radial progress-"+(Math.ceil(((info.data['space_occupied']/1048576)*100)/5000)*5-5);
             }
         }
     };
     xhr1.open('POST', './php/fetch_info.php', true);
     xhr1.send();       
-}
-
-function showDialog(elem){
-	var my_dialog = document.getElementById(elem);
-	my_dialog.className = "overlay show_dialog";
-}
-
-function hideDialog(){
-	var dialog = document.getElementsByClassName("overlay");
-	
-	for(var i=0; i<dialog.length; i++){
-		dialog[i].className = "overlay";
-	}
-	
-	location.reload();
 }
