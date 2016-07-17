@@ -44,7 +44,7 @@ session_start();
                     <div id="check_keep_login">
                         <input type="checkbox" name="keep_login">
                             <p>
-                                Keep Login
+                                Keep me signed in
                             </p>
                     </div>
 					<div class="input-field">
