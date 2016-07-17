@@ -546,7 +546,7 @@ and (min-device-width: 801px)
 	}
 	
 	#input_file{
-		visibility: hidden;
+		display: none;
 	}
 	
 	#others{
