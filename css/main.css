@@ -70,179 +70,6 @@ and (min-device-width: 801px)
 	.dialog button:hover{
 		color: #425D78;
 	}
-	/*header{
-		width: 100%;
-		height: 50px;
-		background-color: #2c3e50;
-		color: white;
-		z-index: 100;
-	}
-
-	#logo_container{
-		height: inherit;
-		display: inline-block;
-		margin-left:5%;
-		font-family: Chunk;
-		font-size: 40px;
-		padding-left: 20px;
-		padding-right: 20px;
-		background-color: transparent;
-		color: #00AE53;
-		vertical-align:text-bottom;
-	}
-	#logo_container > p{
-		margin-top: 5%;
-	}
-
-	#hamburger_menu{
-		height: inherit;
-		display: inline-block;
-		margin-left:5%;
-		padding-left: 20px;
-		padding-right: 20px;
-		background-color: transparent;
-		vertical-align:text-bottom;
-		cursor: pointer;
-		display: none;
-	}
-
-	.navs {
-		height: inherit;
-		float: right;
-	}
-	.navs_ul {
-		height: inherit;
-		display: inline-block;
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-		overflow: hidden;
-		background-color: inherit;
-	}
-	.navs_li {	
-		height: inherit;
-		float: left;
-	}
-	.navs_img{
-		height: 15px;
-	}
-	.navs_li a {
-		height: inherit;
-		display: block;
-		color: white;
-		text-align: center;
-		padding-left: 10px;
-		padding-right: 10px;
-		text-decoration: none;
-	}
-	.navs_li:hover{
-		cursor: pointer;
-		background-color: #263545;
-	}
-	.vertical_center {
-		height: 33% !important;
-	}
-	#search_block{
-		margin-right: 10px;
-	}
-	#search_block:hover{
-		cursor: auto;
-		background-color: #2c3e50;
-	}
-	#search{
-		height: 12px;
-		padding: 3px;
-		border: 1px solid #162029;
-		border-radius: 3px;
-		background-color: #E9EBEE;
-		color: black;
-		font-size: 12px;
-	}
-	#search:focus{
-		outline: 0;
-	}
-	#search_icon{
-		height: 10px;
-		width: 10px;
-		display: inline-block;
-		position: relative;
-  		left: -22px;
-	}
-	#notifications_menu{
-		width: 380px;
-		font-family: Museo;
-		margin-left: -345px;
-		background-color: #E9EBEE;
-		z-index: 99;
-        position: fixed;
-        box-shadow: 3px 3px 10px #2c3e50;
-		display: none;
-	}
-    
-    .notification_number{
-        height: 10px;
-        width: 10px;
-        border-radius: 50%;
-        background-color: red;
-        display: inline-block;
-        font-size: 8px;
-        text-align: center;
-        
-    }
-    
-	.show_notifications_menu{
-		display: block !important;
-	}
-	.notification_element{
-		width: 100%;
-        padding-top: 2%;
-        padding-bottom: 2%;
-		cursor: auto;
-		color: #45617D;
-		display:table;
-        vertical-align: middle;
-        border-left: 1px solid #2c3e50;
-	}
-	.notification_element:hover{
-		background-color: #DADFE1;
-	}
-	.notification_text{
-		width: 85%;
-		display: table-cell;
-		margin: auto;
-		vertical-align: middle;
-		text-align: center;
-        cursor:pointer;
-	}
-    .notification_text >p{
-        display: inline-block;
-    }
-    .visualize_notification{
-        height: 10px;
-        width: 10px;
-        border-radius: 50%;
-        border: 2px solid #b3b3b3;
-        display: inline-block;
-        margin-left: 8%;
-        
-    }
-    
-    .visualized:hover{
-        background-color: #b3b3b3;
-    }
-	#profile_elem{
-		cursor: auto;
-		background-color: #2c3e50;
-	}
-	
-	#logout{
-		background-color: #263545;
-	}
-	#logout_img{
-		height: 20px;
-		margin-top: -1.5px;
-	}
-	/*end of bar's css*/
 	
 	header{
 		width: 100%;
@@ -420,6 +247,7 @@ and (min-device-width: 801px)
 	#logout_img{
 		height: 18px;
 	}
+	/*end of bar's css*/
 	
 	aside{
 		width: 20%;
@@ -524,7 +352,7 @@ and (min-device-width: 801px)
 	}
 	
 	main{
-		height: 100%;
+		height: 92%;
 		width: 80%;
 		padding: 0;
 		float: left;
@@ -798,38 +626,71 @@ and (min-device-width: 801px)
 @media only screen 
 and (max-device-width: 800px) 
 {
-    html,
+   html,
 	body{
 		height: 100%;
-		width: 100%;
+		width: 100% !important;
 		overflow: hidden;
 		z-index: 1;
+	}
+	.overlay{
+		height: 100%;
+		width: 100%;
+		display: none;
+		position: fixed;
+		background-color: rgba(34,49,63,0.2);
+		z-index: 1000;
+	}
+	.show_dialog{
+		display: block;
+	}
+	.dialog{
+		width: 40%;
+		height: 30%;
+		margin-top: 15%;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 2%;
+		padding-right: 2%;
+		padding-top: 2%;
+		padding-bottom: 2%;
+		border-radius: 3px;
+		font-family: Museo;
+		background-color: #fff;
+		box-shadow: 0 10px 20px #2c3e50;
+	}
+	.dialog .title{
+		height: 25%;
+		font-size: 23px;
+		color: #37474F;
+	}
+	.dialog .content{
+		height: 50%;
+		font-size: 18px;
+		color: #455A64;
+	}
+	.dialog .buttons{
+		height: 25%;
+	}
+	.dialog button{
+		float: right;
+		font-size: 23px;
+		color: #2c3e50;
+		border: none;
+		outline: none;
+		background-color: transparent;
+	}
+	.dialog button:hover{
+		color: #425D78;
 	}
 
 	header{
 		width: 100%;
-		height: 100px;
+		height: 11%;
 		display: table;
 		background-color: #2c3e50;
 		color: white;
 		z-index: 100;
-	}
-	
-
-	#logo_container{
-		height: inherit;
-		display: inline-block;
-		margin-left:5%;
-		font-family: Chunk;
-		padding-left: 20px;
-		padding-right: 20px;
-		background-color: transparent;
-		color: #00AE53;
-		vertical-align:text-bottom;
-		display: none;
-	}
-	#logo_container > p{
-		margin-top: 5%;
 	}
 
 	#hamburger_menu{
@@ -842,38 +703,40 @@ and (max-device-width: 800px)
 		vertical-align:text-bottom;
 		cursor: pointer;
 	}
-
+	
 	.navs {
-		height: inherit;
+		height: 100%; /*doesn't work on firefox god knows why*/
 		float: right;
 	}
-	.navs_ul {
-		height: inherit;
-		display: inline-block;
+	.navs ul{
+		height: 100%;
 		list-style-type: none;
 		margin: 0;
 		padding: 0;
-		overflow: hidden;
 		background-color: inherit;
 	}
-	.navs_li {	
-		height: inherit;
+	.navs ul li{	
+		height: 100%;
+		display: table;
 		float: left;
 	}
-	.navs_img{
-		height: 35px;
+	.hover_li:hover{
+		cursor: pointer;
+		background-color: #263545;
 	}
-	.navs_li a {
-		height: inherit;
+	.navs ul li a{
 		display: block;
 		color: white;
 		text-align: center;
-		padding-left: 20px;
-		padding-right: 20px;
+		padding-left: 10px;
+		padding-right: 10px;
 		text-decoration: none;
 	}
-	.vertical_center {
-		height: 33% !important;
+	.navs_img{
+		height: 15px;
+	}
+	.vertical_center{
+		height: 18px;
 	}
 	#search_block{
 		margin-right: 10px;
@@ -883,34 +746,46 @@ and (max-device-width: 800px)
 		background-color: #2c3e50;
 	}
 	#search{
-		height: 35px;
+		height: 12px;
 		padding: 3px;
 		border: 1px solid #162029;
 		border-radius: 3px;
 		background-color: #E9EBEE;
 		color: black;
-		font-size: 35px;
+		font-size: 12px;
 	}
 	#search:focus{
 		outline: 0;
 	}
 	#search_icon{
-		height: 20px;
-		width: 20px;
+		height: 10px;
+		width: 10px;
 		display: inline-block;
 		position: relative;
-  		left: -32px;
+  		left: -22px;
 	}
 	#notifications_menu{
-		width: 80%;
+		width: 380px;
 		font-family: Museo;
-		margin-left: -65%;
+		margin-left: -345px;
 		background-color: #E9EBEE;
 		z-index: 99;
         position: fixed;
         box-shadow: 3px 3px 10px #2c3e50;
 		display: none;
 	}
+    
+    .notification_number{
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: red;
+        display: inline-block;
+        font-size: 8px;
+        text-align: center;
+        
+    }
+    
 	.show_notifications_menu{
 		display: block !important;
 	}
@@ -918,14 +793,14 @@ and (max-device-width: 800px)
 		width: 100%;
         padding-top: 2%;
         padding-bottom: 2%;
-		cursor: pointer;
+		cursor: auto;
 		color: #45617D;
 		display:table;
         vertical-align: middle;
+        border-left: 1px solid #2c3e50;
 	}
 	.notification_element:hover{
 		background-color: #DADFE1;
-		border-left: 1px solid #2c3e50;
 	}
 	.notification_text{
 		width: 85%;
@@ -933,36 +808,77 @@ and (max-device-width: 800px)
 		margin: auto;
 		vertical-align: middle;
 		text-align: center;
-		font-size: 30px;
+        cursor:pointer;
 	}
-	#profile_elem{
-		display: none;
+    .notification_text >p{
+        display: inline-block;
+    }
+    .visualize_notification{
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        border: 2px solid #b3b3b3;
+        display: inline-block;
+        margin-left: 8%;
+        
+    }
+    
+    .visualized:hover{
+        background-color: #b3b3b3;
+    }
+	.user_infos{
+		display: table-cell;
+		vertical-align: middle;
+		font-family: "Museo";
 	}
+	.profile_container{    
+    	height: 100%;
+		display: table;
+		margin-right: 8px;
+		margin-top: 5px;
+		font-family: Museo;
+	}
+	.container_img{
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.container_name{
+		display: table-cell;
+		vertical-align: middle;
+	}
+	#ident_pic{
+        height: 30px;
+        width: 30px;
+		border-radius: 50%;
+        margin-top: 4px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
 	#logout{
-		width: 85px;
 		background-color: #263545;
 	}
+	#logout_link{
+		display: table-cell;
+		vertical-align: middle;
+	}
 	#logout_img{
-		height: 35px;
-		margin-top: -3px;
+		height: 18px;
 	}
 	/*end of bar's css*/
 	
 	aside{
-		width: 60%;
-		height: 100%;
+		width: 20%;
+		height: 92%;
+		display: none;
 		font-family: Museo;
 		float: left;
 		margin-left: 0;
-		background-color: #425D78;
-		position: absolute;
+		background-color: #45617D;	/*give it a box shadow*/
 		z-index: 99;
-		display: none;
 	}
 	.show{
 		display: block;
 	}
-	
 	.aside_container{
 		width: 100%;
 		height: 50%;
@@ -983,16 +899,15 @@ and (max-device-width: 800px)
 		padding-top: 10px;
 		padding-bottom: 10px;
 		padding-left: 20%;
-		font-size: 40px;
 		background-color: #425D78;
 		color: #ecf0f1;
 	}
 	#desk_pic{
-		height: 40px;
+		height: 20px;
 		margin-bottom: -5px;
 	}
 	#people_pic{
-		height: 35px;
+		height: 15px;
 	}
 	.aside_list{
 		list-style-type: none;
@@ -1001,30 +916,60 @@ and (max-device-width: 800px)
 	}
 	.aside_element{
 		width: 100%;
-		padding-top: 30px;
-		padding-bottom: 30px;
+		padding-top: 5px;
+		padding-bottom: 5px;
 		cursor: pointer;
 		color: #C5C9C9;
-		font-size: 40px;
+		font-size: 12px;
 		display:table;
 	}
 	.aside_element:hover{
+		background-color: #496785;
+	}
+	.active_desk{
 		background-color: #507191;
 	}
+	.desk_triangle{
+		height: 15px;
+		display: none;
+		float: right;
+		margin-top: 9px;
+		margin-right: -1px;
+	}
+	.active_desk_triangle{
+		display: block;
+	}
 	.aside_pic{
-		height: 40px;
-        width: 40px;
+		height: 30px;
+        width: 30px;
 		margin-left:20px;
-		float: left;
 		border-radius: 50%;
+		float: left;
 	}
 	.aside_element_name{
-		max-width: 53%;
+		max-width: 60%;
 		float: left;
 		overflow:hidden;
 	  	text-overflow: ellipsis;
 	  	white-space: nowrap;
-		margin-left: 5%;
+		margin-left: 10%;
+		margin-top: 3%;		
+	}	
+	.people_element{
+		cursor: auto;
+	}
+	.people_element:hover .delete_contact{
+		display: inline-block;
+	}
+	.delete_contact{
+		display: none;
+		cursor: pointer;
+		float: right;
+		margin-right: 20px;
+		margin-top: 9px;
+	}
+	.delete_contact > img{
+		height: 10px;
 	}
 	
 	main{
@@ -1159,31 +1104,34 @@ and (max-device-width: 800px)
 		text-align: center;
 	}
 	.add_file{
-		height: 85px;
-		width: 85px;
-		display: table;
+		height: 45px;
+		width: 45px;
 		border: none;
 		border-radius: 50%;
+		cursor: pointer;
+		text-align: center;
 		background-color: #00AE53;
 		color: #E9EBEE;
-		font-size: 50px;
-		font-weight: 500;
+		font-size: 20px;
+		font-weight: 100;
 		box-shadow: 0px 5px 5px 0px #6C7A89;
 		position: absolute;
-		right: 100px;
-		bottom: 100px;
+		right: 20px;
+		bottom: 20px;
 		z-index: 999;
+        display: table-cell;
+		vertical-align: middle;
 	}
+    .add_file>img{
+        margin-top: 29%;
+        height: 15px;
+        width: 15px;
+    }
 	.add_file:focus{
 		outline: 0;
 	}
 	.hide_button{
 		display: none;
-	}
-	.plus{
-		display: table-cell;
-		vertical-align: middle;
-		text-align: center;
 	}
 	
 	#input_file{
