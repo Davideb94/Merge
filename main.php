@@ -83,7 +83,7 @@
 		</div>
 		<!-- end of alert and confirm boxes -->
 		
-		<header id="header">
+		<!--<header id="header">
 			<div id="logo_container">
 				<p>merge</p>
 			</div>
@@ -105,7 +105,7 @@
                             onblur="closeresult()">
 							<img src="assets/img/search.svg" alt="search" id="search_icon">
 						</div>
-                        <!-- searching -->
+                        <!-- searching --><!--
                         <span id="result_search">
                             
                         </span>
@@ -120,7 +120,7 @@
 							</a>
 						</div>
 						<div class="vertical_center"></div>
-						<!-- drop down menu -->
+						<!-- drop down menu --><!--
 						<span id="notifications_menu">
 						</span>
 					</li>
@@ -147,8 +147,63 @@
 					</li>
 				</ul>
 			</nav>
-		</header>
+		</header> -->
+		<header class="header">
+			<span id="logo_container">
+				merge
+			</span>
+			<nav class="navs">
+				<ul>
+					<li id="search_block">
+						<div class="vertical_center"></div>
+						<div class="vertical_center">
+							<input id="search" type="text" placeholder="search@mail.com" onkeyup="showResult(this.value)"
+                            onblur="closeresult()">
+							<img src="assets/img/search.svg" alt="search" id="search_icon">
+						</div>
+                        <!-- searching -->
+                        <span id="result_search">
+                            
+                        </span>
+                        
+						<div class="vertical_center"></div>
+					</li>
+					<li class="hover_li" onclick="showNotifications()">
+						<div class="vertical_center"></div>
+						<div class="vertical_center">
+							<a href="#" id="notifications_icon">
+								<img class="navs_img" alt="notification" src="assets/img/notification.svg" />
+							</a>
+						</div>
+						<div class="vertical_center"></div>
+						<!-- drop down menu -->
+						<span id="notifications_menu">
+						</span>
+					</li>
+					<li class="hover_li" onclick="location.href='./settings.php'">
+						<div class="vertical_center"></div>
+						<div class="vertical_center">
+							<a href="./settings.php">
+								<img class="navs_img" alt="settings" src="assets/img/settings.svg" />
+							</a>
+						</div>
+						<div class="vertical_center"></div>
+					</li>
+					<li id="profile_elem">
 		
+					</li>
+					<li id="logout">
+						<a id="logout_link" href="php/Logout.php">
+							<div class="vertical_center"></div>
+							<div class="vertical_center">
+								<img id="logout_img" alt="log_out" src="assets/img/logout.png" />
+							</div>
+							<div class="vertical_center"></div>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
 		<aside>
 			<div class="aside_container" id="desks"><!--UI BUG: aside_title must stay on top when scrolling-->
 				<div class="aside_title">

@@ -3,7 +3,31 @@ function myparsing(data,idfunction){
         case 1: //identification
             
             /* printing image*/
-            var profile_elem = document.getElementById("profile_elem");
+			var container = document.createElement("div");
+			container.className = "profile_container";
+			var container_img = document.createElement("div");
+			container_img.className = "container_img";
+			var container_name = document.createElement("div");
+			container_name.className = "container_name";
+			
+			var img = document.createElement("img");
+			img.id = "ident_pic"; 
+            if(data['image'] == null){
+                   img.src = 'assets/img/user.png';
+            }else{
+                img.src = "profile_pic/" +data['image'];
+            }
+			
+			var username = document.createTextNode(data['username']);
+			
+			profile_elem.appendChild(container);
+			container.appendChild(container_img);
+			container_img.appendChild(img);
+			container.appendChild(container_name);
+			container_name.appendChild(username);
+			
+			
+            /*var profile_elem = document.getElementById("profile_elem");
             var profileSpan = document.createElement('span')
             profileSpan.className = "ident";
             
@@ -31,7 +55,7 @@ function myparsing(data,idfunction){
             
             /*printing username*/
             
-            var usernameSpan = document.createElement('span');
+            /*var usernameSpan = document.createElement('span');
             usernameSpan.className = "ident";
             var userdiv1 = document.createElement('div');
             userdiv1.className = "vertical_center";
@@ -50,7 +74,7 @@ function myparsing(data,idfunction){
             usernameSpan.appendChild(userdiv1);
             usernameSpan.appendChild(userdiv2);
             usernameSpan.appendChild(userdiv3);
-            profile_elem.appendChild(usernameSpan);
+            profile_elem.appendChild(usernameSpan);*/
             
             
             //refresh notifications number

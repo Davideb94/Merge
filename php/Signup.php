@@ -19,7 +19,7 @@ function registration(){
         }else{
             //Sign up query
             $password=md5($password);
-            $query = "INSERT INTO USER (Name,Password,Email) values ('$username','$password','$email');";
+            $query = "INSERT INTO user (Name,Password,Email) values ('$username','$password','$email');";
             $result = $mysqli->query($query);
             if(!$result){
                    $message = 'Invalid query: ' . $mysqli->error . "\n";
