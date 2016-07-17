@@ -5,6 +5,12 @@ function myparsing(data,idfunction){
             /* printing image*/
 			var container = document.createElement("div");
 			container.className = "profile_container";
+            
+            var isFirefox = typeof InstallTrigger !== 'undefined';
+            if(isFirefox){
+                container.style.marginTop = "5px";
+            }
+            
 			var container_img = document.createElement("div");
 			container_img.className = "container_img";
 			var container_name = document.createElement("div");

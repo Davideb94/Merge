@@ -118,9 +118,15 @@ and (min-device-width: 801px)
 	.navs_img{
 		height: 15px;
 	}
+    @-moz-document url-prefix() {
+        .vertical_center{
+            height: 18px !important;
+        }
+    }
 	.vertical_center{
-		height: 18px;
-	}
+            height: 33%;
+    }
+    
 	#search_block{
 		margin-right: 10px;
 	}
@@ -218,7 +224,6 @@ and (min-device-width: 801px)
     	height: 100%;
 		display: table;
 		margin-right: 8px;
-		margin-top: 5px;
 		font-family: Museo;
 	}
 	.container_img{

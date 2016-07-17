@@ -25,7 +25,7 @@ function Login(){
              $_SESSION["email"] = $email;
              $_SESSION["username"] = $username["Name"];
              $_SESSION["IDuser"] = $username["ID"];
-           if($_POST['keep_login']){
+           if($_POST["keep_login"]){
                setcookie("usermerge",$username["Name"],time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
                setcookie("idusermerge",$username["ID"],time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
                
