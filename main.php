@@ -87,6 +87,9 @@
 			<span id="logo_container">
 				merge
 			</span>
+			<div id="hamburger_menu" onclick="showMenu()">
+				<img src="assets/img/hamburger.png">
+			</div>
 			<nav class="navs">
 				<ul>
 					<li id="search_block">

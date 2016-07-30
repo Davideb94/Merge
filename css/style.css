@@ -591,5 +591,19 @@ and (max-device-width: 800px)
 		padding: 0;
 		box-shadow: none;
 	}
+	
+	#check_keep_login > p{
+        display: inline;
+        font-size: 30px;
+        margin-left: 1%;
+    }
+	#check_keep_login > input{
+		width: 30px;
+		height: 30px;
+	}
+    #check_keep_login{
+        margin-bottom: 20px;
+        vertical-align: middle;
+    }
 }
 
