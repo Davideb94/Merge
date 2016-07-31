@@ -103,8 +103,8 @@ function myparsing(data,idfunction){
                 delimage.src = './assets/img/delete.png';
                 var div5 = document.createElement("div");
                 div5.className = "card_cover";
-                var url = "./upload/" + data[i]['data']['reference'];
-                div5.style.backgroundImage = "url('"+url+"')";
+                var url = "./thumbnails/" +  data[i]['data']['reference'] ;
+                div5.style.backgroundImage = 'url("'+url+'")';
                 div5.style.backgroundRepeat = "no-repeat";
                 div5.style.backgroundPosition = "center center";
                 div5.style.backgroundSize = "auto 249px";

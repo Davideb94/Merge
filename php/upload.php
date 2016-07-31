@@ -22,7 +22,7 @@
                 //thumbnail creation
                 $extension = pathinfo($folder.$reference, PATHINFO_EXTENSION);
                 if($extension=="jpeg" || $extension=="png" || $extension=="jpg"){
-                    $size = 0.45; 
+                    $size = 0.20; 
                     list($width, $height) = getimagesize($folder.$reference); 
                     $modwidth = $width * $size; 
                     $modheight = $height * $size; 
