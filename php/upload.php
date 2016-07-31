@@ -7,8 +7,9 @@
         $counter =  sizeof($_FILES);
         for ($i = 0; $i<$counter;$i++){
             if($_FILES['file'.$i]['error']== 0){
-                $reference = rand(1000,100000)."-".$_FILES['file'.$i]['name'];
-                $query ="INSERT INTO file (Size,Type,Name,IDuser,reference,policy) values('{$_FILES['file'.$i]['size']}','{$_FILES['file'.$i]['type']}','{$_FILES['file'.$i]['name']}','{$_SESSION['IDuser']}','$reference','PUBLIC');";
+                $file_name = mysql_real_escape_string($_FILES['file'.$i]['name']);
+                $reference = rand(1000,100000)."-".$file_name;
+                $query ="INSERT INTO file (Size,Type,Name,IDuser,reference,policy) values('{$_FILES['file'.$i]['size']}','{$_FILES['file'.$i]['type']}','{$file_name}','{$_SESSION['IDuser']}','$reference','PUBLIC');";
                 
                 $mysqli->query($query);
                 

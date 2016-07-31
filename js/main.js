@@ -107,7 +107,7 @@ function showChangePrivacy(elem){
 	var my_dialog = document.getElementById("change_privacy");
 	my_dialog.className = "overlay show_dialog";
 	
-	var name = elem.getAttribute("name");
+	var name = elem.getAttribute("title");
 	
 	document.getElementById("change_it").setAttribute("onclick",'changePolicy("' + name + '")');
 	document.getElementById("do_not_change_it").setAttribute("onclick","hideDialog()");
@@ -117,7 +117,7 @@ function showDeleteFile(elem){
 	var my_dialog = document.getElementById("delete_file");
 	my_dialog.className = "overlay show_dialog";
 	
-	var name = elem.getAttribute("name");
+	var name = elem.getAttribute("title");
 	
 	document.getElementById("delete_this_file").setAttribute("onclick",'deleteFile("' + name + '")');
 	document.getElementById("do_not_delete_this_file").setAttribute("onclick","hideDialog()");

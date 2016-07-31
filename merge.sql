@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2016 at 01:25 PM
+-- Generation Time: Jul 31, 2016 at 02:54 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -38,6 +38,7 @@ CREATE TABLE `contacts` (
 INSERT INTO `contacts` (`IDuser`, `IDcontact`) VALUES
 (35, 36),
 (36, 35),
+(36, 37),
 (37, 35);
 
 -- --------------------------------------------------------
@@ -56,17 +57,6 @@ CREATE TABLE `file` (
   `reference` varchar(80) DEFAULT NULL,
   `policy` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `file`
---
-
-INSERT INTO `file` (`ID`, `Size`, `Type`, `Name`, `IDuser`, `last_modify`, `reference`, `policy`) VALUES
-(28, 2631299, 'image/jpeg', 'puglia_8376t.T0.jpg', 37, '2016-07-16 11:03:48', '62455-puglia_8376t.T0.jpg', 'PUBLIC'),
-(29, 1952749, 'image/png', 'vlcsnap-2016-05-01-21h44m53s155.png', 37, '2016-07-16 11:04:02', '34288-vlcsnap-2016-05-01-21h44m53s155.png', 'PUBLIC'),
-(30, 2605983, 'image/png', 'vlcsnap-2016-05-01-21h51m37s317.png', 37, '2016-07-16 11:04:02', '12973-vlcsnap-2016-05-01-21h51m37s317.png', 'PUBLIC'),
-(31, 1910751, 'image/png', 'vlcsnap-2016-05-13-00h24m56s736.png', 37, '2016-07-16 11:04:03', '51733-vlcsnap-2016-05-13-00h24m56s736.png', 'PUBLIC'),
-(56, 1690756, 'image/jpeg', 'IMG_20140810_190938_1.jpg', 35, '2016-07-16 11:12:09', '78299-IMG_20140810_190938_1.jpg', 'PUBLIC');
 
 --
 -- Triggers `file`
@@ -101,6 +91,13 @@ CREATE TABLE `notifications` (
   `Forwho` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`ID`, `Who`, `Type`, `Forwho`) VALUES
+(1, 36, 'Adding', 37);
+
 -- --------------------------------------------------------
 
 --
@@ -122,9 +119,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID`, `Name`, `Password`, `Email`, `Registration_date`, `image`, `space_occupied`) VALUES
-(35, 'Gab', '444bcb3a3fcf8389296c49467f27e1d6', 'gabriele-martino@libero.it', '2016-07-16 11:01:46', '43615-IMG-20140808-WA0002.jpg', 1690756),
-(36, 'Davide', '444bcb3a3fcf8389296c49467f27e1d6', 'davide.db@unito.it', '2016-07-16 11:02:18', '83075-IMG_20140808_160600_1.jpg', 0),
-(37, 'Paola', '444bcb3a3fcf8389296c49467f27e1d6', 'Paola@ok.it', '2016-07-16 11:02:49', NULL, 9100782);
+(35, 'Gab', '444bcb3a3fcf8389296c49467f27e1d6', 'gabriele-martino@libero.it', '2016-07-16 11:01:46', '4945-[005894].jpg', 0),
+(36, 'Davide', '444bcb3a3fcf8389296c49467f27e1d6', 'davide.db@unito.it', '2016-07-16 11:02:18', NULL, 0),
+(37, 'Paola', '444bcb3a3fcf8389296c49467f27e1d6', 'Paola@ok.it', '2016-07-16 11:02:49', NULL, 0);
 
 --
 -- Indexes for dumped tables
@@ -178,12 +175,12 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT for table `file`
 --
 ALTER TABLE `file`
-  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `user`
 --

@@ -18,6 +18,7 @@ function myparsing(data,idfunction){
 			
 			var img = document.createElement("img");
 			img.id = "ident_pic"; 
+            img.alt ="ident_pic";
             if(data['image'] == null){
                    img.src = 'assets/img/user.png';
             }else{
@@ -64,7 +65,7 @@ function myparsing(data,idfunction){
                 link1.setAttribute("download","");
                 var div3 = document.createElement("div");
                 div3.className ="card_download";
-                div3.setAttribute("name",data[i]['data']['reference']);
+                div3.setAttribute("title",data[i]['data']['reference']);
                 
                 div_relative.appendChild(div2);
                 
@@ -74,10 +75,11 @@ function myparsing(data,idfunction){
                 var lock = document.createElement("div");
                 lock.setAttribute("onclick","showChangePrivacy(this)");
                 lock.className = "privacy_bar";
-                lock.setAttribute("name",data[i]['data']['reference']);
+                lock.setAttribute("title",data[i]['data']['reference']);
 				
 				var lock_img = document.createElement("img");
 				lock_img.className= "lock_img";
+                lock_img.alt ="lock_img";
 				if(status == "PRIVATE"){
 					lock_img.setAttribute("src", "./assets/img/locked.png");
 				}
@@ -93,22 +95,19 @@ function myparsing(data,idfunction){
                 var downimage = document.createElement('img');
                 downimage.className = "download_icon";
                 downimage.src = './assets/img/download.png';
+                downimage.alt = "download_icon";
                 var div4 = document.createElement("div");
                 div4.className = "card_delete";
-                div4.setAttribute("name",data[i]['data']['reference']);
+                div4.setAttribute("title",data[i]['data']['reference']);
                 div4.setAttribute("onclick","showDeleteFile(this)");
               
                 var delimage = document.createElement('img');
                 delimage.className = "delete_icon";
                 delimage.src = './assets/img/delete.png';
+                delimage.alt = "del_img";
                 var div5 = document.createElement("div");
+                div5.style.backgroundImage = "url(./thumbnails/"+  data[i]['data']['reference']+")";
                 div5.className = "card_cover";
-                var url = "./thumbnails/" +  data[i]['data']['reference'] ;
-                div5.style.backgroundImage = 'url("'+url+'")';
-                div5.style.backgroundRepeat = "no-repeat";
-                div5.style.backgroundPosition = "center center";
-                div5.style.backgroundSize = "auto 249px";
-        
                 
                 
                 var text1 = document.createTextNode(data[i]['data']['info']);
@@ -180,7 +179,7 @@ function myparsing(data,idfunction){
 
                         var image = document.createElement("img");
                         image.className = "searched_pic";
-
+                        image.alt = "searched_pic";
                         if(data[i]['data']['image'] == null){
                             image.src = 'assets/img/user.png';
                         }else{
@@ -227,10 +226,11 @@ function myparsing(data,idfunction){
 				
 				var element = document.createElement("li");
 				element.className = "aside_element people_element";
-				element.setAttribute("value", myid);
+				element.setAttribute("title", myid);
 				
 				var image = document.createElement("img");
 				image.className = "aside_pic";
+                image.alt = "aside_pic";
 				if(myimg == null){
 					image.src = 'assets/img/user.png';
 				}
@@ -245,10 +245,10 @@ function myparsing(data,idfunction){
 				
 				var delete_element = document.createElement("div");
 				delete_element.className = "delete_contact";
-				delete_element.setAttribute("onclick", "showDeleteContact(this.parentElement.value)");
+				delete_element.setAttribute("onclick", "showDeleteContact(this.parentElement.title)");
 				var delete_content = document.createElement("img");
 				delete_content.src = "./assets/img/delete_contact.png";
-
+                delete_content.alt = "delete_contact";
 				delete_element.appendChild(delete_content);
 				element_name.appendChild(name);
 				element.appendChild(image);
@@ -265,12 +265,12 @@ function myparsing(data,idfunction){
 				var myimg = data[i]["data"]["image"];
 				var element = document.createElement("li");
 				element.className = "aside_element";
-				element.setAttribute("value", data[i]["data"]["ID"]);
+				element.setAttribute("id", data[i]["data"]["ID"]);
 				element.setAttribute("onclick", 'otherDesks(this)');
                 
 				var image = document.createElement("img");
 				image.className = "aside_pic";
-                
+                image.alt ="aside_pic";
 				if(myimg == null){
 					image.src = 'assets/img/user.png';
 				}
@@ -286,7 +286,7 @@ function myparsing(data,idfunction){
 				var triangle = document.createElement("img");
 				triangle.src = "./assets/img/triangle_desk.png";
 				triangle.className = "desk_triangle";
-				
+				triangle.alt ="triangle";
 				element_name.appendChild(name);
 				element.appendChild(image);
 				element.appendChild(element_name);
@@ -324,10 +324,11 @@ function myparsing(data,idfunction){
                     var downimage = document.createElement('img');
                     downimage.className = "download_icon";
                     downimage.src = './assets/img/download.png';
-
+                    downimage.alt = "down_image";
                     var delimage = document.createElement('img');
                     delimage.className = "delete_icon";
                     delimage.src = './assets/img/delete.png';
+                    delimage.alt = "del_image";
                     var div5 = document.createElement("div");
                     div5.className = "card_cover";
                     var url = "./upload/" + data[i]['data']['reference'];
@@ -683,7 +684,7 @@ function otherDesks(ele){
     }
     xhr.open("POST","./php/otherdesk.php",true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send('str='+ele.getAttribute('value'));
+    xhr.send('str='+ele.getAttribute('id'));
 }
 
 //ajax function to show notifications box

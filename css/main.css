@@ -481,6 +481,9 @@ and (min-device-width: 801px)
 		margin: auto;
 	}
 	.card_cover{
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: auto 249px;
 		width: 149px;
 		height: 149px;
 		display: table;

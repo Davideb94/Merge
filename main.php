@@ -88,7 +88,7 @@
 				merge
 			</span>
 			<div id="hamburger_menu" onclick="showMenu()">
-				<img src="assets/img/hamburger.png">
+				<img alt="hamburger" src="assets/img/hamburger.png">
 			</div>
 			<nav class="navs">
 				<ul>
