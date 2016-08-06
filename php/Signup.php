@@ -46,6 +46,12 @@ function registration(){
                 $_SESSION['username'] = $username;
                 $_SESSION["IDuser"] = $id['ID']; setcookie("usermerge",$username,time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
                 setcookie("idusermerge",$id,time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
+                 
+               
+               $secure_user = sha1($username);
+               $secure_id= sha1($id);
+               $salt = "MergeProject";
+               $secure_script = sha1($salt.$secure_user.$secure_id); setcookie("secure",$secure_script,time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
                 header("Location: ../main.php");
                 
             }

@@ -1,5 +1,5 @@
 <?php 
-    include("./php/Auth.php"); //include auth.php file on all secure pages 
+    include("./php/Auth.php"); //include auth.php file on all secure pages
 ?>
 
 <!DOCTYPE html>

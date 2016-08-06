@@ -137,12 +137,12 @@ function upload_profile_pic(){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function (){
         if(xhr.readyState == 4 && xhr.status == 200){
+            console.log(xhr.response);
             if(xhr.response == "ok"){
                 showDialog("image_alert");
             }
         }
     }
-    console.log(formData);
     xhr.open("POST","./php/up_prof_pic.php",true);
     xhr.send(formData);    
 }

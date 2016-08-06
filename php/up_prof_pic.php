@@ -39,7 +39,15 @@
                 list($width, $height) = getimagesize($folder."x".$reference); 
                  // Creating the Canvas 
                 $tn= imagecreatetruecolor(100, 100); 
-                $source = imagecreatefromjpeg($folder."x".$reference); 
+                
+                $info = getimagesize($folder."x".$reference);
+                $extension = image_type_to_extension($info[2]);
+                if($extension == "jpeg" || $extension == "jpg"){
+                    $source = imagecreatefromjpeg($folder."x".$reference); 
+                }else{
+                    $source = imagecreatefrompng($folder."x".$reference);
+                }
+                
 
                  // Resizing our image to fit the canvas 
                 imagecopyresized($tn, $source, 0, 0, 0, 0, 100, 100,$width, $height); 

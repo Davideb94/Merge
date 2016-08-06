@@ -1,16 +1,33 @@
 <?php 
+include("./php/AuthConnection.php");
 session_start();
-//controlling cookie
+
+//controlling cookie for corrisponding username and id
+
 
 //if there's a cookies with authentication-> enter
- if(empty($_SESSION["username"]) && !empty($_COOKIE["usermerge"])){
+ if(empty($_SESSION["username"]) && !empty($_COOKIE["usermerge"]) && !empty($_COOKIE["idusermerge"])){
     //start session
-    $_SESSION["username"] = $_COOKIE["usermerge"];
-    header("Location: main.php");
+     $query = "SELECT * from user where id= '{$_COOKIE["idusermerge"]}' and name = '{$_COOKIE["usermerge"]}';";
+    
+    $result = $mysqli->query($query);
+    
+    if(!$result){
+        echo $mysqli->error;
+    }else if($row = $result->fetch_assoc()){
+         $secure_user = sha1($_COOKIE["usermerge"]);
+            $secure_id= sha1($_COOKIE["idusermerge"]);
+            $salt = "MergeProject";
+            $secure_script = sha1($salt.$secure_user.$secure_id);
+            if($secure_script == $_COOKIE["secure"]){
+                $_SESSION["IDuser"] = $_COOKIE["idusermerge"];
+                $_SESSION["username"] = $_COOKIE["usermerge"];
+                header("Location: main.php");  
+            }
+        
+    }   
      //in the extreme case in wich you enter in the index when you're logged redirect to your page
-}else if(!empty($_SESSION["username"]) && !empty($_COOKIE["usermerge"])){
-       header("Location: main.php");
- }
+}
 ?>
 
 <!DOCTYPE html>

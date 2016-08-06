@@ -656,10 +656,13 @@ function otherDesks(ele){
 	
     var a = document.getElementById("link_others");
     a.className = "";
+    
     if(ele.className == "notification_text"){
+    
         var list_desks = document.getElementById("aside_list_desks");
         for(var i=0; i<list_desks.childNodes.length; i++){
-            if(list_desks.childNodes[i].value == ele.getAttribute("value")){
+            
+            if(list_desks.childNodes[i].id == ele.getAttribute("value")){
                 ele = list_desks.childNodes[i];
                 break;
             }
@@ -677,6 +680,7 @@ function otherDesks(ele){
     }
     xhr.onreadystatechange = function (){
         if(xhr.readyState == 4 && xhr.status == 200){
+            console.log(xhr.responseText);
             var preview_desk = JSON.parse(xhr.responseText);
             myparsing(preview_desk, 6);
             openTab('others', ele.getAttribute("value"));

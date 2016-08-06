@@ -10,7 +10,6 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 		<title>Merge</title>
 		
 		<link rel="stylesheet" type="text/css" href="css/settings.css">
-		<script src="client.js" type="text/javascript"></script><!-- just in order to work with Flujd, an npm package for live programming -->
         <script src="js/ajax.js" type="text/javascript"></script>
 		<script src="js/settings.js" type="text/javascript"></script>
 	</head>
@@ -146,7 +145,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 			<nav class="navs">
 				<ul class="navs_ul">
 					<li class="navs_li">
-						<a id="desk_link" href="http://localhost/merge/main.php">
+						<a id="desk_link" href="main.php">
 							<div class="vertical_align"></div>
 							<div class="vertical_align">
 								<img id="desk_img" alt ="back_arrow" src="assets/img/back_arrow.png" />

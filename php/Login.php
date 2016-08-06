@@ -29,6 +29,12 @@ function Login(){
                setcookie("usermerge",$username["Name"],time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
                setcookie("idusermerge",$username["ID"],time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
                
+               
+               $secure_user = sha1($username["Name"]);
+               $secure_id= sha1($username["ID"]);
+               $salt = "MergeProject";
+               $secure_script = sha1($salt.$secure_user.$secure_id); setcookie("secure",$secure_script,time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
+               
            } 
             header("Location: ../main.php"); // Redirect user to secure.php
          }else{
