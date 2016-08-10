@@ -59,6 +59,16 @@ and (min-device-width: 801px)
 	.dialog .buttons{
 		height: 25%;
 	}
+	.get_more{
+		float: right;
+		margin-left: 5%;
+		border: none;
+		border-radius: 2px;
+		background-color: #4183D7 !important;
+		color: #fff !important;
+		font-size: 15px !important;
+		padding: 10px;
+	}
 	.dialog button{
 		float: right;
 		font-size: 23px;

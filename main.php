@@ -13,6 +13,20 @@
 	</head>
 	<body onload="start()">
 		<!--alert and confirm boxes-->
+		<div id="max-space-reached" class="overlay">
+			<div class="dialog">
+				<div class="title">
+					Ops...
+				</div>
+				<div class="content">
+					looks like you've reached 1GB of used space!
+				</div>
+				<div class="buttons">
+					<button class="get_more">Get More</button>
+					<button onclick="hideDialog()">OK</button>
+				</div>
+			</div>
+		</div>
 		<div id="upload" class="overlay">
 			<div class="dialog">
 				<div class="title">
