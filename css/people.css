@@ -221,4 +221,35 @@ and (max-device-width: 800px)
 		color: #7f8c8d;
 		font-size: 35px;
 	}
+	.member_container{
+		width: 100%;
+		padding-top: 50px;
+		padding-bottom: 50px;
+		text-align: center;
+		color: #2c3e50;
+		font-family: Museo;
+	}
+	.member_pic{
+		height: 210px;
+		width: 210px;
+		border-radius: 50%;
+	}
+	.member_name{
+		display: block;
+		padding: 5px;
+		font-weight: bold;
+		font-size: 40px;
+	}
+	.member_university{
+		display: block;
+		padding: 3px;
+		font-weight: lighter;
+		font-size: 34px;
+	}
+	.member_role{
+		display: block;
+		padding: 3px;
+		font-weight: lighter;
+		font-size: 37px;
+	}
 }
