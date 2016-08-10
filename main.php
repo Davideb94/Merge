@@ -182,7 +182,6 @@
 					<ul class="aside_list" id="aside_list_contacts">
 							<!--
                                 HERE PHP REALTIME CONTENT
-
                             -->		
 					</ul>
 				</div>
