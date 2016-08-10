@@ -211,7 +211,7 @@ function fetch_info(){
                 remaining_space.appendChild(remaining_value);
                 
                 var progress_bar = document.getElementById("progress_bar");
-                progress_bar.className = "progress-radial progress-"+(Math.ceil(space/5)*5-5);  
+                progress_bar.className = "progress-radial progress-"+(Math.ceil(space/5)*5);  
             }
         }
     };

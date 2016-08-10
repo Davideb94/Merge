@@ -470,6 +470,8 @@ function loadfile(){
             console.log(xhr.response);
             if(xhr.response == "ok"){
                 showDialog("upload");   
+            }else if(xhr.response == "max_space_reached"){
+                showDialog("max-space-reached");
             }
             preview();
             _progress.style.display = "none";

@@ -715,7 +715,17 @@ and (max-device-width: 800px)
 	.dialog button:hover{
 		color: #425D78;
 	}
-	
+	.get_more{
+		float: right;
+		margin-left: 5%;
+		border: none;
+		border-radius: 2px;
+		background-color: #4183D7 !important;
+		color: #fff !important;
+		font-size: 15px !important;
+		padding: 10px;
+	}
+    
 	header{
 		width: 100%;
 		height: 8%;

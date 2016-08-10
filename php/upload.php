@@ -1,12 +1,31 @@
 <?php
     session_start();
-    require('AuthConnection.php');
-
+    require('AuthConnection.php'); 
     if(!empty($_FILES)){
        
         $counter =  sizeof($_FILES);
         for ($i = 0; $i<$counter;$i++){
             if($_FILES['file'.$i]['error']== 0){
+                
+                 //space occupied control
+
+                $query3 = "Select space_occupied from user where ID='{$_SESSION['IDuser']}';";
+
+                $result3 = $mysqli->query($query3);
+
+                if(!$result3){
+                    echo $mysqli->error;
+
+                }else{
+                    $permission = $result3->fetch_assoc();
+                    $ok = $permission['space_occupied'];
+
+                }
+                if($ok+$_FILES['file'.$i]['size']>=1073741824){
+                    echo "max_space_reached";
+                    exit();
+                }
+                
                 $file_name = mysql_real_escape_string($_FILES['file'.$i]['name']);
                 $reference = rand(1000,100000)."-".$file_name;
                 $query ="INSERT INTO file (Size,Type,Name,IDuser,reference,policy) values('{$_FILES['file'.$i]['size']}','{$_FILES['file'.$i]['type']}','{$file_name}','{$_SESSION['IDuser']}','$reference','PUBLIC');";

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2016 at 02:54 PM
+-- Generation Time: Aug 10, 2016 at 07:40 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.20
 
@@ -37,8 +37,6 @@ CREATE TABLE `contacts` (
 
 INSERT INTO `contacts` (`IDuser`, `IDcontact`) VALUES
 (35, 36),
-(36, 35),
-(36, 37),
 (37, 35);
 
 -- --------------------------------------------------------
@@ -91,13 +89,6 @@ CREATE TABLE `notifications` (
   `Forwho` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `notifications`
---
-
-INSERT INTO `notifications` (`ID`, `Who`, `Type`, `Forwho`) VALUES
-(1, 36, 'Adding', 37);
-
 -- --------------------------------------------------------
 
 --
@@ -119,7 +110,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID`, `Name`, `Password`, `Email`, `Registration_date`, `image`, `space_occupied`) VALUES
-(35, 'Gab', '444bcb3a3fcf8389296c49467f27e1d6', 'gabriele-martino@libero.it', '2016-07-16 11:01:46', '4945-[005894].jpg', 0),
+(35, 'Gab', '444bcb3a3fcf8389296c49467f27e1d6', 'gabriele-martino@libero.it', '2016-07-16 11:01:46', NULL, 0),
 (36, 'Davide', '444bcb3a3fcf8389296c49467f27e1d6', 'davide.db@unito.it', '2016-07-16 11:02:18', NULL, 0),
 (37, 'Paola', '444bcb3a3fcf8389296c49467f27e1d6', 'Paola@ok.it', '2016-07-16 11:02:49', NULL, 0);
 
@@ -175,7 +166,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT for table `file`
 --
 ALTER TABLE `file`
-  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `notifications`
 --
