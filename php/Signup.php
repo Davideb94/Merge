@@ -22,9 +22,8 @@ function registration(){
             $query = "INSERT INTO user (Name,Password,Email) values ('$username','$password','$email');";
             $result = $mysqli->query($query);
             if(!$result){
-                   $message = 'Invalid query: ' . $mysqli->error . "\n";
-                    $message .= 'Whole query: ' . $query;
-                    die($message);
+                echo('This profile already exists. Please, try to sign up with a different mail - <a href="../index.php">Home</a>');
+				exit();
             
             }
             

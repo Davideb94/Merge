@@ -1,0 +1,224 @@
+/*Preset*/
+@import 'normalize.css';
+
+/*Custom fonts*/
+@font-face{
+	font-family: "Chunk";
+	src: url('../assets/fonts/chunk/Chunk.ttf');
+}
+@font-face{
+	font-family: "Museo";
+	src: url('../assets/fonts/Museo/Webfonts/museosans_500_macroman/MuseoSans_500-webfont.ttf');
+}
+
+
+
+@media only screen 
+and (min-device-width: 801px) 
+{
+	html,
+	body{
+		height: 100%;
+		width: 100%;
+		background-color: #E9EBEE;
+		z-index: 1;
+	}
+	#header{
+		width: 100%;
+		height: 8%;
+		display: table;
+		background-color: #2c3e50;
+		color: white;
+		z-index: 100;
+	}
+	#logo_container{
+		padding-left:5%;
+		display: table-cell;
+		vertical-align: middle;
+		font-family: Chunk;
+		font-size: 40px;
+		color: #00AE53;
+	}
+	.navs {
+		height: 100%; /*doesn't work on firefox god knows why*/
+		float: right;
+	}
+	.navs_ul {
+		height: 100%;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		background-color: inherit;
+	}
+	.navs_li {	
+		height: 100%;
+		display: table;
+		float: left;
+	}
+	.navs_img{
+		height: 15px;
+	}
+	.navs_li a {
+		display: block;
+		color: white;
+		text-align: center;
+		padding-left: 10px;
+		padding-right: 10px;
+		text-decoration: none;
+	}
+	.navs_li:hover #desk_link{
+		cursor: pointer;
+		color: #00AE53 !important;
+	}
+	.vertical_align{
+		height: 20px;
+	}
+	#desk_link{
+		display: table-cell;
+		vertical-align: middle;
+		font-family: "Museo";
+	}
+	#desk_img{
+		height: 13px;
+	}
+	/*end of bar's css*/
+	#settings_header{
+		width: 100%;
+		height: 9%;
+		display: table;
+		background-color: #DADFE1;
+		color: white;
+		z-index: 100;
+	}
+	#settings_header span{
+		padding-left: 10%;
+		display: table-cell;
+		vertical-align: middle;
+		color: #7f8c8d;
+		font-size: 20px;
+	}
+	.member_container{
+		width: 100%;
+		padding-top: 50px;
+		padding-bottom: 50px;
+		text-align: center;
+		color: #2c3e50;
+		font-family: Museo;
+	}
+	.member_pic{
+		height: 110px;
+		width: 110px;
+		border-radius: 50%;
+	}
+	.member_name{
+		display: block;
+		padding: 5px;
+		font-weight: bold;
+		font-size: 20px;
+	}
+	.member_name:hover{
+		color: #425D78;
+		cursor: pointer;
+	}
+	.member_university{
+		display: block;
+		padding: 3px;
+		font-weight: lighter;
+		font-size: 15px;
+	}
+	.member_role{
+		display: block;
+		padding: 3px;
+		font-weight: lighter;
+		font-size: 17px;
+	}
+}
+
+@media only screen 
+and (max-device-width: 800px) 
+{
+	html,
+	body{
+		height: 100%;
+		width: 100%;
+		background-color: #E9EBEE;
+		z-index: 1;
+	}
+	#header{
+		width: 100%;
+		height: 8%;
+		display: table;
+		background-color: #2c3e50;
+		color: white;
+		z-index: 100;
+	}
+	#logo_container{
+		padding-left:5%;
+		display: table-cell;
+		vertical-align: middle;
+		font-family: Chunk;
+		font-size: 50px;
+		color: #00AE53;
+	}
+	.navs {
+		height: 100%; /*doesn't work on firefox god knows why*/
+		float: right;
+	}
+	.navs_ul {
+		height: 100%;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		background-color: inherit;
+	}
+	.navs_li {	
+		height: 100%;
+		display: table;
+		padding-left: 20px;
+		padding-right: 15px;
+		float: left;
+	}
+	.navs_img{
+		height: 15px;
+	}
+	.navs_li a {
+		display: block;
+		color: white;
+		text-align: center;
+		padding-left: 10px;
+		padding-right: 10px;
+		text-decoration: none;
+	}
+	.navs_li:hover #desk_link{
+		cursor: pointer;
+		color: #00AE53 !important;
+	}
+	.vertical_align{
+		height: 20px;
+	}
+	#desk_link{
+		display: table-cell;
+		vertical-align: middle;
+		font-family: "Museo";
+		font-size: 30px;
+	}
+	#desk_img{
+		height: 25px;
+	}
+	/*end of bar's css*/
+	#settings_header{
+		width: 100%;
+		height: 9%;
+		display: table;
+		background-color: #DADFE1;
+		color: white;
+		z-index: 100;
+	}
+	#settings_header span{
+		padding-left: 10%;
+		display: table-cell;
+		vertical-align: middle;
+		color: #7f8c8d;
+		font-size: 35px;
+	}
+}

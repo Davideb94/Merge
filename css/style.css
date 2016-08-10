@@ -53,7 +53,7 @@ and (min-device-width: 801px)
 		display: inline-block;
 		margin-right: 5%;
 		font-family: Museo;
-		font-size: 17px;
+		font-size: 20px;
 		padding-left: 10px;
 		padding-right: 10px;
 		float: right;
@@ -68,7 +68,25 @@ and (min-device-width: 801px)
 	.colored_login:hover{
 		background-color: #263545 !important;
 	}
-
+	
+	#people_container{
+		height: inherit;
+		display: inline-block;
+		font-family: Museo;
+		font-size: 17px;
+		padding-left: 10px;
+		padding-right: 10px;
+		margin-right: 3%;
+		float: right;
+		background-color: transparent;
+	}
+	#people_container > p{
+		margin-top: 45%;
+	}
+	#people_container:hover{
+		cursor: pointer;
+	}
+	
 	section{
 		position: relative;
 		width: 100%;
@@ -345,20 +363,26 @@ and (max-device-width: 800px)
 		display: inline-block;
 		margin-right: 5%;
 		font-family: Museo;
-		font-size: 40px;
+		font-size: 45px;
 		padding-left: 10px;
 		padding-right: 10px;
 		float: right;
 		background-color: transparent;
 	}
-	#login_container > p{
+	
+	#people_container{
+		height: inherit;
+		display: inline-block;
+		font-family: Museo;
+		font-size: 40px;
+		padding-left: 10px;
+		padding-right: 10px;
+		margin-right: 3%;
+		float: right;
+		background-color: transparent;
+	}
+	#people_container > p{
 		margin-top: 40%;
-	}
-	#login_container:hover{
-		cursor: pointer;
-	}
-	.colored_login:hover{
-		background-color: #263545 !important;
 	}
 
 	section{

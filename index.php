@@ -49,6 +49,9 @@ session_start();
 			<div id="login_container">
                 <p>Log in</p>
 			</div>
+			<div id="people_container" onclick="location.href='./people.html'">
+				<p>People</p>
+			</div>
 			<div id="login_menu">
 				<img id="triangle" alt="triangle "src="assets/img/triangle.png">
 				<form action="./php/Login.php" method="POST">
@@ -110,7 +113,7 @@ session_start();
                 <div class="rowing">
                 <div class="text_elem left_elem" >
                     <p>
-                                ...in order to give them<br> permissions to<br><b>accede</b> their files on your<br>desk.
+                                ...in order to give them<br> permissions to<br><b>download</b> the files on your<br>desk.
                     </p>
                 </div>
                 <div class="img_elem right_elem">
