@@ -20,7 +20,6 @@ window.onload = function(){
 	var section_2 = document.getElementById('section_2');
 	var offset = section_2.offsetTop - 60;
 	var y = document.documentElement.scrollTop || document.body.scrollTop;
-	console.log(y);
 
 	if(y>=offset){
 		header.className = 'colored_header';
@@ -30,12 +29,10 @@ window.onload = function(){
 		header.className = '';
 		login.className = '';
 	}
-	console.log('MY OFFSET IS: ' + offset);
 	
 	document.addEventListener("scroll", function(){
 			var y = document.documentElement.scrollTop || document.body.scrollTop;
-			console.log(y);
-
+		
 			if(y>=offset){
 				header.className = 'colored_header';
 				login.className = 'colored_login';
@@ -44,7 +41,6 @@ window.onload = function(){
 				header.className = '';
 				login.className = '';
 			}
-			console.log('MY OFFSET IS: ' + offset);
 		}
 	);
 }
@@ -64,5 +60,9 @@ function validate(){
         //alert("Passwords Match!!!");
     }
     return ok;
-	
+}
+
+function hideBanner(){
+	var banner = document.getElementById('banner');
+	banner.className = 'hide_banner';
 }

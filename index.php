@@ -2,7 +2,7 @@
 include("./php/AuthConnection.php");
 session_start();
 
-//controlling cookie for corrisponding username and id
+//checking cookie for corrisponding username and id
 
 
 //if there's a cookies with authentication-> enter
@@ -73,6 +73,17 @@ session_start();
 				</form>
 			</div>
 		</header>
+		<?php
+			if(empty($_SESSION["firstvisit"])){
+				echo '<div class="banner" id="banner">
+						<p>
+							Hi,<br>since this is probably the first time you visit <span class="chunk">merge</span> we thought you should know that this platform was born as an experiment.<br>Therefore you might encounter some lack of features such as the missing "Terms and Conditions", the limited amount of profiles available etc.
+						</p>
+						<button onclick="hideBanner()">ACCEPT</button>
+					</div>';
+			}
+			$_SESSION["firstvisit"] = true;
+		?>
 		<section id="section_1">
 			<div id="container_1">
 				<p>
