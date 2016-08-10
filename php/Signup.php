@@ -4,6 +4,24 @@ session_start();
 function registration(){
     //include server connection
     require('AuthConnection.php'); 
+    
+    //max number of users control
+    
+    $query = "Select count(*) as number from user;";
+    
+    $result = $mysqli->query($query);
+    
+    if(!$result){
+        echo $mysqli->error;
+        exit();
+    }
+    
+    $number = $result->fetch_assoc();
+    
+    if($number['number']>=90){
+        echo "Ops... we've reached the maximum amount of accounts we can handle at the moment. Wait for someone to fund Merge.";
+        exit();
+    }
     // extra control for inputs
     if(!empty($_POST["username"]) && !empty($_POST["password"]) && !empty($_POST["email"]) && !empty($_POST["confirm_pass"])){   
         //inizialization var

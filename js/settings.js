@@ -151,9 +151,7 @@ function deleteProfile(){
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function (){
 		if(xhr.readyState == 4 && xhr.status == 200){
-			if(xhr.response == "ok"){
-				location.href = "http://localhost/merge";
-			}
+           location.reload();
 		}
 	}
 	xhr.open("POST","./php/del_profile.php",true);

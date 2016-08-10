@@ -36,7 +36,7 @@ require('AuthConnection.php');
         echo "ok";
     }
     //cascading for notifications
-    $query3 = "DELETE FROM notifies where Forwho = {$_SESSION['IDuser']};";
+    $query3 = "DELETE FROM notifications where Forwho = {$_SESSION['IDuser']};";
 
     $result = $mysqli->query($query3);
 
@@ -58,7 +58,7 @@ require('AuthConnection.php');
         echo "ok";
     }
     session_destroy();
+    $_SESSION["firstvisit"] = true;
     setcookie("usermerge","",time()-60,"/",$_SERVER['SERVER_NAME'],false,true);
     setcookie("idusermerge","",time()-60,"/",$_SERVER['SERVER_NAME'],false,true);
-    header("Location: ../index.php"); // Redirecting To Home Page
 ?>
