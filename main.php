@@ -7,6 +7,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Merge</title>
+		
+		<link rel="shortcut icon" type="image/png" href="./assets/icons/favicon.png"/>
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 		<script src="js/main.js" type="text/javascript"></script>
         <script src="js/ajax.js" type="text/javascript"></script>

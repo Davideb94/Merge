@@ -66,3 +66,27 @@ function hideBanner(){
 	var banner = document.getElementById('banner');
 	banner.className = 'hide_banner';
 }
+function ReplacePassword(){
+    //controll
+    var email = document.getElementById("Lemail").value;
+    var alert = document.getElementById("alert");
+    if(email !== ""){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function (){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                console.log(xhr.responseText);
+                if(xhr.responseText == 0){
+                    alert.innerHTML = "Your new password was sent to your mail address.";
+                   
+                }else{
+                    alert.innerHTML = "Something gone wrong. Retry.";
+                }
+            }
+        }
+        xhr.open("POST","./php/Replacepassword.php",true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send('email='+email);
+    }else{
+        alert.innerHTML ="Type valid email address";
+    }
+}

@@ -2,7 +2,7 @@
 session_start();
 require('../php/AuthConnection.php'); 
 require('ajaxresponse.php');
-$q =  mysql_real_escape_string($_GET["q"]);
+$q =  $mysqli->real_escape_string($_GET["q"]);
 
 if($q!= '@' && $q!= '.'){
     

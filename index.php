@@ -6,7 +6,7 @@ session_start();
 
 
 //if there's a cookies with authentication-> enter
- if(empty($_SESSION["username"]) && !empty($_COOKIE["usermerge"]) && !empty($_COOKIE["idusermerge"])){
+ if(empty($_SESSION["username"]) && empty($_SESSION["IDuser"]) && !empty($_COOKIE["usermerge"]) && !empty($_COOKIE["idusermerge"])){
     //start session
      $query = "SELECT * from user where id= '{$_COOKIE["idusermerge"]}' and name = '{$_COOKIE["usermerge"]}';";
     
@@ -15,7 +15,7 @@ session_start();
     if(!$result){
         echo $mysqli->error;
     }else if($row = $result->fetch_assoc()){
-         $secure_user = sha1($_COOKIE["usermerge"]);
+            $secure_user = sha1($_COOKIE["usermerge"]);
             $secure_id= sha1($_COOKIE["idusermerge"]);
             $salt = "MergeProject";
             $secure_script = sha1($salt.$secure_user.$secure_id);
@@ -27,7 +27,10 @@ session_start();
         
     }   
      //in the extreme case in wich you enter in the index when you're logged redirect to your page
-}
+}else if(!empty($_SESSION["username"]) && !empty($_SESSION["IDuser"])){
+     header("Location: main.php");  
+     
+ }
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +38,7 @@ session_start();
 	<head>
 		<meta charset="utf-8">
 		<title>Merge</title>
-		
+		<link rel="shortcut icon" type="image/png" href="./assets/icons/favicon.png"/>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script src="client.js" type="text/javascript"></script><!-- just in order to work with Flujd, an npm package for live programming -->
 		<script src="js/index.js"></script>
@@ -56,11 +59,14 @@ session_start();
 				<img id="triangle" alt="triangle "src="assets/img/triangle.png">
 				<form action="./php/Login.php" method="POST">
 					<div class="input-field">
-						<input class="login_input" name="Lemail" type="email" placeholder="Email" required>
+						<input class="login_input" id="Lemail" name="Lemail" type="email" placeholder="Email" required>
 					</div>
 					<div class="input-field">
 						<input class="login_input" name="Lpassword" type="password" placeholder="Password" required>
 					</div>
+                    <u  id="Passf" onclick="ReplacePassword()">Password forgotten</u>
+                    <br>
+                    <p id="alert"></p>
                     <div id="check_keep_login">
                         <input type="checkbox" name="keep_login">
                             <p>

@@ -315,7 +315,7 @@ function myparsing(data,idfunction){
 					div_relative.style.position = "relative";
 					div_relative.appendChild(div2);
                     var link1 = document.createElement("a");
-                    link1.href = "thumbnails/" + data[i]['data']['reference'];
+                    link1.href = "upload/" + data[i]['data']['reference'];
                     link1.setAttribute("download","");
                     var div3 = document.createElement("div");
                     div3.className ="card_download";
@@ -331,7 +331,7 @@ function myparsing(data,idfunction){
                     delimage.alt = "del_image";
                     var div5 = document.createElement("div");
                     div5.className = "card_cover";
-                    var url = "./upload/" + data[i]['data']['reference'];
+                    var url = "./thumbnails/" + data[i]['data']['reference'];
                     div5.style.backgroundImage = "url('"+url+"')";
                     div5.style.backgroundRepeat = "no-repeat";
                     div5.style.backgroundPosition = "center center";
@@ -421,7 +421,6 @@ function deleteContact(id){
 			if(xhr.responseText == "ok"){
 				viewcontacts();
 			}
-			console.log(xhr.responseText);
 		}
 	}
 	xhr.open("GET","./php/deleteContact.php?contact=" + id, true);
@@ -467,7 +466,6 @@ function loadfile(){
     var _progress = document.getElementById("progress");
     xhr.onreadystatechange = function (){
         if(xhr.readyState == 4 && xhr.status == 200){
-            console.log(xhr.response);
             if(xhr.response == "ok"){
                 showDialog("upload");   
             }else if(xhr.response == "max_space_reached"){
@@ -682,7 +680,6 @@ function otherDesks(ele){
     }
     xhr.onreadystatechange = function (){
         if(xhr.readyState == 4 && xhr.status == 200){
-            console.log(xhr.responseText);
             var preview_desk = JSON.parse(xhr.responseText);
             myparsing(preview_desk, 6);
             openTab('others', ele.getAttribute("value"));

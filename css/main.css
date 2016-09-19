@@ -79,11 +79,11 @@ and (min-device-width: 801px)
 	}
 	.dialog button:hover{
 		color: #425D78;
-	}
-	
+    }
+   
 	header{
 		width: 100%;
-		height: 8%;
+        height: 8%;
 		display: table;
 		background-color: #2c3e50;
 		color: white;
@@ -725,7 +725,6 @@ and (max-device-width: 800px)
 		font-size: 15px !important;
 		padding: 10px;
 	}
-    
 	header{
 		width: 100%;
 		height: 8%;

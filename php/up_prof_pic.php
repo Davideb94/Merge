@@ -42,7 +42,7 @@
                 
                 $info = getimagesize($folder."x".$reference);
                 $extension = image_type_to_extension($info[2]);
-                if($extension == "jpeg" || $extension == "jpg"){
+                if($extension == ".jpeg" || $extension == ".jpg"){
                     $source = imagecreatefromjpeg($folder."x".$reference); 
                 }else{
                     $source = imagecreatefrompng($folder."x".$reference);

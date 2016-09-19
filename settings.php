@@ -9,6 +9,7 @@ include("./php/Auth.php"); //include auth.php file on all secure pages
 		<meta charset="utf-8">
 		<title>Merge</title>
 		
+		<link rel="shortcut icon" type="image/png" href="./assets/icons/favicon.png"/>
 		<link rel="stylesheet" type="text/css" href="css/settings.css">
         <script src="js/ajax.js" type="text/javascript"></script>
 		<script src="js/settings.js" type="text/javascript"></script>

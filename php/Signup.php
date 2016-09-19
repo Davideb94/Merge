@@ -25,10 +25,10 @@ function registration(){
     // extra control for inputs
     if(!empty($_POST["username"]) && !empty($_POST["password"]) && !empty($_POST["email"]) && !empty($_POST["confirm_pass"])){   
         //inizialization var
-        $username = mysql_real_escape_string($_POST["username"]);
-        $password = mysql_real_escape_string($_POST["password"]);
-        $email = mysql_real_escape_string($_POST["email"]);
-        $confirm_pass = mysql_real_escape_string($_POST["confirm_pass"]);
+        $username = $mysqli->real_escape_string($_POST["username"]);
+        $password = $mysqli->real_escape_string($_POST["password"]);
+        $email = $mysqli->real_escape_string($_POST["email"]);
+        $confirm_pass = $mysqli->real_escape_string($_POST["confirm_pass"]);
         
         
         //password control
@@ -53,20 +53,22 @@ function registration(){
             
             //error control
             if(!$result1){
-                   $message = 'Invalid query: ' . $mysqli->error . "\n";
-                    $message .= 'Whole query: ' . $query;
-                    die($message);
+                   echo $mysqli->error;
+                    exit();
             
             }else{
                 $id= $result1->fetch_assoc();
                 $_SESSION["email"] = $email;
                 $_SESSION['username'] = $username;
                 $_SESSION["IDuser"] = $id['ID']; setcookie("usermerge",$username,time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
-                setcookie("idusermerge",$id,time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
-                 
-               
+                setcookie("idusermerge",$id['ID'],time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
+                $msg = "Hi,you registered successfully.";
+               mail($email,"Registration Accomplished",$msg);
+                
+                
+                
                $secure_user = sha1($username);
-               $secure_id= sha1($id);
+               $secure_id= sha1($id['ID']);
                $salt = "MergeProject";
                $secure_script = sha1($salt.$secure_user.$secure_id); setcookie("secure",$secure_script,time()+84600,"/",$_SERVER['SERVER_NAME'],false,true);
                 header("Location: ../main.php");

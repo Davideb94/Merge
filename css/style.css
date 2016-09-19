@@ -89,7 +89,6 @@ and (min-device-width: 801px)
 	
 	.banner{
 		width: 96%;
-		height: 25%;
 		margin-top: 10%;
 		position: fixed;
 		padding-top: 3%;
@@ -104,7 +103,7 @@ and (min-device-width: 801px)
 		z-index: 150;
 	}
 	.banner > button{
-		margin-top: 2%;
+		margin-top: 4%;
 		border: none;
 		outline: none;
 		background-color: transparent;
@@ -141,9 +140,11 @@ and (min-device-width: 801px)
 		right: 15%;
 		top: 30%;
 		font-family: Museo;
+		text-align: center;
 	}
 	#container_1 > p{
 		font-size: 30px;
+		text-align: center;
 	}
 	#Down_Arrow{
 		height: 40px;
@@ -162,6 +163,7 @@ and (min-device-width: 801px)
 		font-family: Museo;
 		font-size: 17px;
 		border-radius: 3px;
+		text-align: center;
 	}
 	#sign_up:hover{
 		background-color: #03b95a;
@@ -347,6 +349,11 @@ and (min-device-width: 801px)
         margin-bottom: 5px;
         vertical-align: middle;
     }
+    #Passf{
+        font-size: 11px;
+        float: right;
+        cursor:pointer;
+    }
     
     
 }
@@ -415,7 +422,34 @@ and (max-device-width: 800px)
 		margin-top: 40%;
 	}
 
-	.
+	.banner{
+		width: 96%;
+		margin-top: 20%;
+		position: fixed;
+		padding-top: 3%;
+		padding-bottom: 5%;
+		padding-right: 2%;
+		padding-left: 2%;
+		background-color: #16a085;
+		font-family: Museo;
+		font-size: 30px;
+		text-align: center;
+		color: #fff;
+		z-index: 150;
+	}
+	.banner > button{
+		margin-top: 4%;
+		border: none;
+		outline: none;
+		background-color: transparent;
+		font-size: 33px;
+	}
+	.hide_banner{
+		display: none;
+	}
+	.chunk{
+		font-family: Chunk;
+	}
 	
 	section{
 		position: relative;
@@ -441,6 +475,7 @@ and (max-device-width: 800px)
 		right: 15%;
 		top: 30%;
 		font-family: Museo;
+		text-align: center;
 	}
 	#container_1 > p{
 		font-size: 50px;
@@ -495,7 +530,9 @@ and (max-device-width: 800px)
 		padding-top: 10%;
 	}
 	.left_elem{
-		width: 40%;
+		width: 35%;
+		padding-right: 5%;
+		text-align: right;
 	}
 	.right_elem{
 		width: 40%;
@@ -523,14 +560,18 @@ and (max-device-width: 800px)
 
 	#section_3{
 		height: 70%;
+		width: 100%;
 		display: inline-block;
 		background-color: #e3e6e8;
+		text-align: center;
 	}
 	#container_3 {
 		display: inline-block;
 		text-align: center;
 		padding-top: 3%;
 		padding-bottom: 5%;
+		margin-left: auto;
+		margin-right: auto;
 		font-family: Museo;
 		color: #373D3D;
 	}
@@ -660,6 +701,11 @@ and (max-device-width: 800px)
     #check_keep_login{
         margin-bottom: 20px;
         vertical-align: middle;
+    }
+    #Passf{
+        font-size: 11px;
+        float: right;
+        cursor:pointer;
     }
 }
 
