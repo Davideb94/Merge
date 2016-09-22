@@ -60,9 +60,9 @@ function myparsing(data,idfunction){
 				div_relative.style.position = "relative";
                 var div2 = document.createElement("div");
                 div2.className ="card_hover";
-                var link1 = document.createElement("a");
-                link1.href = "upload/" + data[i]['data']['reference'];
-                link1.setAttribute("download","");
+                var link1 = document.createElement("div");
+                link1.id = data[i]['data']['reference'];
+                link1.setAttribute("onclick","Downloadfile(this.id)");
                 var div3 = document.createElement("div");
                 div3.className ="card_download";
                 div3.setAttribute("title",data[i]['data']['reference']);
@@ -466,6 +466,7 @@ function loadfile(){
     var _progress = document.getElementById("progress");
     xhr.onreadystatechange = function (){
         if(xhr.readyState == 4 && xhr.status == 200){
+            console.log(xhr.response);
             if(xhr.response == "ok"){
                 showDialog("upload");   
             }else if(xhr.response == "max_space_reached"){
@@ -485,6 +486,24 @@ function loadfile(){
     xhr.open("POST","./php/upload.php",true);
     xhr.send(formData);
 
+}
+function Downloadfile(name){
+    
+    window.location = "./php/download.php?name="+name;
+    /*var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function (){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            window.location = "/php/download.php";
+           console.log(xhr.response);
+        }
+    }
+    console.log(name);
+    
+    xhr.open("GET","./php/download.php?name="+name,true);
+    xhr.send();
+    */
+    
+    
 }
 
 function identification(){

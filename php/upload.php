@@ -6,11 +6,7 @@
         for ($i = 0; $i<$counter;$i++){
             if($_FILES['file'.$i]['error']== 0){
                                 
-                 //space occupied control
-                if($_FILES['file'.$i]['type'] == "application/octet-stream"){
-                    echo "Impossible to upload this type of file.";
-                    
-                }else{
+                 //space occupied controll
 
                 $query3 = "Select space_occupied from user where ID='{$_SESSION['IDuser']}';";
 
@@ -44,7 +40,6 @@
                 move_uploaded_file($file_loc,$folder.$reference);
                 //thumbnail creation
                 $extension = pathinfo($folder.$reference, PATHINFO_EXTENSION);
-                echo $extension;
                 if($extension=="jpeg" || $extension=="png" || $extension=="jpg"){
                     $size = 0.20; 
                     list($width, $height) = getimagesize($folder.$reference); 
@@ -59,8 +54,14 @@
                     imagecopyresized($tn, $source, 0, 0, 0, 0, $modwidth, $modheight,$width, $height); 
 
                     imagejpeg($tn,"../thumbnails/".$reference,100);
+                }else if($extension=="php" || $extension=="run" || $extension=="out"|| $extension=="KSH" || $extension=="CSH" || $extension=="BIN"){
+                    $query1 = "DELETE FROM file
+                                where reference='$reference';";
+                    $result_secure = $mysqli->query($query1);
+                    unlink("../upload/".$reference);
+                    echo "it's not possible upload this type of file.";
                 }
-                }
+                
             }else{
                 echo "error";
             }
