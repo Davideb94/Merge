@@ -106,7 +106,10 @@ function myparsing(data,idfunction){
                 delimage.src = './assets/img/delete.png';
                 delimage.alt = "del_img";
                 var div5 = document.createElement("div");
-                div5.style.backgroundImage = "url(./thumbnails/"+  data[i]['data']['reference']+")";
+                if(data[i]['data']['Type']== "image/jpeg" || data[i]['data']['Type']== "image/png" || data[i]['data']['Type']== "image/jpg"){
+                    div5.style.backgroundImage = "url(./thumbnails/"+  data[i]['data']['reference']+")";
+                }
+                
                 div5.className = "card_cover";
                 
                 
