@@ -10,7 +10,7 @@ if(!empty($_GET['name'])){
     $type = $result3->fetch_assoc();
     header("Cache-Control: public");
     header("Content-Description: File Transfer");
-    header("Content-Disposition: attachment; filename= $name");
+    header("Content-Disposition: attachment; filename= '{$name}'");
     header("Content-Transfer-Encoding: binary"); 
     header("Content-Type: {$type['Type']}");
     readfile("{$path}");
