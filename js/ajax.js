@@ -318,8 +318,8 @@ function myparsing(data,idfunction){
 					div_relative.style.position = "relative";
 					div_relative.appendChild(div2);
                     var link1 = document.createElement("a");
-                    link1.href = "upload/" + data[i]['data']['reference'];
-                    link1.setAttribute("download","");
+                    link1.id = data[i]['data']['reference'];
+                    link1.setAttribute("onclick","Downloadfile(this.id)");
                     var div3 = document.createElement("div");
                     div3.className ="card_download";
                     div3.setAttribute("name",data[i]['data']['reference']);
